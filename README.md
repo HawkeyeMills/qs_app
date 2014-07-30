@@ -1,9 +1,9 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is my quantified self Ruby on Rails application written based on the sample tutorial [*Ruby on Rails Tutorial*](http://railstutorial.org/)
+by [Michael Hartl](http://michaelhartl.com/).
 
-Things you may want to cover:
+Things to eventaully cover:
 
 * Ruby version
 
