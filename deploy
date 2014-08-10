@@ -1,3 +1,9 @@
 git push
 git push heroku
 heroku run rake db:migrate
+
+
+
+bundle exec rake db:reset
+bundle exec rake db:populate
+bundle exec rake test:prepare
