@@ -17,6 +17,7 @@ describe User do
   it { should respond_to(:remember_token) }
   it { should respond_to(:authenticate) }
   it { should respond_to(:admin) }
+  it { should respond_to(:metrics) }
 
   it { should be_valid }
   it { should_not be_admin }
@@ -123,5 +124,29 @@ describe User do
   describe "remember token" do
     before { @user.save }
     its(:remember_token) { should_not be_blank }
+  end
+
+  describe "metric associations" do
+
+    before { @user.save }
+    let!(:older_metric) do
+      FactoryGirl.create(:metric, user: @user, date: 2.day.ago)
+    end
+    let!(:newer_metric) do
+      FactoryGirl.create(:metric, user: @user, date: 1.day.ago)
+    end
+
+    it "should have the right metrics in the right order" do
+      expect(@user.metrics.to_a).to eq [newer_metric, older_metric]
+    end
+
+    it "should destroy associated metrics" do
+      metrics = @user.metrics.to_a
+      @user.destroy
+      expect(metrics).not_to be_empty
+      metrics.each do |metric|
+        expect(Metric.where(id: metric.id)).to be_empty
+      end
+    end
   end
 end

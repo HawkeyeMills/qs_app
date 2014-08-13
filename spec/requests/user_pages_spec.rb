@@ -54,10 +54,18 @@ describe "User pages" do
 
   describe "profile page" do
     let(:user) { FactoryGirl.create(:user) }
+    let!(:m1) { FactoryGirl.create(:metric, user: user, value: "Steps") }
+    let!(:m2) { FactoryGirl.create(:metric, user: user, value: "Weight") }    
     before { visit user_path(user) }
 
     it { should have_content(user.name) }
     it { should have_title(user.name) }
+
+    describe "metrics" do
+      it { should have_content(m1.value) }
+      it { should have_content(m2.value) }
+      it { should have_content(user.metrics.count) }
+    end
   end
 
   describe "signup page" do

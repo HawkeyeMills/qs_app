@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140810083210) do
+ActiveRecord::Schema.define(version: 20140812152045) do
+
+  create_table "metrics", force: true do |t|
+    t.integer  "metricconfig_id"
+    t.integer  "user_id"
+    t.date     "date"
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "metrics", ["user_id", "date"], name: "index_metrics_on_user_id_and_date", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name"
