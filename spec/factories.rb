@@ -11,7 +11,12 @@ FactoryGirl.define do
   end
 
   factory :metric do
-    value "Step"
+    value "13,000"
     user
+  end
+
+  factory :metricconfig do
+    value "steps"
+    metric
   end
 end

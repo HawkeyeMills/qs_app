@@ -3,7 +3,27 @@ git push heroku
 heroku run rake db:migrate
 
 
+rake db:drop
+or
+rake db:reset
+and/or
+rake db:create
+and/or
+rake db:migrate
+rake db:populate
+rake test:prepare
 
-bundle exec rake db:reset
-bundle exec rake db:populate
-bundle exec rake test:prepare
+
+
+
+Metric 13,000, 1
+Metric Config 1, Steps
+
+Metric has many MetricConfigs
+MetricConfig belongs to Metric
+
+ git checkout -b metric-metricconfigs
+
+
+ showFiles
+ hideFiles

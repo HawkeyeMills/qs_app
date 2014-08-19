@@ -9,6 +9,7 @@ describe Metric do
   it { should respond_to(:value) }
   it { should respond_to(:user_id) }
   it { should respond_to(:user) }
+  it { should respond_to(:metricconfigs) }
   its(:user) { should eq user }
 
     it { should be_valid }

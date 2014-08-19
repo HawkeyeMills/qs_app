@@ -9,7 +9,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @metrics = @user.metrics.paginate(page: params[:page])
+    @metricconfigs = @user.metricconfigs.paginate(page: params[:page])
+    @metrics = @metricconfigs.paginate(page: params[:page])
   end
 
   def new

@@ -11,18 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140812152045) do
+ActiveRecord::Schema.define(version: 20140814053926) do
+
+  create_table "metricconfigs", force: true do |t|
+    t.string   "value"
+    t.integer  "user_id"
+    t.integer  "orderby"
+    t.boolean  "profiledisplay"
+    t.boolean  "updatable"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "metricconfigs", ["user_id"], name: "index_metricconfigs_on_user_id", using: :btree
 
   create_table "metrics", force: true do |t|
     t.integer  "metricconfig_id"
-    t.integer  "user_id"
     t.date     "date"
     t.string   "value"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "metrics", ["user_id", "date"], name: "index_metrics_on_user_id_and_date", using: :btree
+  add_index "metrics", ["metricconfig_id", "date"], name: "index_metrics_on_metricconfig_id_and_date", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name"

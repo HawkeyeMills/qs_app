@@ -9,12 +9,13 @@
     </section>
   </aside>
     <div class="span8">
-    <% if @user.metrics.any? %>
-      <h3>Metrics (<%= @user.metrics.count %>)</h3>
-      <ol class="metrics">
+    <% if @user.metricconfigs.any? %>
+      <h3>Daily Metrics (<%= @user.metricconfigs.count %>)</h3>
+      <ol class="metricConfigs">
+        <%= render @metricconfigs %>
         <%= render @metrics %>
       </ol>
-      <%= will_paginate @metrics %>
+      <%= will_paginate @metricconfigs %>
     <% end %>
   </div>
 </div>
