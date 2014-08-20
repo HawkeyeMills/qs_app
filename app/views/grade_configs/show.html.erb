@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Metricconfig:</strong>
+  <%= @grade_config.metricconfig_id %>
+</p>
+
+<p>
+  <strong>Weight:</strong>
+  <%= @grade_config.weight %>
+</p>
+
+<p>
+  <strong>Percentoftotal:</strong>
+  <%= @grade_config.percentoftotal %>
+</p>
+
+<p>
+  <strong>Goal:</strong>
+  <%= @grade_config.goal %>
+</p>
+
+<p>
+  <strong>Calctouse:</strong>
+  <%= @grade_config.calcToUse %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @grade_config.type %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @grade_config.note %>
+</p>
+
+<%= link_to 'Edit', edit_grade_config_path(@grade_config) %> |
+<%= link_to 'Back', grade_configs_path %>

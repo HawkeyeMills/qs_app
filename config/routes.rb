@@ -1,6 +1,8 @@
 QsApp::Application.routes.draw do
+
+  resources :grade_configs
+  resources :metric_configs
   resources :users
-  resources :metricconfigs
   resources :metrics
   resources :sessions, only: [:new, :create, :destroy]
   

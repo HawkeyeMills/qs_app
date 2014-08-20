@@ -1,27 +1,40 @@
 == README
 
-This is my quantified self Ruby on Rails application written based on the sample tutorial [*Ruby on Rails Tutorial*](http://railstutorial.org/)
-by [Michael Hartl](http://michaelhartl.com/).
+ToDo:
 
-Things to eventaully cover:
+Helpers:
+#add gem
+bundle install
 
-* Ruby version
+git push
+git push heroku
+heroku run rake db:migrate
 
-* System dependencies
 
-* Configuration
+rake db:drop
+or
+rake db:reset
+and/or
+rake db:create
+and/or
+rake db:migrate
+rake db:populate
+rake test:prepare
 
-* Database creation
 
-* Database initialization
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+Metric 13,000, 1
+Metric Config 1, Steps
 
-* Deployment instructions
+Metric has many MetricConfigs
+MetricConfig belongs to Metric
 
-* ...
+ git checkout -b metric-metricconfigs
+
+
+ showFiles
+ hideFiles
 
 
 Please feel free to use a different markup language if you do not plan to run

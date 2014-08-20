@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @metric_config.user_id %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @metric_config.value %>
+</p>
+
+<p>
+  <strong>Orderby:</strong>
+  <%= @metric_config.orderby %>
+</p>
+
+<p>
+  <strong>Profiledisplay:</strong>
+  <%= @metric_config.profiledisplay %>
+</p>
+
+<p>
+  <strong>Updateable:</strong>
+  <%= @metric_config.updateable %>
+</p>
+
+<%= link_to 'Edit', edit_metric_config_path(@metric_config) %> |
+<%= link_to 'Back', metric_configs_path %>

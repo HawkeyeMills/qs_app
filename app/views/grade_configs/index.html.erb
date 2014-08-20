@@ -1,0 +1,39 @@
+<h1>Listing grade_configs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Metricconfig</th>
+      <th>Weight</th>
+      <th>Percentoftotal</th>
+      <th>Goal</th>
+      <th>Calctouse</th>
+      <th>Type</th>
+      <th>Note</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @grade_configs.each do |grade_config| %>
+      <tr>
+        <td><%= grade_config.metricconfig_id %></td>
+        <td><%= grade_config.weight %></td>
+        <td><%= grade_config.percentoftotal %></td>
+        <td><%= grade_config.goal %></td>
+        <td><%= grade_config.calcToUse %></td>
+        <td><%= grade_config.type %></td>
+        <td><%= grade_config.note %></td>
+        <td><%= link_to 'Show', grade_config %></td>
+        <td><%= link_to 'Edit', edit_grade_config_path(grade_config) %></td>
+        <td><%= link_to 'Destroy', grade_config, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Grade config', new_grade_config_path %>

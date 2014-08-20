@@ -11,29 +11,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140814053926) do
+ActiveRecord::Schema.define(version: 20140820181516) do
 
-  create_table "metricconfigs", force: true do |t|
-    t.string   "value"
-    t.integer  "user_id"
-    t.integer  "orderby"
-    t.boolean  "profiledisplay"
-    t.boolean  "updatable"
+  create_table "grade_configs", force: true do |t|
+    t.integer  "metricconfig_id"
+    t.decimal  "weight",          precision: 4, scale: 2
+    t.decimal  "percentoftotal",  precision: 8, scale: 3
+    t.string   "goal"
+    t.string   "calcToUse"
+    t.string   "type"
+    t.text     "note"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "metricconfigs", ["user_id"], name: "index_metricconfigs_on_user_id", using: :btree
+  create_table "metric_configs", force: true do |t|
+    t.integer  "user_id"
+    t.string   "value"
+    t.integer  "orderby"
+    t.boolean  "profiledisplay"
+    t.boolean  "updateable"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "metrics", force: true do |t|
     t.integer  "metricconfig_id"
-    t.date     "date"
-    t.string   "value"
+    t.datetime "metricdate"
+    t.decimal  "value",           precision: 10, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "metrics", ["metricconfig_id", "date"], name: "index_metrics_on_metricconfig_id_and_date", using: :btree
+  add_index "metrics", ["metricdate"], name: "index_metrics_on_metricdate", unique: true, using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name"

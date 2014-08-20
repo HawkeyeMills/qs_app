@@ -1,0 +1,45 @@
+<%= form_for(@grade_config) do |f| %>
+  <% if @grade_config.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@grade_config.errors.count, "error") %> prohibited this grade_config from being saved:</h2>
+
+      <ul>
+      <% @grade_config.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :metricconfig_id %><br>
+    <%= f.number_field :metricconfig_id %>
+  </div>
+  <div class="field">
+    <%= f.label :weight %><br>
+    <%= f.text_field :weight %>
+  </div>
+  <div class="field">
+    <%= f.label :percentoftotal %><br>
+    <%= f.text_field :percentoftotal %>
+  </div>
+  <div class="field">
+    <%= f.label :goal %><br>
+    <%= f.text_field :goal %>
+  </div>
+  <div class="field">
+    <%= f.label :calcToUse %><br>
+    <%= f.text_field :calcToUse %>
+  </div>
+  <div class="field">
+    <%= f.label :type %><br>
+    <%= f.text_field :type %>
+  </div>
+  <div class="field">
+    <%= f.label :note %><br>
+    <%= f.text_area :note %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

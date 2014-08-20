@@ -1,0 +1,37 @@
+<%= form_for(@metric_config) do |f| %>
+  <% if @metric_config.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@metric_config.errors.count, "error") %> prohibited this metric_config from being saved:</h2>
+
+      <ul>
+      <% @metric_config.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.number_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :value %><br>
+    <%= f.text_field :value %>
+  </div>
+  <div class="field">
+    <%= f.label :orderby %><br>
+    <%= f.number_field :orderby %>
+  </div>
+  <div class="field">
+    <%= f.label :profiledisplay %><br>
+    <%= f.check_box :profiledisplay %>
+  </div>
+  <div class="field">
+    <%= f.label :updateable %><br>
+    <%= f.check_box :updateable %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

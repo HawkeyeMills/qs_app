@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :metricconfigs, dependent: :destroy
+  has_many :metric_configs, dependent: :destroy
   before_save { self.email = email.downcase }
   before_create :create_remember_token
 
