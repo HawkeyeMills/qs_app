@@ -1,6 +1,7 @@
 == README
 
 ToDo:
+Figure out why can access all pages after sign out
 
 Helpers:
 #add gem
