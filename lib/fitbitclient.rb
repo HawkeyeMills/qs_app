@@ -1,10 +1,7 @@
-class Metric < ActiveRecord::Base
-  belongs_to :metric_configs
-  default_scope -> { order('metricdate DESC') }
-  validates :value, presence: true, length: { maximum: 25 }
-  validates :metricconfig_id, presence: true
+module Fitbitclient
+  class Fitbitclient
 
-    def upsert_fbdata
+    def upsert_metric_data(startDate, endDate, metricKey)
       # Load the existing yml config
       config = begin
         Fitgem::Client.symbolize_keys(YAML.load(File.open("config/.fitgem.yml")))
@@ -12,14 +9,52 @@ class Metric < ActiveRecord::Base
         puts "Could not parse YAML: #{e.message}"
         exit
       end
-    
+     
+      @client = Fitgem::Client.new(config[:oauth])
+      begin
+        access_token = @client.reconnect(config[:oauth][:token], config[:oauth][:secret])
+          @hashToIterate = @client.data_by_time_range(metricKey, {:base_date => startDate, :end_date => endDate})
+          #@measurements = @client.body_measurements_on_date('today')
+          #@userinfo = @client.user_info['user']
+      rescue Exception => e
+        puts "Error: Could not reconnect Fitgem::Client due to invalid keys in .fitgem.yml"
+        exit
+      end
+
+        Upsert.batch(Metric.connection, :metrics) do |upsert|
+        table_name = :metrics
+        @hashToIterate.each do |key, val|
+        Rails.logger.info ("@hashToIterate = #{@hashToIterate}")
+          val.each do|p|
+          @dateToUpsert = p['dateTime']
+          @valueToUpsert = p['value']
+          @metricConfigIDs = MetricConfig.find_by fbvalue: key
+          @metricConfigID = @metricConfigIDs.id
+          upsert.row({:metricdate => @dateToUpsert, :metric_config_id => @metricConfigID}, :value => @valueToUpsert, :created_at => Time.now, :updated_at => Time.now)
+        end
+      end
+    end
+
+=begin    
+    def getFBDataCheckOAuth
+      #@fbdata = Fitbitclient.new
+      # Load the existing yml config
+      config = begin
+        Fitgem::Client.symbolize_keys(YAML.load(File.open("config/.fitgem.yml")))
+      rescue ArgumentError => e
+        puts "Could not parse YAML: #{e.message}"
+        exit
+      end
+     
       @client = Fitgem::Client.new(config[:oauth])
      
-      # With the token and secret, we will try to use them to reconstitute a usable Fitgem::Client
+      # With the token and secret, we will try to use them
+      # to reconstitute a usable Fitgem::Client
       if config[:oauth][:token] && config[:oauth][:secret]
         begin
           access_token = @client.reconnect(config[:oauth][:token], config[:oauth][:secret])
-            #@activities = @client.activities_on_date 'today'
+            @activities = @client.activities_on_date 'today'
+            #@activities = @client.activity_on_date_range("/summary/activityCalories", {:base_date => "2014-09-01", :end_date => "2014-09-07"})
             #@userinfo = @client.user_info['user']
             #@measurements = @client.body_measurements_on_date('today')
             #@weight = @client.data_by_time_range("/body/weight", {:base_date => "2013-03-07", :end_date => "2014-08-21"})
@@ -56,14 +91,8 @@ class Metric < ActiveRecord::Base
         # Write the whole oauth token set back to the config file
         File.open(".fitgem.yml", "w") {|f| f.write(config.to_yaml) }
     end
+=end
 
-    def upsert_metrics(attributes)
-      begin
-        create(attributes)
-      rescue ActiveRecord::RecordNotUnique, PG::UniqueViolation => e
-        find_by_primary_key(attributes['primary_key']).
-        update(attributes)
-      end
-    end                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
   end
+end
 end

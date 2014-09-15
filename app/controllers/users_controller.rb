@@ -10,7 +10,11 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @metricconfigs = @user.metric_configs.paginate(page: params[:page])
-    @metrics = @metricconfigs.paginate(page: params[:page])
+    #@datas = @metricconfigs.metrics
+    #@metrics = @user.metrics.paginate(page: params[:page])
+    #@metricconfigs.includes(:metrics).where(metrics: { visible: true })
+    User.upsert_metric_fbdata
+
   end
 
   def new
@@ -30,7 +34,6 @@ class UsersController < ApplicationController
       render 'edit'
     end
   end
- 
   def destroy
     User.find(params[:id]).destroy
     flash[:success] = "User deleted."
@@ -50,8 +53,8 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password,
-                                   :password_confirmation)
+      params.require(:user).permit(:name, :email, :password, 
+                                    :password_confirmation)
     end
 
     # Before filters

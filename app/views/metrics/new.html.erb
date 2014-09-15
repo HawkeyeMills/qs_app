@@ -1,5 +1,25 @@
+<% provide(:title, 'Sign up') %>
 <h1>New metric</h1>
 
 <%= render 'form' %>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@metric) do |f| %>
+      <%= render 'shared/error_messages' %>
+
+      <%= f.label :metricconfig_id %>
+      <%= f.text_field :metricconfig_id %>
+
+      <%= f.label :metricdate %>
+      <%= f.text_field :metricdate %>
+
+      <%= f.label :value %>
+      <%= f.password_field :value %>
+
+      <%= f.submit "Create Metric", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>
 
 <%= link_to 'Back', metrics_path %>

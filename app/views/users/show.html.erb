@@ -9,13 +9,21 @@
     </section>
   </aside>
     <div class="span8">
-    <% if @user.metric_configs.any? %>
-      <h3>Daily Metrics (<%= @user.metric_configs.count %>)</h3>
+    <%# if @user.metric_configs.any? %>
+    <%if @user.metrics.any? %>
+      <h3>Daily Metrics (<%= @user.metrics.count %>)</h3>
+      <h3> Metrics For: <%#=@metrics.metricdate %> </h3>
       <ol class="metricConfigs">
-        <%= render @metricconfigs %>
-        <%#= render @metrics %>
+        <%#= render @user.metric_configs %>
+        <%= render @user.metrics %>
+        <%# @datas.each do |data|%>
+          <%#= data.@user.metric_config.value %>
+          <%#= data.metricname %>
+          <%#= data.value %> <BR>
+        <% #end %>
       </ol>
-      <%= will_paginate @metricconfigs %>
+      <%#= will_paginate @metricconfigs %>
+      <%#= link_to "Update FitBit Metrics", fbupdate_path, class: "btn btn-large btn-primary" %>
     <% end %>
   </div>
 </div>

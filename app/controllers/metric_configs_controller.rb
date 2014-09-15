@@ -1,15 +1,18 @@
 class MetricConfigsController < ApplicationController
   before_action :set_metric_config, only: [:show, :edit, :update, :destroy]
+  #before_filter :signed_in_user
+  #before_filter :correct_user, only: :destroy
 
   # GET /metric_configs
   def index
     @metric_configs = MetricConfig.paginate(page: params[:page])
+    Orders.find(ORDER_ID).user.update_attributes(:billing_id => BILLING_ID)
+    @metric_configs.find(updateable).
   end
 
   # GET /metric_configs/1
   def show
     @metric_configs = MetricConfig.find(params[:id])
-    @metric = @metric_configs.metric_configs.paginate(page: params[:page])
   end
 
   # GET /metric_configs/new
@@ -19,21 +22,19 @@ class MetricConfigsController < ApplicationController
 
   # GET /metric_configs/1/edit
   def edit
+    @metric_config = MetricConfig.find(params[:id])
   end
 
-  # POST /metric_configs
-  # POST /metric_configs.json
   def create
-    @metric_config = MetricConfig.new(metric_configs_params)
-
-    respond_to do |format|
-      if @metric_config.save
-        format.html { redirect_to @metric_config, notice: 'Metric config was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @metric_configs }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @metric_config.errors, status: :unprocessable_entity }
-      end
+    @metric_config = current_user.metric_configs.build(metric_config_params)
+   
+    if @metric_config.save
+      flash[:success] = "Metric Config created!"
+      redirect_to root_url
+    else
+      #more work here - search railstutorial.org for feed_items
+      @metric_config_items = []
+      render 'static_pages/home'
     end
   end
 
@@ -41,7 +42,7 @@ class MetricConfigsController < ApplicationController
   # PATCH/PUT /metric_configs/1.json
   def update
     respond_to do |format|
-      if @metric_config.update(metric_configs_params)
+      if @metric_config.update(metric_config_params)
         format.html { redirect_to @metric_config, notice: 'Metric config was successfully updated.' }
         format.json { head :no_content }
       else
@@ -68,7 +69,38 @@ class MetricConfigsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def metric_configs_params
-      params.require(:metric_config).permit(:user_id, :value, :orderby, :profiledisplay, :updateable)
+    def metric_config_params
+      #params.require(:user).permit(:value, :orderby, :profiledisplay, :updateable)
+      params.require(:metric_config).permit(:user_id, :metricname, :orderby, :profiledisplay, :updateable, :metricdate, :metricconfig_id)
+    end
+
+    def correct_user
+      @metric_config = current_user.metric_configs.find_by_id(params[:id])
+      redirect_to root_path if @metric_config.nil?
+    end
+
+    def user_params
+      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    end
+    
+    def metric_params
+      params.require(:metric).permit(:value, :metricconfig_id)
+    end
+    # Before filters
+
+    def signed_in_user
+      unless signed_in?
+        store_location
+        redirect_to signin_url, notice: "Please sign in."
+      end
+    end
+
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_url) unless current_user?(@user)
+    end
+
+    def admin_user
+      redirect_to(root_url) unless current_user.admin?
     end
 end

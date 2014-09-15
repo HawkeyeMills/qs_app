@@ -1,12 +1,14 @@
 QsApp::Application.routes.draw do
 
-  resources :grade_configs
-  resources :metric_configs
-  resources :users
-  resources :metrics
+  resources :users, :grade_configs, :fitbitclients
   resources :sessions, only: [:new, :create, :destroy]
   
-  root  'static_pages#home'
+  resources :metric_configs do
+    resources :metrics
+  end
+  
+  #root  'static_pages#home'
+  root  'users#index'
   match '/signup',  to: 'users#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'

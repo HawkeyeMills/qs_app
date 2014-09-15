@@ -1,4 +1,14 @@
 <p id="notice"><%= notice %></p>
 
+<p>
+  <strong>MetricDate:</strong>
+  <%= @metric.metricdate %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @metric.value %>
+</p>
+
 <%= link_to 'Edit', edit_metric_path(@metric) %> |
-<%= link_to 'Back', metrics_path %>
+<%= link_to 'Back', metric_path %>

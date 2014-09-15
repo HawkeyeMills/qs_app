@@ -27,7 +27,8 @@ ActiveRecord::Schema.define(version: 20140820181516) do
 
   create_table "metric_configs", force: true do |t|
     t.integer  "user_id"
-    t.string   "value"
+    t.string   "metricname"
+    t.string   "fbvalue"
     t.integer  "orderby"
     t.boolean  "profiledisplay"
     t.boolean  "updateable"
@@ -36,14 +37,12 @@ ActiveRecord::Schema.define(version: 20140820181516) do
   end
 
   create_table "metrics", force: true do |t|
-    t.integer  "metricconfig_id"
+    t.integer  "metric_config_id"
     t.datetime "metricdate"
-    t.decimal  "value",           precision: 10, scale: 2
+    t.decimal  "value",            precision: 10, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "metrics", ["metricdate"], name: "index_metrics_on_metricdate", unique: true, using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name"

@@ -4,6 +4,70 @@
 		"selected_items":
 		[
 			[
+				"make_",
+				"make_metricconfigs"
+			],
+			[
+				"metri",
+				"metric_configs"
+			],
+			[
+				"metric",
+				"metricconfig_id"
+			],
+			[
+				"metricC",
+				"metricconfig"
+			],
+			[
+				"in",
+				"index"
+			],
+			[
+				"metr",
+				"metric_config"
+			],
+			[
+				"order",
+				"orderby"
+			],
+			[
+				"metriccon",
+				"metricconfig"
+			],
+			[
+				"me",
+				"metrics"
+			],
+			[
+				"Metric",
+				"MetricConfig"
+			],
+			[
+				"metricconf",
+				"metricconfigs"
+			],
+			[
+				"n",
+				"new"
+			],
+			[
+				"h",
+				"h1	Tag"
+			],
+			[
+				"pag",
+				"paginate"
+			],
+			[
+				"met",
+				"metricconfigs"
+			],
+			[
+				"M",
+				"Metric"
+			],
+			[
 				"gr",
 				"grayLight"
 			]
@@ -12,52 +76,60 @@
 	"buffers":
 	[
 		{
-			"file": "Gemfile",
+			"file": "app/views/metric_configs/show.html.erb",
 			"settings":
 			{
-				"buffer_size": 1402,
+				"buffer_size": 454,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "config/application.rb",
+			"file": "app/views/metric_configs/index.html.erb",
 			"settings":
 			{
-				"buffer_size": 1213,
+				"buffer_size": 1013,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/assets/stylesheets/custom.css.scss",
+			"file": "app/models/metric_config.rb",
 			"settings":
 			{
-				"buffer_size": 1260,
+				"buffer_size": 271,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "Guardfile",
+			"file": "lib/tasks/sample_data.rake",
 			"settings":
 			{
-				"buffer_size": 2516,
+				"buffer_size": 3734,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "Package Control Messages\n========================\n\nSASS Snippets:\n-------------\n\n  Sass Snippets for Sublime\n  =========================\n  \n  Sass snippets for Sublime text 2/3.\n  \n  \n  Content\n  =======\n  \n  - Directives snippets\n  - Flags snippets\n  - Functions snippets\n  - CSS Extensions snippets\n  \n  \n  Authors\n  =======\n  \n  Claudio Sanches\n      Twitter : @claudiosmweb\n      Github  : https://github.com/claudiosmweb\n  \n  Vitor Britto\n      Twitter : @vitorbritto\n      Github  : https://github.com/vitorbritto\n  \n  \n  Support\n  =======\n  \n  Please direct any feedback to <sublimebrasil@vitorbritto.com.br> or through github at https://github.com/sublimebrasil/sublime-snippets-sass.\n  \n  Thank you for your support.\n  \n  \n\n\nSassBeautify:\n------------\n\n  The SassBeautify package has been successfully installed.\n  \n  Run the plugin from the command palette:\n  \n  1. Open the command palette (ctrl + shift + p)\n  2. Enter 'SassBeautify'\n  \n  Please report issues here: https://github.com/badsyntax/SassBeautify/issues\n  \n  Created by Richard Willis (badsyntax.co)\n",
+			"file": "app/controllers/users_controller.rb",
 			"settings":
 			{
-				"buffer_size": 1073,
+				"buffer_size": 1624,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "Searching 436 files for \"ActiveRecord::RecordInvalid: Validation failed:\" (case sensitive)\n\n0 matches across 0 files\n\n\nSearching 437 files for \"can't be blank\" (case sensitive)\n\n0 matches across 0 files\n",
+			"settings":
+			{
+				"buffer_size": 203,
 				"line_ending": "Unix",
-				"name": "Package Control Messages",
+				"name": "Find Results",
 				"scratch": true
 			}
 		},
 		{
-			"file": "config/database.yml",
+			"file": "db/schema.rb",
 			"settings":
 			{
-				"buffer_size": 1015,
+				"buffer_size": 2188,
 				"line_ending": "Unix"
 			}
 		},
@@ -65,163 +137,39 @@
 			"file": "config/routes.rb",
 			"settings":
 			{
-				"buffer_size": 1808,
+				"buffer_size": 2184,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/views/static_pages/home.html.erb",
+			"file": "app/controllers/metrics_controller.rb",
 			"settings":
 			{
-				"buffer_size": 303,
+				"buffer_size": 1712,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/views/static_pages/help.html.erb",
+			"file": "app/models/metric.rb",
 			"settings":
 			{
-				"buffer_size": 281,
+				"buffer_size": 219,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "config/initializers/secret_token.rb",
+			"file": "app/controllers/metric_configs_controller.rb",
 			"settings":
 			{
-				"buffer_size": 864,
+				"buffer_size": 3003,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": ".gitignore",
+			"file": "log/development.log",
 			"settings":
 			{
-				"buffer_size": 254,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "README.rdoc",
-			"settings":
-			{
-				"buffer_size": 562,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "deploy",
-			"settings":
-			{
-				"buffer_size": 51,
-				"line_ending": "Unix",
-				"name": "git push"
-			}
-		},
-		{
-			"file": "spec/requests/static_pages_spec.rb",
-			"settings":
-			{
-				"buffer_size": 1381,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/controllers/static_pages_controller.rb",
-			"settings":
-			{
-				"buffer_size": 131,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/static_pages/about.html.erb",
-			"settings":
-			{
-				"buffer_size": 311,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/static_pages/contact.html.erb",
-			"settings":
-			{
-				"buffer_size": 142,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "tmp/pids/server.pid",
-			"settings":
-			{
-				"buffer_size": 5,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/layouts/_shim.html.erb",
-			"settings":
-			{
-				"buffer_size": 105,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/layouts/_header.html.erb",
-			"settings":
-			{
-				"buffer_size": 415,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/views/layouts/_footer.html.erb",
-			"settings":
-			{
-				"buffer_size": 325,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/helpers/application_helper.rb",
-			"settings":
-			{
-				"buffer_size": 248,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "class User\n  attr_accessor :name, :email\n\n  def initialize(attributes = {})\n    @name  = attributes[:name]\n    @email = attributes[:email]\n  end\n\n  def formatted_email\n    \"#{@name} <#{@email}>\"\n  end\nend",
-			"file": "user.rb",
-			"file_size": -1,
-			"file_write_time": -1,
-			"settings":
-			{
-				"buffer_size": 204,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/Users/btmills/.bash_profile",
-			"settings":
-			{
-				"buffer_size": 563,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "spec/spec_helper.rb",
-			"settings":
-			{
-				"buffer_size": 1997,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": ".rspec",
-			"settings":
-			{
-				"buffer_size": 13,
+				"buffer_size": 8638994,
 				"line_ending": "Unix"
 			}
 		}
@@ -260,10 +208,115 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
+	"expanded_folders":
+	[
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/lib",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/lib/tasks"
+	],
 	"file_history":
 	[
-		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/views/layouts/contact.html.erb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/lib/tasks/sample_data.rake",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/db/migrate/20140820145205_create_metrics.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/controllers/users_controller.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/lib/fitbitclient.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/db/schema.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/models/metric.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/controllers/metric_configs_controller.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/views/layouts/_header.html.erb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/config/routes.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/models/user.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/controllers/metrics_controller.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/views/metrics/show.html.erb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/views/metrics/index.html.erb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/views/users/index.html.erb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/controllers/static_pages_controller.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/views/shared/_error_messages.html.erb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/views/users/edit.html.erb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/views/metrics/edit.html.erb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/views/static_pages/home.html.erb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/views/metrics/new.html.erb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/views/layouts/_footer.html.erb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/Gemfile",
+		"/Users/btmills/.bash_profile",
+		"/Users/btmills/.profile",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/lib/TMP_fitbitclient.rb_TMP",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/models/fitbitclient.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/config/application.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/README.rdoc",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/config/test-fitgem.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/views/sessions/new.html.erb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/controllers/grade_configs_controller.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/views/metric_configs/index.html.erb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/models/metric_config.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/db/migrate/20140820181516_create_grade_configs.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/db/migrate/20140820152931_add_index_to_metrics_date.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/models/grade_config.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/views/users/show.html.erb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/assets/stylesheets/custom.css.scss",
+		"/Users/btmills/.Trash/metricconfigs_controller.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/views/metric_configs/_metricconfig.html.erb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/db/migrate/20140820145205_metrics.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/views/static_pages/help.html.erb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/assets/stylesheets/application.css",
 		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/views/layouts/application.html.erb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/helpers/sessions_helper.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/views/metrics/_metricconfig.html.erb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/controllers/metricconfigs_controller.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/models/metricconfig.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/views/metricconfigs/index.html.erb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/db/migrate/20140814053926_create_metricconfigs.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/db/migrate/20140805040646_create_users.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/db/migrate/20140812152045_create_metrics.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/db/migrate/20140819193835_create_grade_configs.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/fitgem-sandbox/test-fitgem.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/config/database.yml",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/fitgem-sandbox/.fitgem.yml",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/assets/stylesheets/static_pages.css.scss",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/assets/stylesheets/users.css.scss",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/assets/stylesheets/sessions.css.scss",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/db/migrate/20140819193649_create_grade_configs.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/db/migrate/20140819193145_create_grade_configs.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/deploy",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/views/metricconfigs/show.html.erb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/views/metricconfigs/new.html.erb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/views/metricconfigs/edit.html.erb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/controllers/application_controller.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/controllers/sessions_controller.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/spec/requests/user_pages_spec.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/config/environments/production.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/views/static_pages/about.html.erb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/assets/javascripts/application.js",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/helpers/application_helper.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/spec/factories.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/views/static_pages/contact.html.erb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/spec/models/user_spec.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/spec/models/metricconfig_spec.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/spec/models/metric_spec.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/db/migrate/20140813210052_create_metricconfigs.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/db/migrate/20140813044459_create_metricconfigs.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/db/migrate/20140813204644_change_metric_to_value.rb",
+		"/Users/btmills/Desktop/HawkeyeDollars.ps1",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/.rspec",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/spec/spec_helper.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/views/layouts/_shim.html.erb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/tmp/pids/server.pid",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/spec/support/utilities.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/spec/requests/static_pages_spec.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/config/initializers/secret_token.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/config/environments/test.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/helpers/users_helper.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/spec/requests/authentication_pages_spec.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/views/users/new.html.erb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/views/users/_user.html.erb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/db/migrate/20140807202403_add_remember_token_to_users.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/db/migrate/20140810083210_add_admin_to_users.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/user.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/.gitignore",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/db/migrate/20140806035025_add_password_digest_to_users.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/db/migrate/20140806033414_add_index_to_users_email.rb",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/Guardfile",
+		"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app/app/views/layouts/contact.html.erb",
 		"/Users/btmills/Dropbox/dev/ruby/quantifiedSelf/Gemfile",
 		"/Users/btmills/Library/Application Support/Sublime Text 3/Packages/User/Default ().sublime-keymap",
 		"/Users/btmills/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
@@ -290,10 +343,7 @@
 		"/Users/btmills/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
 		"/Users/btmills/Documents/ToDo.html",
 		"/Users/btmills/OneDrive/Database/blendcard_backup_2014_05_22_020001_0687816.bak",
-		"/Users/btmills/OneDrive/Database/buildEntreFest.sql",
-		"/Users/btmills/Dropbox/dev/db/userInsert.sql",
-		"/Users/btmills/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
-		"/Users/btmills/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings"
+		"/Users/btmills/OneDrive/Database/buildEntreFest.sql"
 	],
 	"find":
 	{
@@ -304,14 +354,104 @@
 		"height": 93.0,
 		"where_history":
 		[
+			"/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app",
 			"/Users/btmills/Dropbox/dev/ruby/rails_projects"
 		]
 	},
 	"find_state":
 	{
-		"case_sensitive": false,
+		"case_sensitive": true,
 		"find_history":
 		[
+			"can't be blank",
+			"save",
+			"ActiveRecord::RecordInvalid: Validation failed:",
+			"user_id: 1, ",
+			"userid",
+			"can't be blank",
+			"User can't be blank",
+			"metricdate",
+			"metric_config_id",
+			"metric_configs_path",
+			"metric_config_path",
+			"edit_metric_config_path",
+			"metric_params",
+			"metric_config_params",
+			"metric_configs_params",
+			"metric_params",
+			"metric_config",
+			"metricconfig_id",
+			"metric_config",
+			"metricconfig",
+			"metric_config_id",
+			"new",
+			"name",
+			"user",
+			"link_to",
+			"link",
+			"client",
+			"yml",
+			"path",
+			"pp",
+			"yaml",
+			"postg",
+			"postgresql",
+			"user_param",
+			"signed_in_user",
+			"sign in",
+			"metric",
+			"metricconfigs",
+			"metric",
+			"user",
+			"MetricConfig",
+			"db do",
+			"namespace",
+			"metricconfigs",
+			"metricconfig.find",
+			"metricconfigs.find",
+			".find",
+			"CreateMetrics",
+			"metric_config",
+			"metric_configs",
+			"metricconfig",
+			"metricconfigs",
+			"MetricConfig",
+			"metricconf",
+			"metricconfig",
+			"metric",
+			"metricconfig",
+			"metriccon",
+			"metric_config",
+			"set_metric_config",
+			"set_grade",
+			"configs",
+			"param",
+			"metric_configs_param",
+			"font",
+			"new_metricconfig_path",
+			"users_path",
+			"pp",
+			"metric",
+			"fat",
+			"metricconfig",
+			"metricConfig",
+			"metric",
+			"metrics",
+			"admin",
+			"micro",
+			"content",
+			"profile ",
+			"content",
+			"User pages delete links as an admin user",
+			"user pages index",
+			"users",
+			"destroy",
+			"      \n",
+			"update",
+			"load",
+			"force",
+			"girl",
+			"misc",
 			"#999",
 			"sql",
 			"custom",
@@ -333,6 +473,15 @@
 		"regex": false,
 		"replace_history":
 		[
+			"",
+			"user_id",
+			"metric_configs",
+			"metric_config",
+			"metric_configs",
+			"metricconfig",
+			"metric_configs",
+			"metricconfigs",
+			"metricconfig",
 			"BusinessLocationId = 134",
 			"(select blendeventid from blendevent where DisplayName = 'EntreFest')"
 		],
@@ -342,584 +491,34 @@
 		"whole_word": false,
 		"wrap": true
 	},
+	"folders":
+	[
+		{
+			"follow_symlinks": true,
+			"path": "/Users/btmills/Dropbox/dev/ruby/rails_projects/qs_app"
+		}
+	],
 	"groups":
 	[
 		{
-			"selected": 13,
+			"selected": 5,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "Gemfile",
+					"file": "app/views/metric_configs/show.html.erb",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1402,
+						"buffer_size": 454,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								160,
-								160
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "config/application.rb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1213,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1202,
-								1202
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 12,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "app/assets/stylesheets/custom.css.scss",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1260,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1260,
-								1260
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 877.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "Guardfile",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2516,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1655,
-								1655
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 16,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1073,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1073,
-								1073
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true,
-							"word_wrap": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "config/database.yml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1015,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1014,
-								1014
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/YAML/YAML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 21,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "config/routes.rb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1808,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								36,
-								36
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "app/views/static_pages/home.html.erb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 303,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								134,
-								134
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 13,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "app/views/static_pages/help.html.erb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 281,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								281,
-								281
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 20,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "config/initializers/secret_token.rb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 864,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								864,
-								864
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 25,
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": ".gitignore",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 254,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								254,
-								254
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 24,
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"file": "README.rdoc",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 562,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								200,
-								200
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 23,
-					"type": "text"
-				},
-				{
-					"buffer": 12,
-					"file": "deploy",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 51,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								25,
-								25
-							]
-						],
-						"settings":
-						{
-							"auto_name": "git push",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 22,
-					"type": "text"
-				},
-				{
-					"buffer": 13,
-					"file": "spec/requests/static_pages_spec.rb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1381,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								966,
-								987
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 114.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 14,
-					"file": "app/controllers/static_pages_controller.rb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 131,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								126,
-								126
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 15,
-					"file": "app/views/static_pages/about.html.erb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 311,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								311,
-								311
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 16,
-					"file": "app/views/static_pages/contact.html.erb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 142,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 17,
-					"file": "tmp/pids/server.pid",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								5
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 18,
-					"file": "app/views/layouts/_shim.html.erb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 105,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								105,
-								105
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 11,
-					"type": "text"
-				},
-				{
-					"buffer": 19,
-					"file": "app/views/layouts/_header.html.erb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 415,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								415,
-								415
+								215,
+								220
 							]
 						],
 						"settings":
@@ -936,20 +535,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 20,
-					"file": "app/views/layouts/_footer.html.erb",
+					"buffer": 1,
+					"file": "app/views/metric_configs/index.html.erb",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 325,
+						"buffer_size": 1013,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								199,
-								199
+								596,
+								596
 							]
 						],
 						"settings":
@@ -962,24 +561,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 21,
-					"file": "app/helpers/application_helper.rb",
+					"buffer": 2,
+					"file": "app/models/metric_config.rb",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 248,
+						"buffer_size": 271,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								136,
-								136
+								192,
+								192
 							]
 						],
 						"settings":
@@ -990,80 +589,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 15,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 22,
-					"file": "user.rb",
+					"buffer": 3,
+					"file": "lib/tasks/sample_data.rake",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 204,
+						"buffer_size": 3734,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								111,
-								111
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 14,
-					"type": "text"
-				},
-				{
-					"buffer": 23,
-					"file": "/Users/btmills/.bash_profile",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 563,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								305,
-								305
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/ShellScript/Shell-Unix-Generic.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 19,
-					"type": "text"
-				},
-				{
-					"buffer": 24,
-					"file": "spec/spec_helper.rb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1997,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1997,
-								1997
+								769,
+								770
 							]
 						],
 						"settings":
@@ -1072,39 +615,253 @@
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": -0.0,
-						"translation.y": 191.0,
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 17,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 25,
-					"file": ".rspec",
+					"buffer": 4,
+					"file": "app/controllers/users_controller.rb",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 13,
+						"buffer_size": 1624,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								13,
-								13
+								1214,
+								1214
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 482.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 203,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								119,
+								119
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 2,
+							"result_base_dir": "",
+							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 75.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "db/schema.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2188,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1654,
+								1664
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 267.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "config/routes.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2184,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								179,
+								179
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 18,
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "app/controllers/metrics_controller.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1712,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								273,
+								286
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "app/models/metric.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 219,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								216,
+								216
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "app/controllers/metric_configs_controller.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3003,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								862,
+								870
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "log/development.log",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8638994,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4425843,
+								4425843
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1542827.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
 					"type": "text"
 				}
 			]
@@ -1116,7 +873,7 @@
 	},
 	"input":
 	{
-		"height": 0.0
+		"height": 31.0
 	},
 	"layout":
 	{
@@ -1148,7 +905,7 @@
 	"project": "",
 	"replace":
 	{
-		"height": 42.0
+		"height": 64.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1175,6 +932,7 @@
 		],
 		"width": 0.0
 	},
+	"selected_group": 0,
 	"settings":
 	{
 	},
@@ -1182,7 +940,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 193.0,
+	"side_bar_width": 378.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

@@ -1,29 +1,21 @@
-<p id="notice"><%= notice %></p>
-
 <p>
-  <strong>User:</strong>
-  <%= @metric_config.user_id %>
-</p>
-
-<p>
-  <strong>Value:</strong>
+  <strong>Metric Config:</strong>
   <%= @metric_config.value %>
 </p>
 
-<p>
-  <strong>Orderby:</strong>
-  <%= @metric_config.orderby %>
-</p>
-
-<p>
-  <strong>Profiledisplay:</strong>
-  <%= @metric_config.profiledisplay %>
-</p>
-
-<p>
-  <strong>Updateable:</strong>
-  <%= @metric_config.updateable %>
-</p>
+<%= form_for([@metric_config, @metric_config.metrics.build]) do |f| %>
+  <p>
+    <%= f.label :value %><br>
+    <%= f.text_field :value %>
+  </p>
+  <p>
+    <%= f.label :metricdate %><br>
+    <%= f.date_field :metricdate %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
 
 <%= link_to 'Edit', edit_metric_config_path(@metric_config) %> |
-<%= link_to 'Back', metric_configs_path %>
+<%= link_to 'Back', metric_config_path %>

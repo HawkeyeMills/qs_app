@@ -2,12 +2,17 @@ class MetricsController < ApplicationController
   before_action :set_metric, only: [:show, :edit, :update, :destroy]
 
   # GET /metrics
-  def index
-    @metrics = Metric.all
+  def index    
+    @metrics = Metric.paginate(page: params[:page])
+    @metricconfigs = MetricConfig.all
+    # @metricconfigs = @metrics.metric_configs.paginate(page: params[:page])
+    #@metricconfigs = @metrics.metric_configs.build(params[:metricconfig])
   end
 
   # GET /metrics/1
   def show
+    @metrics = MetricConfig.find(params[:id])
+    @metricconfigs = @metrics.metric_configs.paginate(page: params[:page])
   end
 
   # GET /metrics/new
@@ -21,13 +26,16 @@ class MetricsController < ApplicationController
 
   # POST /metrics
   def create
-    @metric = Metric.new(metric_params)
+    @metricconfig = MetricConfig.find(params[:metricconfig_id])
+    @metric = @metricconfig.value.create(metric_params)
+    redirect_to metricconfig_path(@metricconfig)
+    #@metric = Metric.new(metric_params)
 
-    if @metric.save
-      redirect_to @metric, notice: 'Metric was successfully created.'
-    else
-      render action: 'new'
-    end
+    #if @metric.save
+    #  redirect_to @metric, notice: 'Metric was successfully created.'
+    #else
+    #  render action: 'new'
+    #end
   end
 
   # PATCH/PUT /metrics/1
@@ -53,6 +61,7 @@ class MetricsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def metric_params
-      params[:metric]
+      #params[:metric]
+      params.require(:metric).permit(:value, :metricdate)
     end
 end

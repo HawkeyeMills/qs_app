@@ -24,9 +24,11 @@
         <td><%= metric_config.orderby %></td>
         <td><%= metric_config.profiledisplay %></td>
         <td><%= metric_config.updateable %></td>
+        <td><%#= metric.metricdate %></td>
         <td><%= link_to 'Show', metric_config %></td>
         <td><%= link_to 'Edit', edit_metric_config_path(metric_config) %></td>
-        <td><%= link_to 'Destroy', metric_config, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', metric_config, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
       </tr>
     <% end %>
   </tbody>
