@@ -11,16 +11,15 @@
     <div class="span8">
     <%# if @user.metric_configs.any? %>
     <%if @user.metrics.any? %>
-      <h3>Daily Metrics (<%= @user.metrics.count %>)</h3>
-      <h3> Metrics For: <%#=@metrics.metricdate %> </h3>
+      <h3>Daily Metrics For <%= @todayDate %>(<%= @metricsToShow.count %>)</h3>
       <ol class="metricConfigs">
-        <%#= render @user.metric_configs %>
-        <%= render @user.metrics %>
-        <%# @datas.each do |data|%>
-          <%#= data.@user.metric_config.value %>
-          <%#= data.metricname %>
-          <%#= data.value %> <BR>
-        <% #end %>
+        <% @metricsToShow.each do |metric|%>
+          <%= @metricconfigs.find(metric.metric_config_id).metricname%>
+          <%= metric.value %> <BR>
+          <%#= link_to 'Show', metric %>
+          <%#= link_to 'Edit', edit_metric_path(metric) %>
+          <%#= link_to 'Destroy', metric, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
       </ol>
       <%#= will_paginate @metricconfigs %>
       <%#= link_to "Update FitBit Metrics", fbupdate_path, class: "btn btn-large btn-primary" %>

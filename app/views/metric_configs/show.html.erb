@@ -1,12 +1,13 @@
 <p>
   <strong>Metric Config:</strong>
-  <%= @metric_config.value %>
+  <%= @metric_config.metricname %>
 </p>
 
 <%= form_for([@metric_config, @metric_config.metrics.build]) do |f| %>
   <p>
-    <%= f.label :value %><br>
-    <%= f.text_field :value %>
+    <%= f.label :metricname %><br>
+      <%#= @metricconfigs.find(metric.metric_config_id).metricname %>
+    <%= f.text_field :metric_config_id.metricname %>
   </p>
   <p>
     <%= f.label :metricdate %><br>

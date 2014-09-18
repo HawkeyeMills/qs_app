@@ -1,51 +1,31 @@
-<h1>Daily Metrics</h1>
+<% provide(:title, @user.name) %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        <%= gravatar_for @user %>
+        <%= @user.name %>
+      </h1>
+    </section>
+  </aside>
+    <div class="span8">
+    <%# if @user.metric_configs.any? %>
+    <%if @user.metrics.any? %>
+      <h3>Daily Metrics For <%= @todayDate %>(<%= @todayMetrics.count %>)</h3>
+      <ol class="metricConfigs">
+        <% @metricsToShow.each do |metric|%>
+          <%= @metricconfigs.find(metric.metric_config_id).metricname%>
+          <%= metric.value %> <BR>
+          <%= link_to 'Show', metric %><BR>
+          <%= link_to 'Edit', edit_metric_path(metric) %><BR>
+          <%= link_to 'Destroy', metric, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+      </ol>
+      <br>
+      <%= will_paginate %>
+      <br>
 
-<table>
-  <thead>
-    <tr>
-      <th>Value</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-<%= will_paginate %>
-  <tbody>
-    <% @metricconfigs.each do |metric_config| %>
-      <tr>
-        <td><%= metric_config.value %></td>
-        <td><%= link_to 'Show', metric_config %></td>
-        <td><%= link_to 'Edit', edit_metric_config_path(metric_config) %></td>
-        <td><%= link_to 'Destroy', metric_config, method: :delete, data: { confirm: 'Are you sure?' } %></
-      </tr>
+    <%= link_to 'New Metric', new_metric_path %>
     <% end %>
-
-    <% @metrics.each do |metric| %>
-      <tr>
-        <td><%= metric.metricdate %></td>
-        <td><%= metric.value %></td>
-        <td><%= link_to 'Show', metric %></td>
-        <td><%= link_to 'Edit', edit_metric_path(metric) %></td>
-        <td><%= link_to 'Destroy', metric, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-<%= will_paginate %>
-<br>
-
-<%= link_to 'New Metric', new_metric_path %>
-
-<%#= @userinfo %>
-<br>
-<br>
-<%#= @activities %>
-<br>
-<br>
-<%#= @measurements %>
-<br>
-<br>
-<%= @weight %>
+  </div>
+</div>

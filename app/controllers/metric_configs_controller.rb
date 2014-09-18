@@ -1,13 +1,21 @@
 class MetricConfigsController < ApplicationController
   before_action :set_metric_config, only: [:show, :edit, :update, :destroy]
-  #before_filter :signed_in_user
-  #before_filter :correct_user, only: :destroy
+  before_action :signed_in_user, only: [:index, :edit, :update, :destroy]
+  before_action :correct_user,   only: [:edit, :update]
+  before_action :admin_user,     only: :destroy
 
   # GET /metric_configs
   def index
     @metric_configs = MetricConfig.paginate(page: params[:page])
-    Orders.find(ORDER_ID).user.update_attributes(:billing_id => BILLING_ID)
-    @metric_configs.find(updateable).
+    @dateToShow = '2014-09-15 00:00:00'
+    #@user = User.find(params[:id])
+    #render :text => current_user.name and return false
+    @metricconfigs = current_user.metric_configs.paginate(page: params[:page])
+    #@metrics = @user.metrics.paginate(page: params[:page])
+    @metrics = current_user.metrics
+    @metricsToShow = @metrics.where(metricdate: @dateToShow)
+    #User.upsert_metric_fbdata
+    #@metric_configs.find(updateable)
   end
 
   # GET /metric_configs/1
@@ -17,7 +25,16 @@ class MetricConfigsController < ApplicationController
 
   # GET /metric_configs/new
   def new
-    @metric_config = MetricConfig.new
+    @metric_configs = MetricConfig.paginate(page: params[:page])
+    @dateToShow = '2014-09-15 00:00:00'
+    #@user = User.find(params[:id])
+    #render :text => current_user.name and return false
+    @metricconfigs = current_user.metric_configs.paginate(page: params[:page])
+    #@metrics = @user.metrics.paginate(page: params[:page])
+    @metrics = current_user.metrics
+    @metricsToShow = @metrics.where(metricdate: @dateToShow)
+    #User.upsert_metric_fbdata
+    #@metric_configs.find(updateable)
   end
 
   # GET /metric_configs/1/edit
@@ -103,4 +120,4 @@ class MetricConfigsController < ApplicationController
     def admin_user
       redirect_to(root_url) unless current_user.admin?
     end
-end
+  end

@@ -3,16 +3,30 @@ class MetricsController < ApplicationController
 
   # GET /metrics
   def index    
-    @metrics = Metric.paginate(page: params[:page])
-    @metricconfigs = MetricConfig.all
-    # @metricconfigs = @metrics.metric_configs.paginate(page: params[:page])
+    #@metrics = Metric.paginate(page: params[:page])
+    #@metricconfigs = MetricConfig.all
+    #@metricconfigs = @metrics.metric_configs.paginate(page: params[:page])
     #@metricconfigs = @metrics.metric_configs.build(params[:metricconfig])
+    +#@metrics = MetricConfig.find(params[:id])
+    #@metricconfigs = @metrics.metric_configs.paginate(page: params[:page])
+    @dateToShow = '2014-09-15 00:00:00'
+    @user = User.find(params[:id])
+    @metricconfigs = @user.metric_configs.paginate(page: params[:page])
+    @metrics = @user.metrics
+    @metricsToShow = @metrics.where(metricdate: @dateToShow)
+    #User.upsert_metric_fbdata
   end
 
   # GET /metrics/1
   def show
-    @metrics = MetricConfig.find(params[:id])
-    @metricconfigs = @metrics.metric_configs.paginate(page: params[:page])
+    #@metrics = MetricConfig.find(params[:id])
+    #@metricconfigs = @metrics.metric_configs.paginate(page: params[:page])
+    @dateToShow = '2014-09-15 00:00:00'
+    #@user = User.find(params[:id])
+    @metricconfigs = current_user.metric_configs.paginate(page: params[:page])
+    @metrics = current_user.metrics
+    @metricsToShow = @metrics.where(metricdate: @dateToShow)
+    #User.upsert_metric_fbdata
   end
 
   # GET /metrics/new
@@ -22,6 +36,7 @@ class MetricsController < ApplicationController
 
   # GET /metrics/1/edit
   def edit
+    @metric = Metric.find(params[:id])
   end
 
   # POST /metrics

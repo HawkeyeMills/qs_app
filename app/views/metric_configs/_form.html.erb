@@ -1,10 +1,10 @@
-<%= form_for(@metric_config) do |f| %>
-  <% if @metric_config.errors.any? %>
+<%= form_for(@metric_configs) do |f| %>
+  <% if @metric_configs.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@metric_config.errors.count, "error") %> prohibited this metric_config from being saved:</h2>
+      <h2><%= pluralize(@metric_configs.errors.count, "error") %> prohibited this metric_config from being saved:</h2>
 
       <ul>
-      <% @metric_config.errors.full_messages.each do |msg| %>
+      <% @metric_configs.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -12,25 +12,29 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :user_id %><br>
+    <%= f.label :user_id %>
     <%= f.number_field :user_id %>
   </div>
   <div class="field">
-    <%= f.label :value %><br>
-    <%= f.text_field :value %>
+    <%= f.label :metricname %>
+    <%= f.text_field :metricname %>
   </div>
   <div class="field">
-    <%= f.label :orderby %><br>
+    <%= f.label :orderby %>
     <%= f.number_field :orderby %>
   </div>
   <div class="field">
-    <%= f.label :profiledisplay %><br>
+    <%= f.label :fbvalue %>
+    <%= f.text_field :fbvalue %>
+  </div>
+  <div class="field">
+    <%= f.label :profiledisplay %>
     <%= f.check_box :profiledisplay %>
   </div>
   <div class="field">
-    <%= f.label :updateable %><br>
+    <%= f.label :updateable %>
     <%= f.check_box :updateable %>
-  </div>
+  </div><br>
   <div class="actions">
     <%= f.submit %>
   </div>

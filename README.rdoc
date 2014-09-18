@@ -7,35 +7,30 @@ Helpers:
 #add gem
 bundle install
 
-git push
-git push heroku
-heroku run rake db:migrate
-
 
 rake db:drop
-or
 rake db:reset
 and/or
 rake db:create
-and/or
 rake db:migrate
 rake db:populate
 rake test:prepare
 
+--Checkin and push to Heroku
 
+git add .
+git commit -m "Add user following"
+git checkout master
+git merge following-users
+--As usual, you can also push the code and deploy the application if you want:
 
-
-Metric 13,000, 1
-Metric Config 1, Steps
-
-Metric has many MetricConfigs
-MetricConfig belongs to Metric
-
- git checkout -b metric-metricconfigs
+git push
+git push heroku
+heroku pg:reset DATABASE
+heroku run rake db:migrate
+heroku run rake db:populate
+___________________________
 
 
  showFiles
  hideFiles
-
-Current Branch:
- implement-fitbit

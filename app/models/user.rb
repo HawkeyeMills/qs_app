@@ -21,8 +21,8 @@ class User < ActiveRecord::Base
   
   def User.upsert_metric_fbdata
     @fbdata = Fitbitclient::Fitbitclient.new
-    @startDate = "2014-08-01"
-    @endDate = "2014-09-15"
+    @startDate = "2014-01-01"
+    @endDate = "2014-09-18"
     @fbdata.upsert_metric_data(@startDate, @endDate, "/body/weight")
     @fbdata.upsert_metric_data(@startDate, @endDate, "/activities/tracker/steps")
 #=begin

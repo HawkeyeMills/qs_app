@@ -24,7 +24,7 @@ module Fitbitclient
         Upsert.batch(Metric.connection, :metrics) do |upsert|
         table_name = :metrics
         @hashToIterate.each do |key, val|
-        Rails.logger.info ("@hashToIterate = #{@hashToIterate}")
+        #Rails.logger.info ("@hashToIterate = #{@hashToIterate}")
           val.each do|p|
           @dateToUpsert = p['dateTime']
           @valueToUpsert = p['value']

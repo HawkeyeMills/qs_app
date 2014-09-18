@@ -8,13 +8,12 @@ class UsersController < ApplicationController
   end
 
   def show
+    @dateToShow = '2014-09-15 00:00:00'
     @user = User.find(params[:id])
     @metricconfigs = @user.metric_configs.paginate(page: params[:page])
-    #@datas = @metricconfigs.metrics
-    #@metrics = @user.metrics.paginate(page: params[:page])
-    #@metricconfigs.includes(:metrics).where(metrics: { visible: true })
-    User.upsert_metric_fbdata
-
+    @metrics = @user.metrics
+    @metricsToShow = @metrics.where(metricdate: @dateToShow)
+    #User.upsert_metric_fbdata
   end
 
   def new
