@@ -21,11 +21,12 @@ class User < ActiveRecord::Base
   
   def User.upsert_metric_fbdata
     @fbdata = Fitbitclient::Fitbitclient.new
-    @startDate = "2014-01-01"
-    @endDate = "2014-09-18"
+    #@startDate = "2014-01-01"
+    #@endDate = "2014-09-18"
+    @startDate = "2014-09-26"
+    @endDate = "2014-09-26"
     @fbdata.upsert_metric_data(@startDate, @endDate, "/body/weight")
     @fbdata.upsert_metric_data(@startDate, @endDate, "/activities/tracker/steps")
-#=begin
     @fbdata.upsert_metric_data(@startDate, @endDate, "/activities/tracker/distance")
     @fbdata.upsert_metric_data(@startDate, @endDate, "/activities/log/activityCalories")
     @fbdata.upsert_metric_data(@startDate, @endDate, "/activities/caloriesBMR")
@@ -46,7 +47,9 @@ class User < ActiveRecord::Base
     @fbdata.upsert_metric_data(@startDate, @endDate, "/body/weight")
     @fbdata.upsert_metric_data(@startDate, @endDate, "/body/bmi")
     @fbdata.upsert_metric_data(@startDate, @endDate, "/body/fat")
-#=end
+    @fbdata.upsert_heart_data(@startDate)
+    @fbdata.upsert_blood_pressure_data(@startDate)
+    @fbdata.upsert_food_data(@startDate)
  end
   
 #MORE EXAMPLES

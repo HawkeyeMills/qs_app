@@ -1,31 +1,31 @@
-<% provide(:title, @user.name) %>
+<%# provide(:title, @user.name) %>
 <div class="row">
   <aside class="span4">
     <section>
       <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
+        <%#= gravatar_for @user %>
+        <%#= @user.name %>
       </h1>
     </section>
   </aside>
     <div class="span8">
     <%# if @user.metric_configs.any? %>
-    <%if @user.metrics.any? %>
-      <h3>Daily Metrics For <%= @todayDate %>(<%= @todayMetrics.count %>)</h3>
+    <%#if @user.metrics.any? %>
+      <h3>Daily Metrics For <%= @dateToShow %>(<%= @metricconfigs.count %>)</h3>
       <ol class="metricConfigs">
-        <% @metricsToShow.each do |metric|%>
-          <%= @metricconfigs.find(metric.metric_config_id).metricname%>
-          <%= metric.value %> <BR>
-          <%= link_to 'Show', metric %><BR>
-          <%= link_to 'Edit', edit_metric_path(metric) %><BR>
-          <%= link_to 'Destroy', metric, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% @metrics.each do |metric|%>
+          <%#= @metricconfigs.find(metric.metric_config_id).metricname%>
+          <%= metric.value %>
+          <%= link_to 'Show', metric %>
+          <%= link_to 'Edit', edit_metric_path(metric) %>
+          <%= link_to 'Destroy', metric, method: :delete, data: { confirm: 'Are you sure?' } %><BR>
         <% end %>
       </ol>
       <br>
-      <%= will_paginate %>
+      <%#= will_paginate %>
       <br>
 
     <%= link_to 'New Metric', new_metric_path %>
-    <% end %>
+    <%# end %>
   </div>
 </div>

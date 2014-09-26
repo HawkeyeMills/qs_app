@@ -3,54 +3,41 @@ class MetricsController < ApplicationController
 
   # GET /metrics
   def index    
-    #@metrics = Metric.paginate(page: params[:page])
-    #@metricconfigs = MetricConfig.all
-    #@metricconfigs = @metrics.metric_configs.paginate(page: params[:page])
-    #@metricconfigs = @metrics.metric_configs.build(params[:metricconfig])
-    +#@metrics = MetricConfig.find(params[:id])
-    #@metricconfigs = @metrics.metric_configs.paginate(page: params[:page])
-    @dateToShow = '2014-09-15 00:00:00'
-    @user = User.find(params[:id])
-    @metricconfigs = @user.metric_configs.paginate(page: params[:page])
-    @metrics = @user.metrics
-    @metricsToShow = @metrics.where(metricdate: @dateToShow)
-    #User.upsert_metric_fbdata
+    @dateToShow = Date.today
+    @metrics = current_user.metrics.where(metricdate: @dateToShow)
+    @metricconfigs = current_user.metric_configs
   end
 
   # GET /metrics/1
   def show
-    #@metrics = MetricConfig.find(params[:id])
-    #@metricconfigs = @metrics.metric_configs.paginate(page: params[:page])
-    @dateToShow = '2014-09-15 00:00:00'
-    #@user = User.find(params[:id])
-    @metricconfigs = current_user.metric_configs.paginate(page: params[:page])
-    @metrics = current_user.metrics
-    @metricsToShow = @metrics.where(metricdate: @dateToShow)
-    #User.upsert_metric_fbdata
+    @dateToShow = Date.today
+    @metricconfigs = current_user.metric_configs
+    @metrics = current_user.metrics.where(metricdate: @dateToShow)
   end
 
   # GET /metrics/new
   def new
-    @metric = Metric.new
+    @metricconfigs = current_user.metric_configs.where(updateable: '1')
+    @metric = Metric.new(params[:metric_config_id])
   end
 
   # GET /metrics/1/edit
   def edit
+    @metricconfigs = current_user.metric_configs
+    #render :text => @metricconfigs.count and return false
     @metric = Metric.find(params[:id])
+    @metricconfigs = current_user.metric_configs
   end
 
   # POST /metrics
   def create
-    @metricconfig = MetricConfig.find(params[:metricconfig_id])
-    @metric = @metricconfig.value.create(metric_params)
-    redirect_to metricconfig_path(@metricconfig)
-    #@metric = Metric.new(metric_params)
-
-    #if @metric.save
-    #  redirect_to @metric, notice: 'Metric was successfully created.'
-    #else
-    #  render action: 'new'
-    #end
+    #render :text => params and return false
+    @metric = Metric.new(metric_params)
+    if @metric.save
+      redirect_to @metric, notice: 'Metric was successfully created.'
+    else
+      render action: 'new'
+    end
   end
 
   # PATCH/PUT /metrics/1
@@ -77,6 +64,6 @@ class MetricsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def metric_params
       #params[:metric]
-      params.require(:metric).permit(:value, :metricdate)
+      params.require(:metric).permit(:value, :metricdate, :metric_config_id)
     end
 end

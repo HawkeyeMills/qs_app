@@ -1,26 +1,23 @@
 <div class="row">
   <aside class="span4">
     <section>
-      <h1>Listing metric_configs for: <%= @dateToShow %></h1>
+      <!--<h1>Remove Me</h1>-->
     </section>
   </aside>
     <div class="span8">
     <%if current_user.metrics.any? %>
-      <h3>Daily Metrics For <%= current_user.name %> (<%= @metricsToShow.count %>)</h3>
+      <h3>Metrics Configurations For <%= current_user.name %> (<%= @metric_configs.count %>)</h3>
       <ol class="metricConfigs">
-        <%# @metricsToShow.each do |metric|%>
-          <%#= @metricconfigs.find(metric.metric_config_id).metricname%>
-          <%#= metric.value %>
         <% @metricconfigs.each do |mc|%>
           <%= mc.metricname%>
-          <%= @metricconfigs.find(@metricsToShow.value) %>
-          <%#= link_to 'Show', metric_config %>
-          <%#= link_to 'Edit', edit_metric_path(metric) %>
-          <%#= link_to 'Destroy', metric, method: :delete, data: { confirm: 'Are you sure?' } %> <BR>
+          <%= link_to 'Show', mc %>
+          <%= link_to 'Edit', edit_metric_path(mc) %>
+          <%= link_to 'Destroy', mc, method: :delete, data: { confirm: 'Are you sure?' } %> <BR>
         <% end %>
       </ol>
       <%= will_paginate @metricconfigs %>
       <%#= link_to "Update FitBit Metrics", fbupdate_path, class: "btn btn-large btn-primary" %>
+      <%= link_to 'New Metric Config', new_metric_config_path %>
     <% end %>
   </div>
 </div>

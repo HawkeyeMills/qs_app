@@ -1,6 +1,17 @@
-<h1>Editing metric</h1>
+<% provide(:title, "Edit Metric") %>
+<h1>Edit Metric</h1>
 
-<%= render 'form' %>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@metric) do |f| %>
+      <%#= render 'shared/error_messages' %>
 
-<%= link_to 'Show', @metric %> |
-<%= link_to 'Back', metrics_path %>
+	  <%= @metricconfigs.find(@metric.metric_config_id).metricname%>
+
+      <%= f.label :value %>
+      <%= f.text_field :value %>
+
+      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>  
+</div>

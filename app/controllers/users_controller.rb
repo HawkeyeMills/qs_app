@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     @metricconfigs = @user.metric_configs.paginate(page: params[:page])
     @metrics = @user.metrics
     @metricsToShow = @metrics.where(metricdate: @dateToShow)
-    #User.upsert_metric_fbdata
+    User.upsert_metric_fbdata
   end
 
   def new

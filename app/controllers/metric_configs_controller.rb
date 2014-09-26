@@ -7,34 +7,26 @@ class MetricConfigsController < ApplicationController
   # GET /metric_configs
   def index
     @metric_configs = MetricConfig.paginate(page: params[:page])
-    @dateToShow = '2014-09-15 00:00:00'
-    #@user = User.find(params[:id])
+    #@dateToShow = '2014-09-15 00:00:00'
     #render :text => current_user.name and return false
     @metricconfigs = current_user.metric_configs.paginate(page: params[:page])
     #@metrics = @user.metrics.paginate(page: params[:page])
-    @metrics = current_user.metrics
-    @metricsToShow = @metrics.where(metricdate: @dateToShow)
+    @metrics = current_user.metrics.where(metricdate: @dateToShow)
+    #@metricsToShow = @metrics.where(metricdate: @dateToShow)
     #User.upsert_metric_fbdata
     #@metric_configs.find(updateable)
   end
 
   # GET /metric_configs/1
   def show
-    @metric_configs = MetricConfig.find(params[:id])
+    @metricconfigs = MetricConfig.find(params[:id])
+    @metrics = @metricconfigs.metrics.paginate(page: params[:page])
   end
 
   # GET /metric_configs/new
   def new
-    @metric_configs = MetricConfig.paginate(page: params[:page])
-    @dateToShow = '2014-09-15 00:00:00'
-    #@user = User.find(params[:id])
-    #render :text => current_user.name and return false
-    @metricconfigs = current_user.metric_configs.paginate(page: params[:page])
-    #@metrics = @user.metrics.paginate(page: params[:page])
-    @metrics = current_user.metrics
-    @metricsToShow = @metrics.where(metricdate: @dateToShow)
-    #User.upsert_metric_fbdata
-    #@metric_configs.find(updateable)
+    @metricconfigs = MetricConfig.new
+    @metric_configs = current_user.metric_configs
   end
 
   # GET /metric_configs/1/edit
@@ -88,7 +80,7 @@ class MetricConfigsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def metric_config_params
       #params.require(:user).permit(:value, :orderby, :profiledisplay, :updateable)
-      params.require(:metric_config).permit(:user_id, :metricname, :orderby, :profiledisplay, :updateable, :metricdate, :metricconfig_id)
+      params.require(:metric_config).permit(:user_id, :fbvalue, :metricname, :orderby, :profiledisplay, :updateable, :metricdate, :metric_config_id)
     end
 
     def correct_user
@@ -101,7 +93,7 @@ class MetricConfigsController < ApplicationController
     end
     
     def metric_params
-      params.require(:metric).permit(:value, :metricconfig_id)
+      params.require(:metric).permit(:value, :metric_config_id)
     end
     # Before filters
 

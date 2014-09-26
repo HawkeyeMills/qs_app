@@ -69,6 +69,6 @@ class GradeConfigsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def grade_config_params
-      params.require(:grade_config).permit(:metricconfig_id, :weight, :percentoftotal, :goal, :calcToUse, :type, :note)
+      params.require(:grade_config).permit(:metric_config_id, :weight, :percentoftotal, :goal, :calcToUse, :type, :note)
     end
 end

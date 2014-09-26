@@ -1,22 +1,17 @@
-<p>
-  <strong>Metric Config:</strong>
-  <%= @metric_config.metricname %>
-</p>
+<%# provide(:title, @user.name) %>
+  <div class="col-md-8">
+    <% if @metricconfigs.metrics.any? %>
+      <h3>Metrics (<%= @metricconfigs.metrics.count %>)</h3>
+      <%= @metricconfigs.metricname %>
+      <ol class="metricConfigs">
+        <% @metrics.each do |m|%>
+          <%= m.metricdate %> &nbsp
+          <%= m.metric_config_id %> &nbsp
+          <%= m.value %> <BR>
+        <% end %> 
+      </ol>
+      <%= will_paginate @metrics %>
+    <% end %>
+      <%= link_to 'New Metric', new_metric_path %>
+  </div>
 
-<%= form_for([@metric_config, @metric_config.metrics.build]) do |f| %>
-  <p>
-    <%= f.label :metricname %><br>
-      <%#= @metricconfigs.find(metric.metric_config_id).metricname %>
-    <%= f.text_field :metric_config_id.metricname %>
-  </p>
-  <p>
-    <%= f.label :metricdate %><br>
-    <%= f.date_field :metricdate %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
-
-<%= link_to 'Edit', edit_metric_config_path(@metric_config) %> |
-<%= link_to 'Back', metric_config_path %>

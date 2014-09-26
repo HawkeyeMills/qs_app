@@ -1,1 +1,1 @@
-json.extract! @grade_config, :metricconfig_id, :weight, :percentoftotal, :goal, :calcToUse, :type, :note, :created_at, :updated_at
+json.extract! @grade_config, :metric_config_id, :weight, :percentoftotal, :goal, :calcToUse, :type, :note, :created_at, :updated_at
