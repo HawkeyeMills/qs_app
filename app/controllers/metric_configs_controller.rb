@@ -80,7 +80,7 @@ class MetricConfigsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def metric_config_params
       #params.require(:user).permit(:value, :orderby, :profiledisplay, :updateable)
-      params.require(:metric_config).permit(:user_id, :fbvalue, :metricname, :orderby, :profiledisplay, :updateable, :metricdate, :metric_config_id)
+      params.require(:metric_config).permit(:user_id, :fbvalue, :metricname, :orderby, :profiledisplay, :metrictype, :updateable, :metricdate, :metric_config_id)
     end
 
     def correct_user

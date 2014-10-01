@@ -14,9 +14,9 @@
 ActiveRecord::Schema.define(version: 20140820181516) do
 
   create_table "grade_configs", force: true do |t|
-    t.integer  "metricconfig_id"
-    t.decimal  "weight",          precision: 4, scale: 2
-    t.decimal  "percentoftotal",  precision: 8, scale: 3
+    t.integer  "metric_config_id"
+    t.decimal  "weight",           precision: 4, scale: 2
+    t.decimal  "percentoftotal",   precision: 8, scale: 3
     t.string   "goal"
     t.string   "calcToUse"
     t.string   "type"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20140820181516) do
     t.integer  "user_id"
     t.string   "metricname"
     t.string   "fbvalue"
+    t.string   "metrictype"
     t.integer  "orderby"
     t.boolean  "profiledisplay"
     t.boolean  "updateable"

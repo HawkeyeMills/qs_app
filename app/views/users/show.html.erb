@@ -9,20 +9,26 @@
     </section>
   </aside>
     <div class="span8">
-    <%# if @user.metric_configs.any? %>
+    <%= hidden_field_tag :id, @user.id %>
     <%if @user.metrics.any? %>
-      <h3>Daily Metrics For <%= @todayDate %>(<%= @metricsToShow.count %>)</h3>
+      <h3>Daily Metrics For <%= @dateToShow %>(<%= @metricsToShow.count %>)</h3>
       <ol class="metricConfigs">
         <% @metricsToShow.each do |metric|%>
-          <%= @metricconfigs.find(metric.metric_config_id).metricname%>
-          <%= metric.value %> <BR>
-          <%#= link_to 'Show', metric %>
-          <%#= link_to 'Edit', edit_metric_path(metric) %>
-          <%#= link_to 'Destroy', metric, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% if @metricconfigs.find(metric.metric_config_id).profiledisplay == true %>
+            <%= @metricconfigs.find(metric.metric_config_id).metricname%>
+            <%= metric.value %>
+              <% if @metricconfigs.find(metric.metric_config_id).updateable == true %>
+                <%= link_to 'Show', metric %>
+                <%= link_to 'Edit', edit_metric_path(metric) %>
+                <%= link_to 'Destroy', metric, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %><BR>
+            <% end %>
         <% end %>
       </ol>
       <%#= will_paginate @metricconfigs %>
-      <%#= link_to "Update FitBit Metrics", fbupdate_path, class: "btn btn-large btn-primary" %>
+      <BR>
     <% end %>
+    <%= link_to 'New Metric', new_metric_path, class: "btn btn-large btn-primary" %>
+    <%= link_to "Update FitBit Metrics", fbmetrics_path(:updateMetrics => 'Y', :id => @user.id), class: "btn btn-large btn-primary" %> 
   </div>
 </div>

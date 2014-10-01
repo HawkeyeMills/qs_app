@@ -6,17 +6,23 @@
 <div class="row">
   <div class="span6 offset3">
       <%= form_for(@metric) do |f| %>
-        <%#= render 'shared/error_messages', object: @metrics %>
+        <%#= render 'shared/error_messages', object: f.object %>
+        <%= render 'shared/error_messages', object: @metric %>
 
         <%= f.label :metric_config_id %>
         <%= f.collection_select(:metric_config_id, @metricconfigs, :id, :metricname) %>
 
         <%= f.label :metricdate %>
-        <%= f.date_field :metricdate %>
+        <%= f.date_field :metricdate, :value =>Time.now.strftime('%Y-%m-%d') %>
 
-        <%= f.label :value %>
-        <%= f.text_field :value %>
-
+        <%# if f.collection_select(:metric_config_id, @metricconfigs, :id, :metrictype) == 'boolean'%>
+          <%#= f.label 'Acheived' %>
+          <%#= f.check_box :value %>
+        <%# else %>
+          <%= f.label :value %>
+          <%= f.text_field :value, :required => true%>
+        <%# end %>
+        <BR><BR>
 
         <%= f.submit "Create Metric", class: "btn btn-large btn-primary" %>
       <% end %>

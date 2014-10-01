@@ -11,14 +11,20 @@
     <div class="span8">
     <%# if @user.metric_configs.any? %>
     <%#if @user.metrics.any? %>
-      <h3>Daily Metrics For <%= @dateToShow %>(<%= @metricconfigs.count %>)</h3>
+      <h3>Daily Metrics For <%= @dateToShow %>(<%= @metrics.count %>)</h3>
       <ol class="metricConfigs">
         <% @metrics.each do |metric|%>
-          <%#= @metricconfigs.find(metric.metric_config_id).metricname%>
-          <%= metric.value %>
-          <%= link_to 'Show', metric %>
-          <%= link_to 'Edit', edit_metric_path(metric) %>
-          <%= link_to 'Destroy', metric, method: :delete, data: { confirm: 'Are you sure?' } %><BR>
+          <% if @metricconfigs.find(metric.metric_config_id).profiledisplay == true %>
+            <% @metricconfig = @metricconfigs.find(metric.metric_config_id) %>
+            <%= @metricconfig.metricname%>
+            <%= metric.value %>
+            <% if @metricconfig.updateable == true %>
+              <%= link_to 'Show', metric %>
+              <%= link_to 'Edit', edit_metric_path(metric) %>
+              <%= link_to 'Destroy', metric, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% end %>
+            <BR>
+          <% end %>
         <% end %>
       </ol>
       <br>

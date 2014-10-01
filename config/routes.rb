@@ -1,19 +1,19 @@
 QsApp::Application.routes.draw do
 
-  resources :users, :grade_configs, :fitbitclients, :metrics
-  resources :sessions, only: [:new, :create, :destroy]
-  resources :metric_configs do
+    resources :users, :grade_configs, :fitbitclients, :metrics
+    resources :sessions, only: [:new, :create, :destroy]
+    resources :metric_configs do
     resources :metrics
   end
-  
-  #root  'static_pages#home'
+
   root  'users#index'
-  match '/signup',  to: 'users#new',            via: 'get'
-  match '/signin',  to: 'sessions#new',         via: 'get'
-  match '/signout', to: 'sessions#destroy',     via: 'delete'
-  match '/help',    to: 'static_pages#help',    via: 'get'
-  match '/about',   to: 'static_pages#about',   via: 'get'
-  match '/contact', to: 'static_pages#contact', via: 'get'
+  match '/signup',    to: 'users#new',                via: 'get'
+  match '/fbmetrics', to: 'users#show',           via: 'get'
+  match '/signin',    to: 'sessions#new',             via: 'get'
+  match '/signout',   to: 'sessions#destroy',         via: 'delete'
+  match '/help',      to: 'static_pages#help',        via: 'get'
+  match '/about',     to: 'static_pages#about',       via: 'get'
+  match '/contact',   to: 'static_pages#contact',     via: 'get'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

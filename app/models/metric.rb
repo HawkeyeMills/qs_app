@@ -1,7 +1,7 @@
 class Metric < ActiveRecord::Base
   belongs_to :metric_configs
   default_scope -> { order('metricdate DESC') }
-  validates :value, presence: true, length: { maximum: 25 }
+  validates :value, presence: true, length: { maximum: 35 }
   validates :metric_config_id, presence: true
 
     def upsert_fbdata

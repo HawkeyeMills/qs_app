@@ -2,18 +2,21 @@ class UsersController < ApplicationController
   before_action :signed_in_user, only: [:index, :edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroy
-
+  
   def index
     @users = User.paginate(page: params[:page])
   end
 
   def show
-    @dateToShow = '2014-09-15 00:00:00'
+    #Client.find_or_create_by(first_name: 'Andy')
+    @dateToShow = Date.today
     @user = User.find(params[:id])
     @metricconfigs = @user.metric_configs.paginate(page: params[:page])
     @metrics = @user.metrics
     @metricsToShow = @metrics.where(metricdate: @dateToShow)
-    User.upsert_metric_fbdata
+    if(params.has_key?(:updateMetrics))
+      refresh_metrics
+    end
   end
 
   def new
@@ -47,6 +50,52 @@ class UsersController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def generate_empty_daily_metrics
+    @metricsToGen = @metrics.where(updateable: true)
+    logger.info ("----------------------------> #{@metricsToGen}")
+  end
+
+  def refresh_metrics
+    @startDate = Date.today
+    @endDate = (Date.today - 2)
+
+    @fbdata = Fitbitclient::Fitbitclient.new
+    @fbdata.upsert_metric_data(@startDate, @endDate, "/body/weight")
+    @fbdata.upsert_metric_data(@startDate, @endDate, "/activities/tracker/steps")
+    @fbdata.upsert_metric_data(@startDate, @endDate, "/activities/tracker/distance")
+    @fbdata.upsert_metric_data(@startDate, @endDate, "/activities/log/activityCalories")
+    @fbdata.upsert_metric_data(@startDate, @endDate, "/activities/caloriesBMR")
+    @fbdata.upsert_metric_data(@startDate, @endDate, "/activities/calories")
+    @fbdata.upsert_metric_data(@startDate, @endDate, "/foods/log/caloriesIn")
+    @fbdata.upsert_metric_data(@startDate, @endDate, "/foods/log/water")
+    @fbdata.upsert_metric_data(@startDate, @endDate, "/activities/log/minutesSedentary")
+    @fbdata.upsert_metric_data(@startDate, @endDate, "/activities/log/minutesLightlyActive")
+    @fbdata.upsert_metric_data(@startDate, @endDate, "/activities/log/minutesFairlyActive")
+    @fbdata.upsert_metric_data(@startDate, @endDate, "/activities/log/minutesVeryActive")
+    @fbdata.upsert_metric_data(@startDate, @endDate, "/sleep/timeInBed")
+    @fbdata.upsert_metric_data(@startDate, @endDate, "/sleep/minutesAwake")
+    @fbdata.upsert_metric_data(@startDate, @endDate, "/sleep/minutesAsleep")
+    @fbdata.upsert_metric_data(@startDate, @endDate, "/sleep/awakeningsCount")
+    @fbdata.upsert_metric_data(@startDate, @endDate, "/sleep/efficiency")
+    @fbdata.upsert_metric_data(@startDate, @endDate, "/sleep/minutesToFallAsleep")
+    @fbdata.upsert_metric_data(@startDate, @endDate, "/sleep/minutesAfterWakeup")
+    @fbdata.upsert_metric_data(@startDate, @endDate, "/body/weight")
+    @fbdata.upsert_metric_data(@startDate, @endDate, "/body/bmi")
+    @fbdata.upsert_metric_data(@startDate, @endDate, "/body/fat")
+    @fbdata.upsert_heart_data(@startDate)
+    @fbdata.upsert_blood_pressure_data(@startDate)
+    @fbdata.upsert_food_data(@startDate)
+
+    generate_empty_daily_metrics
+    #MORE EXAMPLES
+    #@fbdata = Fitbitclient::Fitbitclient.new
+    #@activities = @fbdata.getActivityData
+    #@userInfo = @fbdata.getUserData
+    #@measurements = @fbdata.getMeasurementData
+    #@user = User.find(params[:id])
+    #show
   end
 
   private

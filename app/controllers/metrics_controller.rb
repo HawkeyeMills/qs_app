@@ -6,6 +6,7 @@ class MetricsController < ApplicationController
     @dateToShow = Date.today
     @metrics = current_user.metrics.where(metricdate: @dateToShow)
     @metricconfigs = current_user.metric_configs
+    @metricconfigstocount = current_user.metric_configs.where(profiledisplay: true)
   end
 
   # GET /metrics/1
@@ -32,10 +33,14 @@ class MetricsController < ApplicationController
   # POST /metrics
   def create
     #render :text => params and return false
+    @user = current_user
     @metric = Metric.new(metric_params)
     if @metric.save
-      redirect_to @metric, notice: 'Metric was successfully created.'
+      #redirect_to @metric, notice: 'Metric was successfully created.'
+      redirect_to @user, notice: 'Metric was successfully created.'
     else
+      @metricconfigs = current_user.metric_configs.where(updateable: '1')
+      @metric = Metric.new(params[:metric_config_id])
       render action: 'new'
     end
   end

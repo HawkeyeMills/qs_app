@@ -1,68 +1,71 @@
 module Fitbitclient
   class Fitbitclient
 
-   def upsert_metric_data(startDate, endDate, metricKey)
-      # Load the existing yml config
-      config = begin
-        Fitgem::Client.symbolize_keys(YAML.load(File.open("config/.fitgem.yml")))
-      rescue ArgumentError => e
-        puts "Could not parse YAML: #{e.message}"
-        exit
-      end
-     
-      @client = Fitgem::Client.new(config[:oauth])
-      begin
-        access_token = @client.reconnect(config[:oauth][:token], config[:oauth][:secret])
-          @hashToIterate = @client.data_by_time_range(metricKey, {:base_date => startDate, :end_date => endDate})
-          #@measurements = @client.body_measurements_on_date('today')
-          #@userinfo = @client.user_info['user']
+  def upsert_metric_data(startDate, endDate, metricKey)
+    Rails.logger.info("-----> startDate = #{startDate}")
+    Rails.logger.info("-----> endDate = #{endDate}")
+    Rails.logger.info("-----> metricKey = #{metricKey}")
+    # Load the existing yml config
+    config = begin
+      Fitgem::Client.symbolize_keys(YAML.load(File.open("config/.fitgem.yml")))
+    rescue ArgumentError => e
+      puts "Could not parse YAML: #{e.message}"
+      exit
+    end
+   
+    @client = Fitgem::Client.new(config[:oauth])
+    begin
+      access_token = @client.reconnect(config[:oauth][:token], config[:oauth][:secret])
+        @hashToIterate = @client.data_by_time_range(metricKey, {:base_date => startDate, :end_date => endDate})
+        #@measurements = @client.body_measurements_on_date('today')
+        #@userinfo = @client.user_info['user']
       rescue Exception => e
         puts "Error: Could not reconnect Fitgem::Client due to invalid keys in .fitgem.yml"
         exit
-      end
+    end
 
-        Upsert.batch(Metric.connection, :metrics) do |upsert|
-        table_name = :metrics
-        @hashToIterate.each do |key, val|
-        #Rails.logger.info ("@hashToIterate = #{@hashToIterate}")
-          val.each do|p|
+    Upsert.batch(Metric.connection, :metrics) do |upsert|
+      table_name = :metrics
+      @hashToIterate.each do |key, val|
+        val.each do|p|
           @dateToUpsert = p['dateTime']
           @valueToUpsert = p['value']
+          Rails.logger.info "-------key = #{key}"
           @metricConfigIDs = MetricConfig.find_by fbvalue: key
           @metricConfigID = @metricConfigIDs.id
           upsert.row({:metricdate => @dateToUpsert, :metric_config_id => @metricConfigID}, :value => @valueToUpsert, :created_at => Time.now, :updated_at => Time.now)
         end
       end
     end
-   end
-    
-   def upsert_heart_data(dt_date)
-      #refactor to reuse most of this code eventually
-      config = begin
-        Fitgem::Client.symbolize_keys(YAML.load(File.open("config/.fitgem.yml")))
-      rescue ArgumentError => e
-        puts "Could not parse YAML: #{e.message}"
-        exit
-      end
+  end
+      
+  def upsert_heart_data(dt_date)
+    #refactor to reuse most of this code eventually
+    config = begin
+    Fitgem::Client.symbolize_keys(YAML.load(File.open("config/.fitgem.yml")))
+    rescue ArgumentError => e
+      puts "Could not parse YAML: #{e.message}"
+      exit
+    end
 
-      @client = Fitgem::Client.new(config[:oauth])
-      begin
-        access_token = @client.reconnect(config[:oauth][:token], config[:oauth][:secret])
-        @hashToIterate = @client.heart_rate_on_date(dt_date)
-      rescue Exception => e
-        puts "Error: Could not reconnect Fitgem::Client due to invalid keys in .fitgem.yml"
-        exit
-      end
-      Upsert.batch(Metric.connection, :metrics) do |upsert|
-        table_name = :metrics
-        @hashToIterate.each do |key, val|
+    @client = Fitgem::Client.new(config[:oauth])
+    begin
+      access_token = @client.reconnect(config[:oauth][:token], config[:oauth][:secret])
+      @hashToIterate = @client.heart_rate_on_date(dt_date)
+    rescue Exception => e
+      puts "Error: Could not reconnect Fitgem::Client due to invalid keys in .fitgem.yml"
+      exit
+    end
+    Upsert.batch(Metric.connection, :metrics) do |upsert|
+      table_name = :metrics
+      @hashToIterate.each do |key, val|
         val.each do|p|
           #get rid of all the "average" in the hash
           if key == 'heart'
             @ary_rhr = p.assoc("heartRate")
-            @ary_rhr.each do |rhr|
-              @valueToUpsert = rhr
-            end
+              @ary_rhr.each do |rhr|
+                @valueToUpsert = rhr
+              end
             @metricConfigIDs = MetricConfig.find_by metricname: 'rhr'
             @metricConfigID = @metricConfigIDs.id
             Rails.logger.info @metricConfigsID
@@ -70,7 +73,7 @@ module Fitbitclient
           end
         end
       end
-   end
+    end
   end
   
   def upsert_food_data(dt_date)
@@ -131,32 +134,32 @@ module Fitbitclient
     end    
     
   def upsert_blood_pressure_data(dt_date)
-      #refactor to reuse most of this code eventually
-      config = begin
-        Fitgem::Client.symbolize_keys(YAML.load(File.open("config/.fitgem.yml")))
-      rescue ArgumentError => e
-        puts "Could not parse YAML: #{e.message}"
-        exit
-      end
+    #refactor to reuse most of this code eventually
+    config = begin
+    Fitgem::Client.symbolize_keys(YAML.load(File.open("config/.fitgem.yml")))
+    rescue ArgumentError => e
+      puts "Could not parse YAML: #{e.message}"
+      exit
+    end
 
-      @client = Fitgem::Client.new(config[:oauth])
-      begin
-        access_token = @client.reconnect(config[:oauth][:token], config[:oauth][:secret])
-        @hashToIterate = @client.blood_pressure_on_date(dt_date)
-      rescue Exception => e
-        puts "Error: Could not reconnect Fitgem::Client due to invalid keys in .fitgem.yml"
-        exit
-      end
-      Upsert.batch(Metric.connection, :metrics) do |upsert|
-        table_name = :metrics
-        @hashToIterate.each do |key, val|
+  @client = Fitgem::Client.new(config[:oauth])
+  begin
+    access_token = @client.reconnect(config[:oauth][:token], config[:oauth][:secret])
+    @hashToIterate = @client.blood_pressure_on_date(dt_date)
+  rescue Exception => e
+    puts "Error: Could not reconnect Fitgem::Client due to invalid keys in .fitgem.yml"
+    exit
+  end
+  Upsert.batch(Metric.connection, :metrics) do |upsert|
+    table_name = :metrics
+    @hashToIterate.each do |key, val|
         val.each do|p|
           if key == 'bp'
             Rails.logger.info "key = #{key} and val = #{val}"
             Rails.logger.info "p = #{p}"
             @diastolic = p['diastolic']
             @systolic = p['systolic']
-          
+
             @metricConfigIDsDiastolic = MetricConfig.find_by metricname: 'diastolic'
             @metricConfigIDDiastolic = @metricConfigIDsDiastolic.id
             upsert.row({:metricdate => dt_date, :metric_config_id => @metricConfigIDDiastolic}, :value => @diastolic, :created_at => Time.now, :updated_at => Time.now) 
@@ -165,12 +168,11 @@ module Fitbitclient
             @metricConfigIDSystolic = @metricConfigIDsSystolic.id
             upsert.row({:metricdate => dt_date, :metric_config_id => @metricConfigIDSystolic}, :value => @systolic, :created_at => Time.now, :updated_at => Time.now)
            end
-          end
         end
       end
     end
   end
-  end
+end
 =begin    
         def getFBDataCheckOAuth
           #@fbdata = Fitbitclient.new
@@ -228,3 +230,4 @@ module Fitbitclient
             File.open(".fitgem.yml", "w") {|f| f.write(config.to_yaml) }
         end
 =end
+end
