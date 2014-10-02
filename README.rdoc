@@ -1,7 +1,11 @@
 == README
 
 ToDo:
+Check metric_configs index (show, edit, destroy)
 Figure out why can access all pages after sign out
+Add "Notes"
+Add ability to change dates
+Add graders / grade configs
 
 Helpers:
 #add gem

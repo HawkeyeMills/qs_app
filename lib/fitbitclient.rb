@@ -66,7 +66,7 @@ module Fitbitclient
               @ary_rhr.each do |rhr|
                 @valueToUpsert = rhr
               end
-            @metricConfigIDs = MetricConfig.find_by metricname: 'rhr'
+            @metricConfigIDs = MetricConfig.find_by metricname: 'RHR'
             @metricConfigID = @metricConfigIDs.id
             Rails.logger.info @metricConfigsID
             upsert.row({:metricdate => dt_date, :metric_config_id => @metricConfigID}, :value => @valueToUpsert, :created_at => Time.now, :updated_at => Time.now)
@@ -101,31 +101,33 @@ module Fitbitclient
             Rails.logger.info "key = #{key} and val = #{val}"
             Rails.logger.info "p = #{p}"
   
-            @carbs = val["carbs"]
-            @fat = val["fat"]
-            @protein = val["protein"]
-            @sodium = val["sodium"]
-            @water = val["water"]
+            @carbs = val["Carbs"]
+            @fat = val["Fat"]
+            @protein = val["Protein"]
+            @sodium = val["Sodium"]
+            @water = val["Water"]
             
-            Rails.logger.info "Carbs = #{@carbs}"
-         
-            @metricConfigIDsCarb = MetricConfig.find_by metricname: 'carbs'
+            @metricConfigIDsCarb = MetricConfig.find_by metricname: 'Carbs'
             @metricConfigIDCarb = @metricConfigIDsCarb.id
             upsert.row({:metricdate => dt_date, :metric_config_id => @metricConfigIDCarb}, :value => @carbs, :created_at => Time.now, :updated_at => Time.now)
 
-            @metricConfigIDsFat = MetricConfig.find_by metricname: 'fat'
+            @metricConfigIDsFat = MetricConfig.find_by metricname: 'Fat'
             @metricConfigIDFat = @metricConfigIDsFat.id
             upsert.row({:metricdate => dt_date, :metric_config_id => @metricConfigIDFat}, :value => @fat, :created_at => Time.now, :updated_at => Time.now)
             
-            @metricConfigIDsProtein = MetricConfig.find_by metricname: 'protein'
+            @metricConfigIDsProtein = MetricConfig.find_by metricname: 'Protein'
             @metricConfigIDProtein = @metricConfigIDsProtein.id
             upsert.row({:metricdate => dt_date, :metric_config_id => @metricConfigIDProtein}, :value => @protein, :created_at => Time.now, :updated_at => Time.now)
 
-            @metricConfigIDsSodium = MetricConfig.find_by metricname: 'sodium'
+            @metricConfigIDsSodium = MetricConfig.find_by metricname: 'Sodium'
+            @metricConfigIDSodium = @metricConfigIDsSodium.id
+            upsert.row({:metricdate => dt_date, :metric_config_id => @metricConfigIDSodium}, :value => @sodium, :created_at => Time.now, :updated_at => Time.now) 
+
+            @metricConfigIDsSodium = MetricConfig.find_by metricname: 'Fiber'
             @metricConfigIDSodium = @metricConfigIDsSodium.id
             upsert.row({:metricdate => dt_date, :metric_config_id => @metricConfigIDSodium}, :value => @sodium, :created_at => Time.now, :updated_at => Time.now) 
                     
-            @metricConfigIDsWater = MetricConfig.find_by metricname: 'water'
+            @metricConfigIDsWater = MetricConfig.find_by metricname: 'Water'
             @metricConfigIDWater = @metricConfigIDsWater.id
             upsert.row({:metricdate => dt_date, :metric_config_id => @metricConfigIDWater}, :value => @water, :created_at => Time.now, :updated_at => Time.now)
           end
