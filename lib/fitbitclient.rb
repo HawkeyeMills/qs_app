@@ -164,11 +164,11 @@ module Fitbitclient
             @diastolic = p['diastolic']
             @systolic = p['systolic']
 
-            @metricConfigIDsDiastolic = MetricConfig.find_by metricname: 'diastolic'
+            @metricConfigIDsDiastolic = MetricConfig.find_by metricname: 'Diastolic'
             @metricConfigIDDiastolic = @metricConfigIDsDiastolic.id
             upsert.row({:metricdate => dt_date, :metric_config_id => @metricConfigIDDiastolic}, :value => @diastolic, :created_at => Time.now, :updated_at => Time.now) 
                     
-            @metricConfigIDsSystolic = MetricConfig.find_by metricname: 'systolic'
+            @metricConfigIDsSystolic = MetricConfig.find_by metricname: 'Systolic'
             @metricConfigIDSystolic = @metricConfigIDsSystolic.id
             upsert.row({:metricdate => dt_date, :metric_config_id => @metricConfigIDSystolic}, :value => @systolic, :created_at => Time.now, :updated_at => Time.now)
            end
