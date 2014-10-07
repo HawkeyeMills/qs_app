@@ -1,5 +1,7 @@
 QsApp::Application.routes.draw do
 
+  resources :notes
+
     resources :users, :grade_configs, :fitbitclients, :metrics
     resources :sessions, only: [:new, :create, :destroy]
     resources :metric_configs do

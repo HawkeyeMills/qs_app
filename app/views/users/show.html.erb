@@ -5,9 +5,14 @@ $(document).ready(function(){
     $('#metricdate').change(function() {
      value = $(this).val()
      alert(value )
-
-link_to "Nonsense search", searches_path(foo: "bar", baz: "quux")
-# => <a href="/searches?foo=bar&baz=quux">Nonsense search</a>
+     $(document).ready(function(){
+     $.post("/users",{metricdate : value}, function(data, status)
+     {
+       if(status == "success")
+       {
+         alert(data);
+       } 
+    });
    return false;
     })
 })
@@ -28,11 +33,10 @@ link_to "Nonsense search", searches_path(foo: "bar", baz: "quux")
     <div class="span8">
     <%= hidden_field_tag :id, @user.id %>
     <%if @user.metrics.any? %>
-      <h3>Daily Metrics For <%= @dateToShow %> (<%= @metricsToShow.count %>)</h3>
+      <h3>Daily Metrics For <%= @dateToShow %> (<%= @metricsToShow.count %> of <%=@metricconfigs.count %>)</h3>
       <%=date_field_tag 'metricdate', value = Date.today %>
      <%= link_to "Get Metrics", fbmetrics_path(:metricdate => value, :id => @user.id), :id => "text_to_be_changed", class: "btn btn-large btn-primary" %> 
        <%= value %>      
-
       <ol class="metricConfigs">
         <% @metricsToShow.each do |metric|%>
         <% mv = metric.value %>

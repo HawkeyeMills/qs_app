@@ -2,13 +2,15 @@ class UsersController < ApplicationController
   before_action :signed_in_user, only: [:index, :edit, :update, :destroy, :action]
   before_action :correct_user,   only: [:edit, :update, :action]
   before_action :admin_user,     only: :destroy
+
+  require 'date_extensions'
   
   def index
     @users = User.paginate(page: params[:page])
   end
 
   def action
-   cookies[:name]=params[:selected_value]
+   #cookies[:name]=params[:selected_value]
    render :text => "success"
   end 
 
@@ -17,7 +19,7 @@ class UsersController < ApplicationController
     if(params.has_key?(:metricdate))
       @dateToShow = params[:metricdate]
     else
-      @dateToShow = Date.today
+      @dateToShow = Date.today_in_zone
     end
     @user = User.find(params[:id])
     @metricconfigs = @user.metric_configs.paginate(page: params[:page])

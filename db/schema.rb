@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140820181516) do
+ActiveRecord::Schema.define(version: 20141007141840) do
 
   create_table "grade_configs", force: true do |t|
     t.integer  "metric_config_id"
@@ -41,6 +41,14 @@ ActiveRecord::Schema.define(version: 20140820181516) do
     t.integer  "metric_config_id"
     t.datetime "metricdate"
     t.decimal  "value",            precision: 10, scale: 2
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "notes", force: true do |t|
+    t.string   "note"
+    t.integer  "user_id"
+    t.datetime "notedate"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

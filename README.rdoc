@@ -1,7 +1,8 @@
 == README
 
 ToDo:
-Add "Notes"
+Clean up Notes
+Figure out why central timezone isn't working
 Add ability to change dates
 Add graders / grade configs
 Figure out why can access all pages after sign out

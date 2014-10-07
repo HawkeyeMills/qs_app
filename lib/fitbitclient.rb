@@ -62,6 +62,8 @@ module Fitbitclient
         val.each do|p|
           #get rid of all the "average" in the hash
           if key == 'heart'
+            Rails.logger.info "-------------------> key = #{key} and val = #{val}"
+            Rails.logger.info "-------------------> p = #{p}"
             @ary_rhr = p.assoc("heartRate")
               @ary_rhr.each do |rhr|
                 @valueToUpsert = rhr
@@ -101,11 +103,11 @@ module Fitbitclient
             Rails.logger.info "key = #{key} and val = #{val}"
             Rails.logger.info "p = #{p}"
   
-            @carbs = val["Carbs"]
-            @fat = val["Fat"]
-            @protein = val["Protein"]
-            @sodium = val["Sodium"]
-            @water = val["Water"]
+            @carbs = val["carbs"]
+            @fat = val["fat"]
+            @protein = val["protein"]
+            @sodium = val["sodium"]
+            @water = val["water"]
             
             @metricConfigIDsCarb = MetricConfig.find_by metricname: 'Carbs'
             @metricConfigIDCarb = @metricConfigIDsCarb.id
