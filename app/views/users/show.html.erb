@@ -1,3 +1,20 @@
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js" type="text/javascript"></script>
+
+<script>
+$(document).ready(function(){
+    $('#metricdate').change(function() {
+     value = $(this).val()
+     alert(value )
+
+link_to "Nonsense search", searches_path(foo: "bar", baz: "quux")
+# => <a href="/searches?foo=bar&baz=quux">Nonsense search</a>
+   return false;
+    })
+})
+
+</script>
+
+
 <% provide(:title, @user.name) %>
 <div class="row">
   <aside class="span4">
@@ -11,12 +28,21 @@
     <div class="span8">
     <%= hidden_field_tag :id, @user.id %>
     <%if @user.metrics.any? %>
-      <h3>Daily Metrics For <%= @dateToShow %>(<%= @metricsToShow.count %>)</h3>
+      <h3>Daily Metrics For <%= @dateToShow %> (<%= @metricsToShow.count %>)</h3>
+      <%=date_field_tag 'metricdate', value = Date.today %>
+     <%= link_to "Get Metrics", fbmetrics_path(:metricdate => value, :id => @user.id), :id => "text_to_be_changed", class: "btn btn-large btn-primary" %> 
+       <%= value %>      
+
       <ol class="metricConfigs">
         <% @metricsToShow.each do |metric|%>
+        <% mv = metric.value %>
           <% if @metricconfigs.find(metric.metric_config_id).profiledisplay == true %>
             <%= @metricconfigs.find(metric.metric_config_id).metricname%>
-            <%= metric.value %>
+            <% if @metricconfigs.find(metric.metric_config_id).metrictype == "minutes" %>
+            <%= (mv/60).round(2) %>
+            <% else %>
+            <%= mv %>
+            <% end %>
               <% if @metricconfigs.find(metric.metric_config_id).updateable == true %>
                 <%= link_to 'Show', metric %>
                 <%= link_to 'Edit', edit_metric_path(metric) %>

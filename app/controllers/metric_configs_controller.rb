@@ -6,31 +6,22 @@ class MetricConfigsController < ApplicationController
 
   # GET /metric_configs
   def index
-    @metric_configs = MetricConfig.paginate(page: params[:page])
-    #@dateToShow = '2014-09-15 00:00:00'
-    #render :text => current_user.name and return false
     @metricconfigs = current_user.metric_configs.paginate(page: params[:page])
-    #@metrics = @user.metrics.paginate(page: params[:page])
-    @metrics = current_user.metrics.where(metricdate: @dateToShow)
-    #@metricsToShow = @metrics.where(metricdate: @dateToShow)
-    #User.upsert_metric_fbdata
-    #@metric_configs.find(updateable)
   end
 
   # GET /metric_configs/1
   def show
-    @metricconfigs = MetricConfig.find(params[:id])
-    @metrics = @metricconfigs.metrics.paginate(page: params[:page])
+    @metric_config = MetricConfig.find(params[:id])
   end
 
   # GET /metric_configs/new
   def new
     @metricconfigs = MetricConfig.new
-    @metric_configs = current_user.metric_configs
   end
 
   # GET /metric_configs/1/edit
   def edit
+    @metricconfigs = current_user.metric_configs
     @metric_config = MetricConfig.find(params[:id])
   end
 
@@ -79,7 +70,6 @@ class MetricConfigsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def metric_config_params
-      #params.require(:user).permit(:value, :orderby, :profiledisplay, :updateable)
       params.require(:metric_config).permit(:user_id, :fbvalue, :metricname, :orderby, :profiledisplay, :metrictype, :updateable, :metricdate, :metric_config_id)
     end
 
@@ -104,10 +94,10 @@ class MetricConfigsController < ApplicationController
       end
     end
 
-    def correct_user
-      @user = User.find(params[:id])
-      redirect_to(root_url) unless current_user?(@user)
-    end
+    #def correct_user
+    #  @user = User.find(params[:id])
+    #  redirect_to(root_url) unless current_user?(@user)
+    #end
 
     def admin_user
       redirect_to(root_url) unless current_user.admin?

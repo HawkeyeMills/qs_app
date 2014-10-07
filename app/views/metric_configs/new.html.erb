@@ -1,37 +1,5 @@
-<% provide(:title, 'New Metric Config') %>
-<h1>New metric_config</h1>
+<h1>New Metric Config</h1>
 
-<div class="row">
-  <div class="span6 offset3">
-    <%= form_for(@metricconfigs) do |f| %>
-      <%= render 'shared/error_messages', object: @metricconfigs %>
-		  <div class="field">
-		    <%= f.label :metricname %>
-		    <%= f.text_field :metricname %>
-		  </div>
-		  <div class="field">
-		    <%= f.label :orderby %>
-		    <%= f.number_field :orderby %>
-		  </div>
-		  <div class="field">
-		    <%= f.label :metrictype %>
-		    <%= f.text_field :metrictype %>
-		  </div>
-		  <div class="field">
-		    <%= f.label :fbvalue %>
-		    <%= f.text_field :fbvalue %>
-		  </div>
-		  <div class="field">
-		    <%= f.label :profiledisplay %>
-		    <%= f.check_box :profiledisplay %>
-		  </div>
-		  <div class="field">
-		    <%= f.label :updateable %>
-		    <%= f.check_box :updateable %>
-		  </div><br>
-		  <div class="actions">
-		    <%= f.submit %>
-		  </div>
-		<% end %> 
-	</div>
-</div>
+<%= render 'form' %>
+
+<%= link_to 'Back', metric_configs_path %>

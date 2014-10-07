@@ -1,15 +1,4 @@
-<%= form_for(@grade_config) do |f| %>
-  <% if @grade_config.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@grade_config.errors.count, "error") %> prohibited this grade_config from being saved:</h2>
-
-      <ul>
-      <% @grade_config.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render 'shared/error_messages', object: @grade_config %>
 
   <div class="field">
     <%= f.label :metric_config_id %><br>

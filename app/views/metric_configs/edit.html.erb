@@ -1,6 +1,43 @@
-<h1>Editing metric_config</h1>
+<h1>Update your Metric Config</h1>
 
-<%= render 'form' %>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@metric_config) do |f| %>
+      <%= render 'shared/error_messages', object: @metric_config %>
+		  <div class="field">
+		    <%= f.label :user_id %>
+		    <%= f.number_field :user_id %>
+		  </div>
+		  <div class="field">
+		    <%= f.label :metricname %>
+		    <%= f.text_field :metricname %>
+		  </div>
+		  <div class="field">
+		    <%= f.label :orderby %>
+		    <%= f.number_field :orderby %>
+		  </div>
+		  <div class="field">
+		    <%= f.label :fbvalue %>
+		    <%= f.text_field :fbvalue %>
+		  </div>
+		  <div class="field">
+		    <%= f.label :profiledisplay %>
+		    <%= f.check_box :profiledisplay %>
+		  </div>
+		  <div class="field">
+		    <%= f.label :metrictype %>
+		    <%= f.text_field :metrictype %>
+		  </div>
+		  <div class="field">
+		    <%= f.label :updateable %>
+		    <%= f.check_box :updateable %>
+		  </div><br>
+		  <div class="actions">
+		    <%= f.submit %>
+		  </div>
+		<% end %>
+  </div>  
+</div>
 
-<%= link_to 'Show', @metric_config %> |
+<%= link_to 'Show', @metricconfig %> |
 <%= link_to 'Back', metric_configs_path %>

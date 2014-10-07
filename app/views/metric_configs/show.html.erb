@@ -1,17 +1,11 @@
-<%# provide(:title, @user.name) %>
-  <div class="col-md-8">
-    <% if @metricconfigs.metrics.any? %>
-      <h3>Metrics (<%= @metricconfigs.metrics.count %>)</h3>
-      <%= @metricconfigs.metricname %>
-      <ol class="metricConfigs">
-        <% @metrics.each do |m|%>
-          <%= m.metricdate %> &nbsp
-          <%= m.metric_config_id %> &nbsp
-          <%= m.value %> <BR>
-        <% end %> 
-      </ol>
-      <%= will_paginate @metrics %>
-    <% end %>
-      <%= link_to 'New Metric', new_metric_path %>
-  </div>
+<h1>Metric Config</h1>
 
+    <%= @metric_config.metricname %><BR>
+    <%= @metric_config.orderby %><BR>
+    <%= @metric_config.fbvalue %><BR>
+    <%= @metric_config.profiledisplay %><BR>
+    <%= @metric_config.metrictype %><BR>
+    <%= @metric_config.updateable %>
+
+<%= link_to 'New', new_metric_config_path %> |
+<%= link_to 'Back', metric_configs_path %>

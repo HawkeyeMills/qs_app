@@ -1,15 +1,5 @@
-<%= form_for(@metric_configs) do |f| %>
-  <% if @metric_configs.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@metric_configs.errors.count, "error") %> prohibited this metric_config from being saved:</h2>
-
-      <ul>
-      <% @metric_configs.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_for(@metricconfigs) do |f| %>
+  <%= render 'shared/error_messages', object: @metricconfigs %>
 
   <div class="field">
     <%= f.label :user_id %>
@@ -33,7 +23,7 @@
   </div>
   <div class="field">
     <%= f.label :metrictype %>
-    <%= f.check_box :metrictype %>
+    <%= f.text_field :metrictype %>
   </div>
   <div class="field">
     <%= f.label :updateable %>

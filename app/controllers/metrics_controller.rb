@@ -36,7 +36,6 @@ class MetricsController < ApplicationController
     @user = current_user
     @metric = Metric.new(metric_params)
     if @metric.save
-      #redirect_to @metric, notice: 'Metric was successfully created.'
       redirect_to @user, notice: 'Metric was successfully created.'
     else
       @metricconfigs = current_user.metric_configs.where(updateable: '1')
