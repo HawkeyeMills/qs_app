@@ -6,7 +6,8 @@ class MetricConfigsController < ApplicationController
 
   # GET /metric_configs
   def index
-    @metricconfigs = current_user.metric_configs.paginate(page: params[:page])
+    #@metricconfigs = current_user.metric_configs.paginate(page: params[:page])
+    @metricconfigs = current_user.metric_configs
   end
 
   # GET /metric_configs/1

@@ -19,12 +19,13 @@ class UsersController < ApplicationController
     if(params.has_key?(:metricdate))
       @dateToShow = params[:metricdate]
     else
-      @dateToShow = Date.today_in_zone
+      #@dateToShow = Date.today_in_zone
+      @dateToShow = Date.today
     end
     @user = User.find(params[:id])
-    @metricconfigs = @user.metric_configs.paginate(page: params[:page])
-    @metrics = @user.metrics
-    @metricsToShow = @metrics.where(metricdate: @dateToShow)
+    #@metricconfigs = @user.metric_configs.paginate(page: params[:page])
+    @metricconfigs = @user.metric_configs
+    @metricsToShow = @user.metrics.where(metricdate: @dateToShow)
     if(params.has_key?(:updateMetrics))
       refresh_metrics
     end
@@ -99,7 +100,8 @@ class UsersController < ApplicationController
     @fbdata.upsert_blood_pressure_data(@startDate)
     @fbdata.upsert_food_data(@startDate)
 
-    generate_empty_daily_metrics
+    #generate_empty_daily_metrics
+    
     #MORE EXAMPLES
     #@fbdata = Fitbitclient::Fitbitclient.new
     #@activities = @fbdata.getActivityData

@@ -10,7 +10,7 @@ QsApp::Application.routes.draw do
 
   root  'users#index'
   match '/signup',    to: 'users#new',                via: 'get'
-  match '/fbmetrics', to: 'users#show',           via: 'get'
+  match '/fbmetrics', to: 'users#show',               via: 'get'
   match '/signin',    to: 'sessions#new',             via: 'get'
   match '/signout',   to: 'sessions#destroy',         via: 'delete'
   match '/help',      to: 'static_pages#help',        via: 'get'

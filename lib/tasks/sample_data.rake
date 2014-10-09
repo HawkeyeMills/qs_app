@@ -22,17 +22,17 @@ def make_metricconfigs
     users.each { |user| user.metric_configs.create!(metricname: "Calories BMR", fbvalue: 'activities-caloriesBMR', orderby: 51, profiledisplay: 1) }
     users.each { |user| user.metric_configs.create!(metricname: "Total Calories Burnt", fbvalue: 'activities-calories', orderby: 52, profiledisplay: 1) }
     users.each { |user| user.metric_configs.create!(metricname: "Calories In", fbvalue: 'foods-log-caloriesIn', orderby: 3, profiledisplay: 1) }
-    users.each { |user| user.metric_configs.create!(metricname: "Minutes Sedentary", fbvalue: 'activities-log-minutesSedentary', metrictype: "minutes", profiledisplay: 0) }
-    users.each { |user| user.metric_configs.create!(metricname: "Minutes Lightly Active", fbvalue: 'activities-log-minutesLightlyActive', metrictype: "minutes", profiledisplay: 0) }
-    users.each { |user| user.metric_configs.create!(metricname: "Minutes Fairly Active", fbvalue: 'activities-log-minutesFairlyActive', metrictype: "minutes", profiledisplay: 0) }
-    users.each { |user| user.metric_configs.create!(metricname: "Minutes Very Active", fbvalue: 'activities-log-minutesVeryActive', metrictype: "minutes", orderby: 4, profiledisplay: 1) }
+    users.each { |user| user.metric_configs.create!(metricname: "Minutes Sedentary", fbvalue: 'activities-log-minutesSedentary', profiledisplay: 0) }
+    users.each { |user| user.metric_configs.create!(metricname: "Minutes Lightly Active", fbvalue: 'activities-log-minutesLightlyActive', profiledisplay: 0) }
+    users.each { |user| user.metric_configs.create!(metricname: "Minutes Fairly Active", fbvalue: 'activities-log-minutesFairlyActive', profiledisplay: 0) }
+    users.each { |user| user.metric_configs.create!(metricname: "Minutes Very Active", fbvalue: 'activities-log-minutesVeryActive', orderby: 4, profiledisplay: 1) }
     users.each { |user| user.metric_configs.create!(metricname: "Time In Bed", fbvalue: 'sleep-timeInBed', metrictype: "minutes", orderby: 40, profiledisplay: 1) }
-    users.each { |user| user.metric_configs.create!(metricname: "Minutes Asleep", fbvalue: 'sleep-minutesAsleep', metrictype: "minutes", orderby: 41, profiledisplay: 1) }
-    users.each { |user| user.metric_configs.create!(metricname: "Minutes Awake", fbvalue: 'sleep-minutesAwake', metrictype: "minutes", orderby: 42, profiledisplay: 1) }
+    users.each { |user| user.metric_configs.create!(metricname: "Time Asleep", fbvalue: 'sleep-minutesAsleep', metrictype: "minutes", orderby: 41, profiledisplay: 1) }
+    users.each { |user| user.metric_configs.create!(metricname: "Time Awake", fbvalue: 'sleep-minutesAwake', metrictype: "minutes", orderby: 42, profiledisplay: 1) }
     users.each { |user| user.metric_configs.create!(metricname: "Awakenings Count", fbvalue: 'sleep-awakeningsCount', orderby: 43, profiledisplay: 1) }
     users.each { |user| user.metric_configs.create!(metricname: "Efficiency", fbvalue: 'sleep-efficiency', orderby: 44, profiledisplay: 1) }
-    users.each { |user| user.metric_configs.create!(metricname: "Minutes To Fall Asleep", fbvalue: 'sleep-minutesToFallAsleep', metrictype: "minutes", orderby: 45, profiledisplay: 1) }
-    users.each { |user| user.metric_configs.create!(metricname: "Minutes After Wakeup", fbvalue: 'sleep-minutesAfterWakeup', metrictype: "minutes", profiledisplay: 0) }
+    users.each { |user| user.metric_configs.create!(metricname: "Minutes To Fall Asleep", fbvalue: 'sleep-minutesToFallAsleep', orderby: 45, profiledisplay: 1) }
+    users.each { |user| user.metric_configs.create!(metricname: "Minutes After Wakeup", fbvalue: 'sleep-minutesAfterWakeup', profiledisplay: 0) }
     users.each { |user| user.metric_configs.create!(metricname: "Weight", fbvalue: "body-weight", orderby: 5) }
     users.each { |user| user.metric_configs.create!(metricname: "BMI", fbvalue: "body-bmi", profiledisplay: 0) }
     users.each { |user| user.metric_configs.create!(metricname: "Body Fat", fbvalue: "body-fat", orderby: 6, profiledisplay: 1) }
