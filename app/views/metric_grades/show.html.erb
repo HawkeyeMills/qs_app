@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Metric:</strong>
+  <%= @metric_grade.metric_id %>
+</p>
+
+<p>
+  <strong>Grade:</strong>
+  <%= @metric_grade.grade_id %>
+</p>
+
+<p>
+  <strong>Points:</strong>
+  <%= @metric_grade.points %>
+</p>
+
+<p>
+  <strong>Percentage:</strong>
+  <%= @metric_grade.percentage %>
+</p>
+
+<%= link_to 'Edit', edit_metric_grade_path(@metric_grade) %> |
+<%= link_to 'Back', metric_grades_path %>

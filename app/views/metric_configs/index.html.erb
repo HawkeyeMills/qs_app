@@ -15,7 +15,7 @@
           <%= link_to 'Destroy', mc, method: :delete, data: { confirm: 'Are you sure?' } %> <BR>
         <% end %>
       </ol>
-      <%= will_paginate @metricconfigs %>
+      <%#= will_paginate @metricconfigs %>
       <%= link_to 'New Metric Config', new_metric_config_path %>
     <% end %>
   </div>

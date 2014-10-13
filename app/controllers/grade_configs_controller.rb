@@ -5,6 +5,7 @@ class GradeConfigsController < ApplicationController
   # GET /grade_configs.json
   def index
     @grade_configs = GradeConfig.all
+    #@grade_configs = current_user.grade_configs
   end
 
   # GET /grade_configs/1
@@ -14,17 +15,23 @@ class GradeConfigsController < ApplicationController
 
   # GET /grade_configs/new
   def new
+    @metric_configs = current_user.metric_configs
+    @grade_calcs = GradeCalc.all
     @grade_config = GradeConfig.new
   end
 
   # GET /grade_configs/1/edit
   def edit
+    @metric_configs = current_user.metric_configs
+    @grade_calcs = GradeCalc.all
+    @grade_config = GradeConfig.find(params[:id])
   end
 
   # POST /grade_configs
   # POST /grade_configs.json
   def create
     @grade_config = GradeConfig.new(grade_config_params)
+    #render :text => grade_config_params and return false
 
     respond_to do |format|
       if @grade_config.save
@@ -69,6 +76,6 @@ class GradeConfigsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def grade_config_params
-      params.require(:grade_config).permit(:metric_config_id, :weight, :percentoftotal, :goal, :calcToUse, :type, :note)
+      params.require(:grade_config).permit(:metric_config_id, :grade_calc_id, :weight, :percentoftotal, :goal, :type, :note)
     end
 end

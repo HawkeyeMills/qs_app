@@ -11,6 +11,8 @@ gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
 gem 'fitgem', '0.10.0'
 gem 'upsert', '2.0.3'
+gem 'whenever', :require => false
+
 
 group :development, :test do
   # Use mysql2 as the database

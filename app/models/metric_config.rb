@@ -1,6 +1,7 @@
 class MetricConfig < ActiveRecord::Base
   belongs_to :user
   has_many :metrics
+  has_many :grade_configs
   
   default_scope -> { order('orderby ASC') }
   #default_scope where(profiledisplay: true).order("orderby ASC")

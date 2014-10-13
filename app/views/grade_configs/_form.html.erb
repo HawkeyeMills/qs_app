@@ -1,34 +1,43 @@
+ <%= form_for(@grade_config) do |f| %>
   <%= render 'shared/error_messages', object: @grade_config %>
 
   <div class="field">
     <%= f.label :metric_config_id %><br>
-    <%= f.number_field :metric_config_id %>
+    <%= f.collection_select(:metric_config_id, @metric_configs, :id, :metricname) %>
   </div>
+  <br>  
   <div class="field">
     <%= f.label :weight %><br>
     <%= f.text_field :weight %>
   </div>
+  <br> 
   <div class="field">
     <%= f.label :percentoftotal %><br>
     <%= f.text_field :percentoftotal %>
   </div>
+  <br> 
   <div class="field">
     <%= f.label :goal %><br>
     <%= f.text_field :goal %>
   </div>
+  <br> 
   <div class="field">
-    <%= f.label :calcToUse %><br>
-    <%= f.text_field :calcToUse %>
+    <%= f.label :grade_calc_id %><br>
+    <%= f.collection_select(:grade_calc_id, @grade_calcs, :id, :gradecalc) %>
   </div>
+  <br> 
   <div class="field">
     <%= f.label :type %><br>
     <%= f.text_field :type %>
   </div>
+  <br> 
   <div class="field">
     <%= f.label :note %><br>
     <%= f.text_area :note %>
   </div>
+  <br> 
   <div class="actions">
     <%= f.submit %>
   </div>
+
 <% end %>

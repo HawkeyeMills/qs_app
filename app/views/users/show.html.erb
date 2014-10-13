@@ -43,22 +43,34 @@ $(document).ready(function(){
       <%#= link_to "Get Metrics", fbmetrics_path(:metricdate => value, :id => @user.id), :id => "text_to_be_changed", class: "btn btn-large btn-primary" %> 
        <%#= metricdate[value] %>      
       <ol class="metricConfigs">
+      <table>
         <% @metricsToShow.each do |metric|%>
         <% mv = metric.value %>
           <% if @metricconfigs.find(metric.metric_config_id).profiledisplay == true %>
+          <tr>
+            <td>
             <%= @metricconfigs.find(metric.metric_config_id).metricname%>
+            </td>
             <% if @metricconfigs.find(metric.metric_config_id).metrictype == "minutes" %>
+            <td>
             <%= (mv/60).round(2) %>
+            </td>
             <% else %>
+            <td>
             <%= mv %>
             <% end %>
+            <%= @metricconfigs.find(metric.metric_config_id).label%>
+            </td>
+            <td>
               <% if @metricconfigs.find(metric.metric_config_id).updateable == true %>
                 <%= link_to 'Show', metric %>
                 <%= link_to 'Edit', edit_metric_path(metric) %>
                 <%= link_to 'Destroy', metric, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </td>
+          </tr>
               <% end %><BR>
             <% end %>
-        <% end %>
+        <% end %>          </table>
       </ol>
       <%#= will_  te @metricconfigs %>
       <BR>

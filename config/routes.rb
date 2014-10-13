@@ -1,5 +1,13 @@
 QsApp::Application.routes.draw do
 
+  resources :metric_grades
+
+  resources :metricgrades
+
+  resources :grades
+
+  resources :grade_calcs
+
   resources :notes
 
     resources :users, :grade_configs, :fitbitclients, :metrics

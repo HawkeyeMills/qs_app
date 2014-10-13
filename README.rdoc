@@ -1,12 +1,12 @@
 == README
 
 ToDo:
+Fix timer
 Figure out how to exclue metric_configs with "profiledisplay = 0" exclude from counts on users/show
 Clean up Notes
-Figure out why central timezone isn't working
 Add ability to change dates
-Add graders / grade configs
 Figure out why can access all pages after sign out
+Write grader
 
 
 Helpers:

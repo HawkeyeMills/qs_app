@@ -4,6 +4,7 @@ class CreateMetricConfigs < ActiveRecord::Migration
       t.integer :user_id
       t.string :metricname
       t.string :fbvalue
+      t.string :label
       t.string :metrictype
       t.integer :orderby
       t.boolean :profiledisplay

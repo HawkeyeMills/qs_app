@@ -11,16 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141007141840) do
+ActiveRecord::Schema.define(version: 20141010201220) do
+
+  create_table "grade_calcs", force: true do |t|
+    t.string   "gradecalc"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "grade_configs", force: true do |t|
     t.integer  "metric_config_id"
+    t.integer  "grade_calc_id"
     t.decimal  "weight",           precision: 4, scale: 2
     t.decimal  "percentoftotal",   precision: 8, scale: 3
     t.string   "goal"
-    t.string   "calcToUse"
     t.string   "type"
     t.text     "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "grades", force: true do |t|
+    t.string   "gradevalue"
+    t.integer  "minrange"
+    t.integer  "maxrange"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -29,10 +43,20 @@ ActiveRecord::Schema.define(version: 20141007141840) do
     t.integer  "user_id"
     t.string   "metricname"
     t.string   "fbvalue"
+    t.string   "label"
     t.string   "metrictype"
     t.integer  "orderby"
     t.boolean  "profiledisplay"
     t.boolean  "updateable"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "metric_grades", force: true do |t|
+    t.integer  "metric_id"
+    t.integer  "grade_id"
+    t.integer  "points"
+    t.integer  "percentage"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

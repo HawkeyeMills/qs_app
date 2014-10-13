@@ -3,9 +3,10 @@
     <%= @metric_config.metricname %><BR>
     <%= @metric_config.orderby %><BR>
     <%= @metric_config.fbvalue %><BR>
+    <%= @metric_config.label %><BR>
     <%= @metric_config.profiledisplay %><BR>
     <%= @metric_config.metrictype %><BR>
-    <%= @metric_config.updateable %>
+    <%= @metric_config.updateable %><BR>
 
 <%= link_to 'New', new_metric_config_path %> |
 <%= link_to 'Back', metric_configs_path %>

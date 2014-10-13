@@ -1,13 +1,13 @@
-<h1>Listing grade_configs</h1>
+<h1>Listing Grade Configurations</h1>
 
 <table>
   <thead>
     <tr>
       <th>Metricconfig</th>
+      <th>Grade Calc </th>
       <th>Weight</th>
       <th>Percentoftotal</th>
       <th>Goal</th>
-      <th>Calctouse</th>
       <th>Type</th>
       <th>Note</th>
       <th></th>
@@ -20,10 +20,10 @@
     <% @grade_configs.each do |grade_config| %>
       <tr>
         <td><%= grade_config.metric_config_id %></td>
+        <td><%= grade_config.grade_calc_id %></td>
         <td><%= grade_config.weight %></td>
         <td><%= grade_config.percentoftotal %></td>
         <td><%= grade_config.goal %></td>
-        <td><%= grade_config.calcToUse %></td>
         <td><%= grade_config.type %></td>
         <td><%= grade_config.note %></td>
         <td><%= link_to 'Show', grade_config %></td>

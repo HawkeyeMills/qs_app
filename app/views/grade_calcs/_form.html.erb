@@ -1,0 +1,21 @@
+<%= form_for(@grade_calc) do |f| %>
+  <% if @grade_calc.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@grade_calc.errors.count, "error") %> prohibited this grade_calc from being saved:</h2>
+
+      <ul>
+      <% @grade_calc.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :gradecalc %><br>
+    <%= f.text_field :gradecalc %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

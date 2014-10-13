@@ -1,0 +1,33 @@
+<h1>Listing metric_grades</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Metric</th>
+      <th>Grade</th>
+      <th>Points</th>
+      <th>Percentage</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @metric_grades.each do |metric_grade| %>
+      <tr>
+        <td><%= metric_grade.metric_id %></td>
+        <td><%= metric_grade.grade_id %></td>
+        <td><%= metric_grade.points %></td>
+        <td><%= metric_grade.percentage %></td>
+        <td><%= link_to 'Show', metric_grade %></td>
+        <td><%= link_to 'Edit', edit_metric_grade_path(metric_grade) %></td>
+        <td><%= link_to 'Destroy', metric_grade, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Metric grade', new_metric_grade_path %>

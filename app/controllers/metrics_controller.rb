@@ -1,9 +1,12 @@
 class MetricsController < ApplicationController
   before_action :set_metric, only: [:show, :edit, :update, :destroy]
 
+
+  require 'date_extensions'
+
   # GET /metrics
   def index    
-    @dateToShow = Date.today
+    @dateToShow = Date.today   
     @metrics = current_user.metrics.where(metricdate: @dateToShow)
     @metricconfigs = current_user.metric_configs
     @metricconfigstocount = current_user.metric_configs.where(profiledisplay: true)
@@ -24,8 +27,6 @@ class MetricsController < ApplicationController
 
   # GET /metrics/1/edit
   def edit
-    @metricconfigs = current_user.metric_configs
-    #render :text => @metricconfigs.count and return false
     @metric = Metric.find(params[:id])
     @metricconfigs = current_user.metric_configs
   end
