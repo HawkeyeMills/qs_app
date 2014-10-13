@@ -44,6 +44,7 @@ class MetricConfigsController < ApplicationController
   def update
     respond_to do |format|
       if @metric_config.update(metric_config_params)
+        #render :text => params and return false
         format.html { redirect_to @metric_config, notice: 'Metric config was successfully updated.' }
         format.json { head :no_content }
       else

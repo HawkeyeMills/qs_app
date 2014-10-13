@@ -221,23 +221,25 @@ aside {
 .metricConfigs table{
   border-collapse: collapse;
   border-spacing: 0;
-  margin:0px;padding:0px;
-}.metricConfigs tr:hover td{
+  margin:0px;padding:0px;}
+.metricConfigs tr:hover td{
   
 }
 .metricConfigs tr:nth-child(odd){ background-color:#e5e5e5; }
-.metricConfigs tr:nth-child(even){ background-color:#ffffff; }.metricConfigs td{
+.metricConfigs tr:nth-child(even){ background-color:#ffffff; }
+.metricConfigs td{
   vertical-align:middle;
-  //border:1px solid #000000;
   border-width:0px 1px 1px 0px;
   text-align:right;
   padding:5px;
-  color:#000000;
-}.metricConfigs tr:last-child td{
+  color:#000000;}
+.metricConfigs tr:last-child td{
   border-width:0px 1px 0px 0px;
-}.metricConfigs tr td:last-child{
+}
+.metricConfigs tr td:last-child{
   border-width:0px 0px 1px 0px;
-}.metricConfigs tr:last-child td:last-child{
+}
+.metricConfigs tr:last-child td:last-child{
   border-width:0px 0px 0px 0px;
 }
 .metricConfigs tr:first-child td:first-child{

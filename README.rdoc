@@ -9,7 +9,7 @@ Figure out why can access all pages after sign out
 Write grader
 
 
-Helpers:
+Helpers:	
 #add gem
 bundle install
 
