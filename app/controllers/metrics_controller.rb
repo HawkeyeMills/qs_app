@@ -33,7 +33,6 @@ class MetricsController < ApplicationController
 
   # POST /metrics
   def create
-    #render :text => params and return false
     @user = current_user
     @metric = Metric.new(metric_params)
     if @metric.save

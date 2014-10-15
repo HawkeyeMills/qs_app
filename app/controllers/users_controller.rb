@@ -25,6 +25,7 @@ class UsersController < ApplicationController
     #@metricconfigs = @user.metric_configs.paginate(page: params[:page])
     @metricconfigs = @user.metric_configs
     @metricsToShow = @user.metrics.where(metricdate: @dateToShow)
+    #@metricsToShow = @user.metrics
     if(params.has_key?(:updateMetrics))
       User.refresh_metrics
     end

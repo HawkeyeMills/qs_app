@@ -1,14 +1,15 @@
 == README
 
 ToDo:
+Figure out why can access all pages after sign out
+Write grader
 Fix timer
 Figure out how to exclue metric_configs with "profiledisplay = 0" exclude from counts on users/show
 Clean up Notes
 Add ability to change dates
-Figure out why can access all pages after sign out
-Write grader
 
 
+	
 Helpers:	
 #add gem
 bundle install
