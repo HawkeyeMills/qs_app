@@ -17,14 +17,18 @@ class UsersController < ApplicationController
   def show
     #Client.find_or_create_by(first_name: 'Andy')
     if(params.has_key?(:metricdate))
+      logger.info ("----------------------------> #{params}")
       @dateToShow = params[:metricdate]
     else
       @dateToShow = Date.today
     end
     @user = User.find(params[:id])
+    logger.info ("----------------------------> found user")
     #@metricconfigs = @user.metric_configs.paginate(page: params[:page])
     @metricconfigs = @user.metric_configs
+    logger.info ("----------------------------> found metricconfigs")
     @metricsToShow = @user.metrics.where(metricdate: @dateToShow)
+    logger.info ("----------------------------> found metricstoShow")
     #@metricsToShow = @user.metrics
     if(params.has_key?(:updateMetrics))
       User.refresh_metrics
@@ -66,14 +70,12 @@ class UsersController < ApplicationController
 
   def generate_empty_daily_metrics
     @metricsToGen = @metrics.where(updateable: true)
-    logger.info ("----------------------------> #{@metricsToGen}")
   end
 
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, 
-                                    :password_confirmation)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :metricdate)
     end
 
     # Before filters

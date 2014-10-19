@@ -1,23 +1,25 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js" type="text/javascript"></script>
 
 <script>
-$(document).ready(function(){
-    $('metricdate').change(function() {
-     value = $(this).val()
-     alert(value)
-     $(document).ready(function(){
-     $.post("/users",{metricdate : value}, function(data, status)
-     {
-       if(status == "success")
-       {
-         alert(data);
-       } 
-    });
-   return false;
-    })
-})
-</script>
 
+//$.ajaxSetup({
+//  headers: {
+//    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+// }
+//});
+
+$(document).ready(function(){
+    $('#metricdate').change(function() {
+        metricdate.val($(this).val());
+        //var datevalue = $(this).val()
+        //$.get( '/fbmetrics', {id:"1", metricdate:datevalue} );
+        //window.location.reload();
+      });
+});
+
+//$(document).on('page:update', ready);
+
+</script>
 
 <% provide(:title, @user.name) %>
 <div class="row">
@@ -30,15 +32,15 @@ $(document).ready(function(){
     </section>
   </aside>
     <div class="span8">
+  <%=form_tag(fbmetrics_path(:id => @user.id), method: :get) do%>
+    <%= csrf_meta_tag %>
     <%= hidden_field_tag :id, @user.id %>
     <%if @user.metrics.any? %>
-      <h3>Daily Metrics For <%= @dateToShow %> <!--(<%#= @metricsToShow.count %> of <%#=@metricconfigs.count %>)--></h3>
-     
-     <%# form_tag(action: "show", method: "get") %>
-     <%#= date_field(:metricdate, :value) %>
-      <%=date_field_tag 'metricdate', value = Date.today %>
-      <%= link_to "Get Metrics", fbmetrics_path(:metricdate => value, :id => @user.id), :id => "text_to_be_changed", class: "btn btn-small btn-primary" %> 
-       <%#= metricdate[value] %>      
+      <h3>Daily Metrics For: <%=@dateToShow%>
+      <%=date_field_tag 'metricdate', fbmetrics_path, :onchange => "this.form.submit();"%> 
+
+      <!--(<%#= @metricsToShow.count %> of <%#=@metricconfigs.count %>)--></h3>
+     <%#= date_field(:metricdate, :value) %>    
       <ol class="metricConfigs">
       <table>
         <% @metricsToShow.each do |metric|%>
@@ -70,6 +72,8 @@ $(document).ready(function(){
         </table>
       </ol>
       <BR>
+    <% end %>
+    <!-- This is the end for the form_tag-->
     <% end %>
     <%= link_to 'New Metric', new_metric_path, class: "btn btn-large btn-primary" %>
     <%= link_to "Update FitBit Metrics", fbmetrics_path(:updateMetrics => 'Y', :id => @user.id), class: "btn btn-large btn-primary" %> 
