@@ -1,0 +1,33 @@
+<%= form_for(@daily_grade) do |f| %>
+  <% if @daily_grade.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@daily_grade.errors.count, "error") %> prohibited this daily_grade from being saved:</h2>
+
+      <ul>
+      <% @daily_grade.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :grade_id %><br>
+    <%= f.text_field :grade_id %>
+  </div>
+  <div class="field">
+    <%= f.label :points %><br>
+    <%= f.text_field :points %>
+  </div>
+  <div class="field">
+    <%= f.label :possible %><br>
+    <%= f.text_field :possible %>
+  </div>
+  <div class="field">
+    <%= f.label :gradeDate %><br>
+    <%= f.date_select :gradeDate %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

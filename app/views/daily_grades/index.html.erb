@@ -1,0 +1,33 @@
+<h1>Listing daily_grades</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Grade</th>
+      <th>Points</th>
+      <th>Possible</th>
+      <th>Gradedate</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @daily_grades.each do |daily_grade| %>
+      <tr>
+        <td><%= daily_grade.grade_id %></td>
+        <td><%= daily_grade.points %></td>
+        <td><%= daily_grade.possible %></td>
+        <td><%= daily_grade.gradeDate %></td>
+        <td><%= link_to 'Show', daily_grade %></td>
+        <td><%= link_to 'Edit', edit_daily_grade_path(daily_grade) %></td>
+        <td><%= link_to 'Destroy', daily_grade, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Daily grade', new_daily_grade_path %>

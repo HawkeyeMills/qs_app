@@ -2,9 +2,9 @@ module Fitbitclient
   class Fitbitclient
 
   def upsert_metric_data(startDate, endDate, metricKey)
-    Rails.logger.info("-----> startDate = #{startDate}")
-    Rails.logger.info("-----> endDate = #{endDate}")
-    Rails.logger.info("-----> metricKey = #{metricKey}")
+    #Rails.logger.info("-----> startDate = #{startDate}")
+    #Rails.logger.info("-----> endDate = #{endDate}")
+    #Rails.logger.info("-----> metricKey = #{metricKey}")
     # Load the existing yml config
     config = begin
       Fitgem::Client.symbolize_keys(YAML.load(File.open("config/.fitgem.yml")))
@@ -30,12 +30,61 @@ module Fitbitclient
         val.each do|p|
           @dateToUpsert = p['dateTime']
           @valueToUpsert = p['value']
-          Rails.logger.info "-------key = #{key}"
+          #Rails.logger.info "-------key = #{key}"
           @metricConfigIDs = MetricConfig.find_by fbvalue: key
           @metricConfigID = @metricConfigIDs.id
           upsert.row({:metricdate => @dateToUpsert, :metric_config_id => @metricConfigID}, :value => @valueToUpsert, :created_at => Time.now, :updated_at => Time.now)
         end
       end
+    end
+  end
+
+   def upsert_activity_data(startDate, metricKey)
+    #Rails.logger.info("-----> startDate = #{startDate}")
+    #Rails.logger.info("-----> metricKey = #{metricKey}")
+    # Load the existing yml config
+    config = begin
+      Fitgem::Client.symbolize_keys(YAML.load(File.open("config/.fitgem.yml")))
+    rescue ArgumentError => e
+      puts "Could not parse YAML: #{e.message}"
+      exit
+    end
+    duration = 0
+    @client = Fitgem::Client.new(config[:oauth])
+    begin
+      access_token = @client.reconnect(config[:oauth][:token], config[:oauth][:secret])
+      @hashToIterate = @client.activities_on_date startDate
+      @hashToIterate.each do |key, val|
+        if key == "activities"
+          #Rails.logger.info("val = #{val}")
+          val.each do |key2, val2|
+            #Rails.logger.info("key2 = #{key2}")
+            checkName = key2.fetch("name")
+            #Rails.logger.info("checkName = #{checkName}")
+            if checkName.include? "(Endomondo)"
+              duration = key2.fetch("duration")
+              duration = (duration /60) / 1000
+              #Rails.logger.info ("duration = #{duration}")
+            end
+          end
+        end
+      end
+      rescue Exception => e
+        puts "Error: Could not reconnect Fitgem::Client due to invalid keys in .fitgem.yml"
+        exit
+    end
+
+    Upsert.batch(Metric.connection, :metrics) do |upsert|
+      table_name = :metrics
+      #@hashToIterate.each do |key, val|
+      #  val.each do|p|
+          @dateToUpsert = startDate
+          @valueToUpsert = duration
+          @metricConfigIDs = MetricConfig.find_by metricname: "Workout Duration"
+          @metricConfigID = @metricConfigIDs.id
+          upsert.row({:metricdate => @dateToUpsert, :metric_config_id => @metricConfigID}, :value => @valueToUpsert, :created_at => Time.now, :updated_at => Time.now)
+      #  end
+      #end
     end
   end
       
@@ -62,15 +111,15 @@ module Fitbitclient
         val.each do|p|
           #get rid of all the "average" in the hash
           if key == 'heart'
-            Rails.logger.info "-------------------> key = #{key} and val = #{val}"
-            Rails.logger.info "-------------------> p = #{p}"
+            #Rails.logger.info "-------------------> key = #{key} and val = #{val}"
+            #Rails.logger.info "-------------------> p = #{p}"
             @ary_rhr = p.assoc("heartRate")
               @ary_rhr.each do |rhr|
                 @valueToUpsert = rhr
               end
             @metricConfigIDs = MetricConfig.find_by metricname: 'RHR'
             @metricConfigID = @metricConfigIDs.id
-            Rails.logger.info @metricConfigsID
+            #Rails.logger.info @metricConfigsID
             upsert.row({:metricdate => dt_date, :metric_config_id => @metricConfigID}, :value => @valueToUpsert, :created_at => Time.now, :updated_at => Time.now)
           end
         end
@@ -100,8 +149,8 @@ module Fitbitclient
         @hashToIterate.each do |key, val|
         #val.each do|p|
           if key == 'summary'
-            Rails.logger.info "key = #{key} and val = #{val}"
-            Rails.logger.info "p = #{p}"
+            #Rails.logger.info "key = #{key} and val = #{val}"
+            #Rails.logger.info "p = #{p}"
   
             @carbs = val["carbs"]
             @fat = val["fat"]
@@ -159,8 +208,8 @@ module Fitbitclient
     @hashToIterate.each do |key, val|
         val.each do|p|
           if key == 'bp'
-            Rails.logger.info "key = #{key} and val = #{val}"
-            Rails.logger.info "p = #{p}"
+            #Rails.logger.info "key = #{key} and val = #{val}"
+            #Rails.logger.info "p = #{p}"
             @diastolic = p['diastolic']
             @systolic = p['systolic']
 

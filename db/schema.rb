@@ -11,7 +11,67 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141010201220) do
+ActiveRecord::Schema.define(version: 20141024033117) do
+
+  create_table "daily_grades", force: true do |t|
+    t.integer  "grade_id"
+    t.integer  "points"
+    t.integer  "possible"
+    t.date     "gradeDate"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "dailymetricsflat_tmp", primary_key: "dailyMetricsID", force: true do |t|
+    t.date     "metricDate",                                                         null: false
+    t.integer  "steps"
+    t.integer  "distance"
+    t.integer  "activityCalories"
+    t.integer  "caloriesBMR"
+    t.integer  "calories"
+    t.integer  "caloriesIn"
+    t.integer  "minutesSendentary"
+    t.integer  "minutesLightlyActive"
+    t.integer  "minutesFailryActive"
+    t.integer  "minutesVeryActive"
+    t.integer  "timeInBed"
+    t.integer  "minutesAsleep"
+    t.integer  "minutesAwake"
+    t.integer  "awakeningsCount"
+    t.integer  "efficiency"
+    t.decimal  "minutesToFallAsleep",                        precision: 8, scale: 2
+    t.decimal  "minutesAfterWakeup",                         precision: 8, scale: 2
+    t.decimal  "weight",                                     precision: 8, scale: 2
+    t.decimal  "bmi",                                        precision: 8, scale: 2
+    t.decimal  "fat",                                        precision: 8, scale: 2
+    t.integer  "water"
+    t.integer  "carbs"
+    t.integer  "protein"
+    t.integer  "fiber"
+    t.integer  "sodium"
+    t.integer  "systolic"
+    t.integer  "diastolic"
+    t.integer  "rhr"
+    t.time     "duration"
+    t.decimal  "workoutRate",                                precision: 8, scale: 2
+    t.integer  "pushups"
+    t.text     "notes",                   limit: 2147483647
+    t.binary   "dbtcAlcohol",             limit: 1
+    t.binary   "dbtcMotivation",          limit: 1
+    t.binary   "dbtcPicture",             limit: 1
+    t.binary   "dbtcWorkout",             limit: 1
+    t.binary   "dbtcJavahouse",           limit: 1
+    t.binary   "dbtcCaloriesAfterDinner", limit: 1
+    t.binary   "dbtcReserved0",           limit: 1
+    t.binary   "dbtcReserved1",           limit: 1
+    t.binary   "dbtcReserved2",           limit: 1
+    t.binary   "dbtcReserved3",           limit: 1
+    t.datetime "createDate"
+    t.datetime "lastUpdateDate"
+  end
+
+  add_index "dailymetricsflat_tmp", ["dailyMetricsID"], name: "dailyMetricsID_UNIQUE", unique: true, using: :btree
+  add_index "dailymetricsflat_tmp", ["metricDate"], name: "metricDate_UNIQUE", unique: true, using: :btree
 
   create_table "grade_calcs", force: true do |t|
     t.string   "gradecalc"
@@ -43,7 +103,7 @@ ActiveRecord::Schema.define(version: 20141010201220) do
     t.integer  "user_id"
     t.string   "metricname"
     t.string   "fbvalue"
-    t.string   "label"
+    t.string   "label",          limit: 45
     t.string   "metrictype"
     t.integer  "orderby"
     t.boolean  "profiledisplay"
@@ -63,14 +123,14 @@ ActiveRecord::Schema.define(version: 20141010201220) do
 
   create_table "metrics", force: true do |t|
     t.integer  "metric_config_id"
-    t.datetime "metricdate"
+    t.date     "metricdate"
     t.decimal  "value",            precision: 10, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "notes", force: true do |t|
-    t.string   "note"
+    t.text     "note"
     t.integer  "user_id"
     t.datetime "notedate"
     t.datetime "created_at"

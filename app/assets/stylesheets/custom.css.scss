@@ -248,3 +248,52 @@ aside {
 .metricConfigs tr:first-child td:last-child{
   border-width:0px 0px 1px 1px;
 }
+
+/* sidebar */
+
+aside {
+  section {
+    padding: 10px 0;
+    border-top: 1px solid $grayLighter;
+
+    color: $black;
+ }
+ .gravatar {
+  float: left;
+  margin-right: 10px;
+ }
+ aside {
+  textarea {
+    height: 100px;
+    margin-bottom: 5px;   
+  }
+  }
+}
+
+.stats {
+  overflow: auto;
+  a {
+    float: left;
+    padding: 0 10px;
+    border-left: 1px solid $grayLighter;
+    color: gray;
+    &:first-child {
+      padding-left: 0;
+      border: 0;
+    }
+    &:hover {
+      text-decoration: none;
+      color: $blue;
+    }
+  }
+  strong {
+    display: block;
+  }
+  h1 {
+  font-family: UnifrakturMaguntia;
+  font-size: 32px;
+  font-size: 3.2rem;
+  line-height: 1em;
+  color: $red
+}
+}

@@ -1,0 +1,18 @@
+<% @user ||= current_user %>
+
+<div class="stats">
+<%= hidden_field_tag :id, @user.id %>
+  <!--<a href="<%#= following_user_path(@user) %>">-->
+    <strong id="following" class="stat">
+      <%#= @user.followed_users.count %>
+      <h1> <%= @grade %>
+      </h1>
+    </strong>
+  </a>
+  <a href="<%#= followers_user_path(@user) %>">
+    <strong id="followers" class="stat">
+      <%#= @user.followers.count %>
+    </strong>
+  </a>
+  <%= link_to 'Calculate Grades', calcgrades_path(:id => @user.id, :calcgrades => 'Y'), class: "btn btn-small btn-primary" %>
+</div>

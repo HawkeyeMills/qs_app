@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Grade:</strong>
+  <%= @daily_grade.grade_id %>
+</p>
+
+<p>
+  <strong>Points:</strong>
+  <%= @daily_grade.points %>
+</p>
+
+<p>
+  <strong>Possible:</strong>
+  <%= @daily_grade.possible %>
+</p>
+
+<p>
+  <strong>Gradedate:</strong>
+  <%= @daily_grade.gradeDate %>
+</p>
+
+<%= link_to 'Edit', edit_daily_grade_path(@daily_grade) %> |
+<%= link_to 'Back', daily_grades_path %>

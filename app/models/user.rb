@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   has_many :metric_configs, dependent: :destroy
   has_many :metrics, through: :metric_configs
   has_many :notes, dependent: :destroy
+  has_many :grade_configs, through: :metric_configs
   
   before_save { self.email = email.downcase }
   before_create :create_remember_token
@@ -32,6 +33,7 @@ class User < ActiveRecord::Base
     @fbdata.upsert_metric_data(@startDate, @endDate, "/activities/log/activityCalories")
     @fbdata.upsert_metric_data(@startDate, @endDate, "/activities/caloriesBMR")
     @fbdata.upsert_metric_data(@startDate, @endDate, "/activities/calories")
+    @fbdata.upsert_activity_data(@startDate, "/duration")
     @fbdata.upsert_metric_data(@startDate, @endDate, "/foods/log/caloriesIn")
     @fbdata.upsert_metric_data(@startDate, @endDate, "/foods/log/water")
     @fbdata.upsert_metric_data(@startDate, @endDate, "/activities/log/minutesSedentary")

@@ -30,6 +30,9 @@ $(document).ready(function(){
         <%= @user.name %>
       </h1>
     </section>
+    <section>
+      <%= render 'shared/grades' %>
+    </section>
   </aside>
     <div class="span8">
   <%=form_tag(fbmetrics_path(:id => @user.id), method: :get) do%>
@@ -37,7 +40,7 @@ $(document).ready(function(){
     <%= hidden_field_tag :id, @user.id %>
     <%if @user.metrics.any? %>
       <h3>Daily Metrics For: <%=@dateToShow%>
-      <%=date_field_tag 'metricdate', fbmetrics_path, :onchange => "this.form.submit();"%> 
+      <%=date_field_tag 'metricdate', @dateToShow, :onchange => "this.form.submit();"%> 
 
       <!--(<%#= @metricsToShow.count %> of <%#=@metricconfigs.count %>)--></h3>
      <%#= date_field(:metricdate, :value) %>    

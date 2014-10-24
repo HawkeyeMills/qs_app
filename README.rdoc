@@ -1,11 +1,12 @@
 == README
 
 ToDo:
+Add all metrics and editable on show page
 Figure out why can access all pages after sign out
-Write grader
 Fix timer
 Figure out how to exclue metric_configs with "profiledisplay = 0" exclude from counts on users/show
 Clean up Notes
+Move user heavy stuff to metrics
 	
 Helpers:	
 #add gem

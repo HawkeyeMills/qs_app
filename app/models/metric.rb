@@ -34,7 +34,7 @@ class Metric < ActiveRecord::Base
         token = request_token.token
         secret = request_token.secret
        
-        puts "Go to http://www.fitbit.com/oauth/authorize?oauth_token=#{token} and then enter the verifier code below"
+        puts "Go to https://www.fitbit.com/oauth/authorize?oauth_token=#{token} and then enter the verifier code below"
         verifier = gets.chomp
        
         begin
