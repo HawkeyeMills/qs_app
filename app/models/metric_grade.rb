@@ -26,7 +26,7 @@ class MetricGrade < ActiveRecord::Base
 			mg_points = gc_weight
 			logger.info("2 POINTS = #{mg_points}")
 		elsif m_value < gc_goal.to_i
-			mg_points = (m_value.to_f/gc_goal.to_f)*gc_weight.to_f
+			mg_points = (m_value.to_f/gc_goal.to_f)
 			logger.info("3 POINTS = #{m_value.to_f}")
 			logger.info("3 POINTS = #{gc_goal.to_f}")
 			logger.info("3 POINTS = #{gc_weight.to_f}")

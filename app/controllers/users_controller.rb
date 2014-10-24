@@ -46,7 +46,10 @@ class UsersController < ApplicationController
             grade_config_id.each do |gcid|
               calc = @gradecalcs.find(gcid).gradecalc
 
-              #logger.info (" ---->Calc for #{objMC} =  #{calc}" )
+              logger.info (" -------------------------->Calc for #{objMC} =  #{calc}" )
+              logger.info (" -------------------------->metric.metric_config_id =  #{metric.metric_config_id}" )
+              logger.info (" -------------------------->mid =  #{mid}" )
+              logger.info (" -------------------------->gcid =  #{gcid}" )
 
               if calc == 'standard'
                 MetricGrade.calcStandard(metric.metric_config_id, mid, gcid, @metricsToShow)
