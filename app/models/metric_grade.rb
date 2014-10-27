@@ -4,6 +4,7 @@ class MetricGrade < ActiveRecord::Base
 
 	def MetricGrade.calcStandard(metricConfigID, metricId, gcid, metrics)
 		logger.info (" calcStandard!!!!" )
+		gradeval = nil
 		@grade_configs = GradeConfig.all
 		# get grade_config.goal based on metricConfigID
 		gc_row = @grade_configs.find_by metric_config_id: metricConfigID
@@ -44,19 +45,19 @@ class MetricGrade < ActiveRecord::Base
 		grades = Grade.all
 		grades.each do |grade|
 			grademin = grade.minrange
-			logger.info("grademin = #{grademin}")
+			#logger.info("grademin = #{grademin}")
 			grademax = grade.maxrange
-			logger.info("grademax = #{grademax}")
+			#logger.info("grademax = #{grademax}")
 			if mg_percentage.to_f <= grademax.to_f and mg_percentage.to_f > grademin.to_f
 				gradeval = grade.gradevalue
-				logger.info("GRADE = #{gradeval}")
 				g_gradeid = grade.id
 			elsif mg_percentage.to_f == 0
 				gradeval = "F"
 				g_gradeid = grade.gradevalue == "F"
 			end
 		end
-
+		
+		logger.info("GRADE standardcalc = #{gradeval} and gradeid = #{g_gradeid}")
 		# insert or update gradeId, metricId, points, percentage into metricgrades
     	connection = MetricGrade.connection
       	table_name = :metric_grades
@@ -106,6 +107,7 @@ class MetricGrade < ActiveRecord::Base
 		logger.info("mg_percentage = #{mg_percentage}")
 
 		g_gradeid = nil
+		gradeval = nil
 
 		# get grade.grade_id
 		grades = Grade.all
@@ -123,7 +125,8 @@ class MetricGrade < ActiveRecord::Base
 				g_gradeid = grade.id
 			end
 		end
-
+		
+		logger.info("GRADE weight calc = #{gradeval} and gradeid = #{g_gradeid}")
 		# insert or update gradeId, metricId, points, percentage into metricgrades
     	connection = MetricGrade.connection
       	table_name = :metric_grades
@@ -171,6 +174,7 @@ class MetricGrade < ActiveRecord::Base
 		logger.info("mg_percentage = #{mg_percentage}")
 
 		g_gradeid = nil
+		gradeval = nil
 
 		# get grade.grade_id
 		grades = Grade.all
@@ -189,6 +193,7 @@ class MetricGrade < ActiveRecord::Base
 			end
 		end
 
+		logger.info("GRADE calc declining = #{gradeval} and gradeid = #{g_gradeid}")
 		# insert or update gradeId, metricId, points, percentage into metricgrades
     	connection = MetricGrade.connection
       	table_name = :metric_grades
