@@ -60,8 +60,11 @@ class MetricGrade < ActiveRecord::Base
 		logger.info("GRADE standardcalc = #{gradeval} and gradeid = #{g_gradeid}")
 		# insert or update gradeId, metricId, points, percentage into metricgrades
     	connection = MetricGrade.connection
+    	logger.info("got here")
       	table_name = :metric_grades
+      	logger.info("got here 2")
       	upsert = Upsert.new(connection, table_name)
+      	logger.info("got here 3")
 		upsert.row({:metric_id => metricId}, :grade_id => g_gradeid, :points => mg_points, :percentage => mg_percentage, :created_at => Time.now, :updated_at => Time.now)
 	end
 
