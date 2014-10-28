@@ -52,8 +52,10 @@ class MetricGrade < ActiveRecord::Base
 				st_gradeval = st_grade.gradevalue
 				st_g_gradeid = st_grade.id
 			elsif st_mg_percentage.to_f == 0
-				st_gradeval = "F"
-				st_g_gradeid = st_grade.gradevalue == "F"
+				st_gradevalrow = st_grades.find_by gradevalue: "F"
+				st_gradeval = st_gradevalrow.gradevalue
+				st_g_gradeid = st_gradevalrow.id
+				logger.info("st_g_gradeid = #{st_g_gradeid}")
 			end
 		end
 		
