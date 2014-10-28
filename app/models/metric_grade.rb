@@ -4,7 +4,7 @@ class MetricGrade < ActiveRecord::Base
 
 	def MetricGrade.calcStandard(metricConfigID, st_metricId, gcid, metrics)
 		logger.info (" calcStandard!!!!" )
-		st_gradeval = nil
+		st_gradeval = 0
 		@grade_configs = GradeConfig.all
 		# get grade_config.goal based on metricConfigID
 		st_gc_row = @grade_configs.find_by metric_config_id: metricConfigID
@@ -39,7 +39,7 @@ class MetricGrade < ActiveRecord::Base
 		st_mg_percentage = st_mg_percentvalue * 100
 		logger.info("st_mg_percentage = #{st_mg_percentage}")
 
-		st_g_gradeid = nil
+		st_g_gradeid = 0
 
 		# get st_grade.grade_id
 		st_grades = Grade.all
@@ -100,7 +100,7 @@ class MetricGrade < ActiveRecord::Base
 			weight_mg_points = gc_weight
 			logger.info("2 POINTS = #{weight_mg_points}")
 		else
-			weight_mg_points = 0
+			weight_mg_points
 			logger.info("NEVER HERE = #{m_value.to_f}")
 		end
 
@@ -109,8 +109,8 @@ class MetricGrade < ActiveRecord::Base
 		weight_mg_percentage = mg_percentvalue * 100
 		logger.info("weight_mg_percentage = #{weight_mg_percentage}")
 
-		weight_g_gradeid = nil
-		gradeval = nil
+		weight_g_gradeid = 0
+		gradeval = 0
 
 		# get grade.grade_id
 		grades = Grade.all
@@ -176,8 +176,8 @@ class MetricGrade < ActiveRecord::Base
 		mg_percentage = mg_percentvalue * 100
 		logger.info("mg_percentage = #{mg_percentage}")
 
-		g_gradeid = nil
-		gradeval = nil
+		g_gradeid = 0
+		gradeval = 0
 
 		# get grade.grade_id
 		grades = Grade.all
