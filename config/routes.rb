@@ -1,21 +1,15 @@
 QsApp::Application.routes.draw do
 
   resources :daily_grades
-
   resources :metric_grades
-
   resources :metricgrades
-
   resources :grades
-
   resources :grade_calcs
-
   resources :notes
-
-    resources :users, :grade_configs, :fitbitclients, :metrics
-    resources :sessions, only: [:new, :create, :destroy]
-    resources :metric_configs do
-    resources :metrics
+  resources :users, :grade_configs, :fitbitclients, :metrics
+  resources :sessions, only: [:new, :create, :destroy]
+  resources :metric_configs do
+  resources :metrics
   end
 
   root  'users#index'

@@ -14,5 +14,5 @@
       <%#= @user.followers.count %>
     </strong>
   </a>
-  <%= link_to 'Calculate Grades', calcgrades_path(:id => @user.id, :calcgrades => 'Y'), class: "btn btn-small btn-primary" %>
+  <%= link_to 'Calculate Grades', calcgrades_path(:id => @user.id, :calcgrades => 'Y', :metricdate => @dateToShow,), class: "btn btn-small btn-primary" %>
 </div>

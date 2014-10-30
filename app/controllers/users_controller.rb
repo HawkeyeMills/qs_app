@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   end 
 
   def show
+    #Generate metrics for "enterable" fields
     #Client.find_or_create_by(first_name: 'Andy')
     if(params.has_key?(:metricdate))
       @dateToShow = params[:metricdate]
@@ -25,7 +26,7 @@ class UsersController < ApplicationController
     @metricconfigs = @user.metric_configs
     @metricsToShow = @user.metrics.where(metricdate: @dateToShow)
     if(params.has_key?(:updateMetrics))
-      User.refresh_metrics
+      User.refresh_metrics(@dateToShow)
     end
     if(params.has_key?(:calcgrades))
         @gradeconfigs = GradeConfig.all

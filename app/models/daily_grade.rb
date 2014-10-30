@@ -43,9 +43,13 @@ class DailyGrade < ActiveRecord::Base
 		dailygradeid = DailyGrade.where(gradeDate: dateToGrade).pluck(:grade_id)
 		gradevalue = nil		
 		logger.info("dailygradeid = #{dailygradeid}")
-		dailygradeid.each do |id|
-			return gradevalue = Grade.find(id).gradevalue
-			logger.info("------------------------------->gradevalue = #{gradevalue}")
+		if dailygradeid.count > 0
+			dailygradeid.each do |id|
+				return gradevalue = Grade.find(id).gradevalue
+				logger.info("------------------------------->gradevalue = #{gradevalue}")
+			end
+		else
+			return gradevalue = nil
 		end
 	end
 
