@@ -56,9 +56,9 @@ $(document).ready(function(){
             <% if @metricconfigs.find(metric.metric_config_id).metrictype == "minutes" %>
             <td>
             <%= (mv/60).round(2) %>
-            <% elsif @metricconfigs.find(metric.metric_config_id).metrictype == "boolean" %>
-            <td>
-              <%= check_box_tag metric.id, mv, mv %>
+            <%# elsif @metricconfigs.find(metric.metric_config_id).metrictype == "boolean" %>
+            <!--<td>-->
+              <%#= check_box_tag metric.id, mv, mv %>
             <% else %>
             <td>
               <%= mv %>

@@ -2,7 +2,6 @@
 
 ToDo:
 Fix Destroy Metrics link (back to users)
-Run grader after metric download
 Backfill
 Add all metrics and editable on show page
 Figure out why can access all pages after sign out
