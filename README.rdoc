@@ -25,6 +25,9 @@ rake test:prepare
 
 --Checkin and push to Heroku
 
+#if css changes
+bundle exec rake assets:precompile
+
 git add .
 git commit -m "Add user following"
 git checkout master

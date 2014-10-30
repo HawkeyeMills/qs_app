@@ -22,12 +22,15 @@ class MetricGrade < ActiveRecord::Base
 		# do biz logic
 		if st_m_value.to_i == ''
 			st_mg_points = st_mg_points
+			st_mg_percentvalue = 0
 			logger.info("1 POINTS = #{st_mg_points}")
 		elsif st_m_value >= st_gc_goal.to_i
 			st_mg_points = st_gc_weight
+			st_mg_percentvalue = 1
 			logger.info("2 POINTS = #{st_mg_points}")
 		elsif st_m_value < st_gc_goal.to_i
-			st_mg_points = (st_m_value.to_f/st_gc_goal.to_f)
+			st_mg_percentvalue = st_m_value.to_f/st_gc_goal.to_f
+			st_mg_points = st_gc_weight * st_mg_percentvalue	
 			logger.info("3 POINTS = #{st_m_value.to_f}")
 			logger.info("3 POINTS = #{st_gc_goal.to_f}")
 			logger.info("3 POINTS = #{st_gc_weight.to_f}")
@@ -35,7 +38,6 @@ class MetricGrade < ActiveRecord::Base
 		end
 
 		# get metric_grade.percentage
-		st_mg_percentvalue = st_mg_points / st_gc_weight
 		st_mg_percentage = st_mg_percentvalue * 100
 		logger.info("st_mg_percentage = #{st_mg_percentage}")
 
