@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   def User.refresh_metrics(startDate)
     
     #startDate = Date.today
-    endDate = (startDate.to_date - 1)
+    endDate = (startDate.to_date - 30)
 
     @fbdata = Fitbitclient::Fitbitclient.new
     @fbdata.upsert_metric_data(startDate, endDate, "/body/weight")
