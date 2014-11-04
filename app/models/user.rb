@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
     
     #startDate = Date.today
     #endDate = (startDate.to_date - 1)
-    startDate = 2013-03-01
+    startDate = 2013-03-21
     endDate = 2013-06-01
 
     @fbdata = Fitbitclient::Fitbitclient.new
