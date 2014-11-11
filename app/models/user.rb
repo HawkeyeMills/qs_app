@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   def User.refresh_metrics(startDate)
     
     #startDate = Date.today
-    endDate = (startDate.to_date - 30)
+    endDate = (startDate.to_date - 2)
 
     @fbdata = Fitbitclient::Fitbitclient.new
     @fbdata.upsert_metric_data(startDate, endDate, "/body/weight")
@@ -55,7 +55,7 @@ class User < ActiveRecord::Base
     @fbdata.upsert_blood_pressure_data(startDate)
     @fbdata.upsert_food_data(startDate)
 
-    #generate_empty_daily_metrics
+    generate_default_daily_metrics(startDate)
     
     #MORE EXAMPLES
     #@fbdata = Fitbitclient::Fitbitclient.new
@@ -65,6 +65,18 @@ class User < ActiveRecord::Base
     #@user = User.find(params[:id])
     #show
   end 
+
+  def User.generate_default_daily_metrics(dateToGen)
+    logger.info("-----------------------Inside Generate-----------------------")
+    #if metric config contains default value - generate new metric with default value
+    MetricConfig.where("defaultvalue IS NOT NULL").each do |f|
+        metricconfigid = f.id
+        logger.info("metricconfigid = #{metricconfigid}")
+        Metric.find_or_create_by(metric_config_id: metricconfigid, metricdate: dateToGen) do |c|
+        c.value = 0
+      end
+    end
+  end
 
   private
     def create_remember_token

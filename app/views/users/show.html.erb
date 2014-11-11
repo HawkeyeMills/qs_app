@@ -81,7 +81,7 @@ $(document).ready(function(){
     <% end %>
     <!-- This is the end for the form_tag-->
     <% end %>
-    <%= link_to 'New Metric', new_metric_path, class: "btn btn-large btn-primary" %>
+    <%#= link_to 'New Metric', new_metric_path, class: "btn btn-large btn-primary" %>
     <%= link_to "Update FitBit Metrics", fbmetrics_path(:updateMetrics => 'Y', :id => @user.id, :metricdate => @dateToShow), class: "btn btn-large btn-primary" %> 
   </div>
 </div>

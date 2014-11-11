@@ -46,8 +46,11 @@ class MetricsController < ApplicationController
 
   # PATCH/PUT /metrics/1
   def update
+    @user = current_user
     if @metric.update(metric_params)
-      redirect_to @metric, notice: 'Metric was successfully updated.'
+      redirect_to @user, notice: 'Metric was successfully updated.'
+      #change back to this when moving all the metric crap to the metric object(s)
+      #redirect_to @metric, notice: 'Metric was successfully updated.'
     else
       render action: 'edit'
     end

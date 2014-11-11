@@ -106,10 +106,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def generate_empty_daily_metrics
-    @metricsToGen = @metrics.where(updateable: true)
-  end
-
   private
 
     def user_params
