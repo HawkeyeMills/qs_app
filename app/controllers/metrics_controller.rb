@@ -58,8 +58,10 @@ class MetricsController < ApplicationController
 
   # DELETE /metrics/1
   def destroy
+    @user = current_user
     @metric.destroy
-    redirect_to metrics_url, notice: 'Metric was successfully destroyed.'
+    redirect_to @user, notice: 'Metric was successfully updated.'
+    #redirect_to metrics_url, notice: 'Metric was successfully destroyed.'
   end
 
   private
