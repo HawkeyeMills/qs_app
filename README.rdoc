@@ -2,15 +2,17 @@
 
 ToDo:
 Add daily_grade show page
-Fix Destroy Metrics link (back to users)
 Add all metrics and editable on show page
 Figure out why can access all pages after sign out
 Fix timer
 Figure out how to exclue metric_configs with "profiledisplay = 0" exclude from counts on users/show
 Clean up Notes
 Move user heavy stuff to metrics
-Add blood pressure entry to application
 	
+Current Build:
+Fixing metric edit return to keep date
+Build calc all metrics
+
 Helpers:	
 #add gem
 bundle install

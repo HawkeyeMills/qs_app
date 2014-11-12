@@ -4,7 +4,9 @@ class DailyGradesController < ApplicationController
   # GET /daily_grades
   # GET /daily_grades.json
   def index
+    @user = current_user
     @daily_grades = DailyGrade.all
+    @grades = Grade.all
   end
 
   # GET /daily_grades/1
@@ -59,6 +61,12 @@ class DailyGradesController < ApplicationController
       format.html { redirect_to daily_grades_url }
       format.json { head :no_content }
     end
+  end
+
+  # GET /daily_grades/new
+  def recalc
+    @user = User.find(params[:id])
+    DailyGrade.refreshAll()
   end
 
   private

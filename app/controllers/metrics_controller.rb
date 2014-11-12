@@ -28,6 +28,8 @@ class MetricsController < ApplicationController
   # GET /metrics/1/edit
   def edit
     @metric = Metric.find(params[:id])
+    @dateToShow = @metric.metricdate
+    logger.info("XXXXXXXXXXXXXX----------------@dateToShow = #{@dateToShow}")
     @metricconfigs = current_user.metric_configs
   end
 
@@ -48,6 +50,8 @@ class MetricsController < ApplicationController
   def update
     @user = current_user
     if @metric.update(metric_params)
+      @dateToShow = @metric.metricdate
+      logger.info("yyyyyyyyyYYYYYYYYYYYYYYYYYYYYYYYYY----------------@dateToShow = #{@dateToShow}") 
       redirect_to @user, notice: 'Metric was successfully updated.'
       #change back to this when moving all the metric crap to the metric object(s)
       #redirect_to @metric, notice: 'Metric was successfully updated.'

@@ -67,7 +67,6 @@ class User < ActiveRecord::Base
   end 
 
   def User.generate_default_daily_metrics(dateToGen)
-    logger.info("-----------------------Inside Generate-----------------------")
     #if metric config contains default value - generate new metric with default value
     MetricConfig.where("defaultvalue IS NOT NULL").each do |f|
         metricconfigid = f.id

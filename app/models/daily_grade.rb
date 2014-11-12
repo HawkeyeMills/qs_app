@@ -42,15 +42,60 @@ class DailyGrade < ActiveRecord::Base
 	def DailyGrade.getGrade(dateToGrade)
 		dailygradeid = DailyGrade.where(gradeDate: dateToGrade).pluck(:grade_id)
 		gradevalue = nil		
-		logger.info("dailygradeid = #{dailygradeid}")
+		#logger.info("dailygradeid = #{dailygradeid}")
 		if dailygradeid.count > 0
 			dailygradeid.each do |id|
 				return gradevalue = Grade.find(id).gradevalue
-				logger.info("------------------------------->gradevalue = #{gradevalue}")
+				#logger.info("------------------------------->gradevalue = #{gradevalue}")
 			end
 		else
 			return gradevalue = nil
 		end
 	end
+	def DailyGrade.refreshAll
+        @metricsToShow = Metrics.all
+        @gradeconfigs = GradeConfig.all
+        @gradecalcs = GradeCalc.all
+        @metricconfigs = current_user.metric_configs
+        @metricsToShow.each do |metric|
+          mv = metric.value
+          mid = metric.id
+          #logger.info("metric.metric_config_id = #{metric.metric_config_id}")
+          objMC = @metricconfigs.find(metric.metric_config_id).id
+          #logger.info ("objMC ----------------------------> #{metric.metric_config_id}")
+          #gcid = GradeConfig.all.find(metric.metric_config_id)
+          #logger.info ("gcid ----------------------------> #{gcid}")
+          
+          grade_config_id = @gradeconfigs.where(metric_config_id: metric.metric_config_id).pluck(:grade_calc_id)
+          
+          #logger.info ("grade_config_id ----------------------------> #{grade_config_id}")
+          #@objGC = @metricconfigs.find(gradeconfig.metric_config_id).grade_calc_id
+          if grade_config_id.count > 0
+            grade_config_id.each do |gcid|
+              calc = @gradecalcs.find(gcid).gradecalc
+
+              #logger.info (" -------------------------->Calc for #{objMC} =  #{calc}" )
+              #logger.info (" -------------------------->metric.metric_config_id =  #{metric.metric_config_id}" )
+              #logger.info (" -------------------------->mid =  #{mid}" )
+              #logger.info (" -------------------------->gcid =  #{gcid}" )
+
+              if calc == 'standard'
+                MetricGrade.calcStandard(metric.metric_config_id, mid, gcid, @metricsToShow)
+              elsif calc == 'weight'
+                MetricGrade.calcWeight(metric.metric_config_id, mid, gcid, @metricsToShow, @users)
+              elsif calc == 'dbtc'
+                #Standard works for DBTC calcs also
+                MetricGrade.calcStandard(metric.metric_config_id, mid, gcid, @metricsToShow)
+              elsif calc == 'declining'
+                MetricGrade.calcDeclining(metric.metric_config_id, mid, gcid, @metricsToShow)
+              elsif calc == 'time'
+                MetricGrade.calcStandard(metric.metric_config_id, mid, gcid, @metricsToShow)
+              end
+            end
+          end 
+        end
+        DailyGrade.calculate(@dateToShow, @metricsToShow)
+        @grade = DailyGrade.getGrade(@dateToShow)
+      end
 
 end

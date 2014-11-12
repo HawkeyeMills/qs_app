@@ -14,22 +14,22 @@ class UsersController < ApplicationController
   end 
 
   def show
-    #Generate metrics for "enterable" fields
-    #Client.find_or_create_by(first_name: 'Andy')
+    #render :text => params and return false
     if(params.has_key?(:metricdate))
       @dateToShow = params[:metricdate]
     else
       @dateToShow = Date.today
     end
+    logger.info("-XXXXX-----------------@dateToShow = #{@dateToShow}")
     @grade = DailyGrade.getGrade(@dateToShow)
     @user = User.find(params[:id])
     @metricconfigs = @user.metric_configs
     @metricsToShow = @user.metrics.where(metricdate: @dateToShow)
+    @gradeconfigs = GradeConfig.all
     if(params.has_key?(:updateMetrics))
       User.refresh_metrics(@dateToShow)
     end
     if(params.has_key?(:calcgrades))
-        @gradeconfigs = GradeConfig.all
         @gradecalcs = GradeCalc.all
         @metricsToShow.each do |metric|
           mv = metric.value

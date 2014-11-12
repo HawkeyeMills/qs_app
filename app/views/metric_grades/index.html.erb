@@ -1,4 +1,4 @@
-<h1>Listing metric_grades</h1>
+<h1>Metric Grades</h1>
 
 <table>
   <thead>
@@ -20,9 +20,9 @@
         <td><%= metric_grade.grade_id %></td>
         <td><%= metric_grade.points %></td>
         <td><%= metric_grade.percentage %></td>
-        <td><%= link_to 'Show', metric_grade %></td>
-        <td><%= link_to 'Edit', edit_metric_grade_path(metric_grade) %></td>
-        <td><%= link_to 'Destroy', metric_grade, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%#= link_to 'Show', metric_grade %></td>
+        <td><%#= link_to 'Edit', edit_metric_grade_path(metric_grade) %></td>
+        <td><%#= link_to 'Destroy', metric_grade, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Metric grade', new_metric_grade_path %>
+<%#= link_to 'New Metric grade', new_metric_grade_path %>

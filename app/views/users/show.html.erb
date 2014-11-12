@@ -1,13 +1,11 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js" type="text/javascript"></script>
 
 <script>
-
 //$.ajaxSetup({
 //  headers: {
 //    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
 // }
 //});
-
 $(document).ready(function(){
     $('#metricdate').change(function() {
         metricdate.val($(this).val());
@@ -16,9 +14,7 @@ $(document).ready(function(){
         //window.location.reload();
       });
 });
-
 //$(document).on('page:update', ready);
-
 </script>
 
 <% provide(:title, @user.name) %>
@@ -50,20 +46,50 @@ $(document).ready(function(){
         <% mv = metric.value %>
           <% if @metricconfigs.find(metric.metric_config_id).profiledisplay == true %>
           <tr>
-            <td>
-            <%= @metricconfigs.find(metric.metric_config_id).metricname%>
-            </td>
+            <% if @gradeconfigs.exists?(:metric_config_id => metric.metric_config_id) %>
+              <td>
+              <span style="font-weight:bold">
+                <%= @metricconfigs.find(metric.metric_config_id).metricname%>
+              </span>
+            <% else %>
+              <td>
+                <%= @metricconfigs.find(metric.metric_config_id).metricname%>
+            <% end %>
+              </td>
             <% if @metricconfigs.find(metric.metric_config_id).metrictype == "minutes" %>
+            <% if @gradeconfigs.exists?(:metric_config_id => metric.metric_config_id) %>
+              <td>
+                <span style="font-weight:bold">
+                  <%= (mv/60).round(2) %>
+                </span>
+            <% else %>
+              <td>
+                <%= (mv/60).round(2) %>
+            <% end %>
+            </td>
+                <%# elsif @metricconfigs.find(metric.metric_config_id).metrictype == "boolean" %>
+                <!--<td>-->
+                  <%#= check_box_tag metric.id, mv, mv %>
+            <% else %>
+              <% if @gradeconfigs.exists?(:metric_config_id => metric.metric_config_id) %>
+                <td>
+                <span style="font-weight:bold">
+                  <%= mv %>
+                </span>
+              <% else %>
+                <td>
+                  <%= mv %>
+              <% end %>
+            <% end %>
+            <% if @gradeconfigs.exists?(:metric_config_id => metric.metric_config_id) %>
             <td>
-            <%= (mv/60).round(2) %>
-            <%# elsif @metricconfigs.find(metric.metric_config_id).metrictype == "boolean" %>
-            <!--<td>-->
-              <%#= check_box_tag metric.id, mv, mv %>
+            <span style="font-weight:bold">
+              <%= @metricconfigs.find(metric.metric_config_id).label%>
+            </span>
             <% else %>
             <td>
-              <%= mv %>
+              <%= @metricconfigs.find(metric.metric_config_id).label%>
             <% end %>
-            <%= @metricconfigs.find(metric.metric_config_id).label%>
             </td>
             <td>
               <% if @metricconfigs.find(metric.metric_config_id).updateable == true %>
@@ -83,5 +109,10 @@ $(document).ready(function(){
     <% end %>
     <%#= link_to 'New Metric', new_metric_path, class: "btn btn-large btn-primary" %>
     <%= link_to "Update FitBit Metrics", fbmetrics_path(:updateMetrics => 'Y', :id => @user.id, :metricdate => @dateToShow), class: "btn btn-large btn-primary" %> 
+    <BR> <BR>
+    Metrics Last Updated: 
+    <%= @metricsToShow.maximum("updated_at").in_time_zone("Central Time (US & Canada)").strftime("%D %l:%M %p")%>
+    <BR> <BR>
+    * <B>bold</B> indicates a metric that is included in daily grading
   </div>
 </div>
