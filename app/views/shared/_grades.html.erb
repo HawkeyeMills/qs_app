@@ -7,4 +7,7 @@
       <h1> <%= @grade %> </h1>
     </strong>
   <%= link_to 'Calculate Grade', calcgrades_path(:id => @user.id, :calcgrades => 'Y', :metricdate => @dateToShow,), class: "btn btn-large btn-primary" %>
+  <BR> <BR>
+  Grade Last Updated: <BR>
+  <%= DailyGrade.maximum("updated_at").in_time_zone("Central Time (US & Canada)").strftime("%D %l:%M %p")%>
 </div>
