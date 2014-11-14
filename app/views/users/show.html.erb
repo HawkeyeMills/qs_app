@@ -36,8 +36,9 @@ $(document).ready(function(){
     <%= hidden_field_tag :id, @user.id %>
     <%if @user.metrics.any? %>
       <h3>Daily Metrics For: <%=@dateToShow%>
+      <span width:20px>
       <%=date_field_tag 'metricdate', @dateToShow, :onchange => "this.form.submit();"%> 
-
+      </span>
       <!--(<%#= @metricsToShow.count %> of <%#=@metricconfigs.count %>)--></h3>
      <%#= date_field(:metricdate, :value) %>    
       <ol class="metricConfigs">
@@ -57,45 +58,51 @@ $(document).ready(function(){
             <% end %>
               </td>
             <% if @metricconfigs.find(metric.metric_config_id).metrictype == "minutes" %>
-            <% if @gradeconfigs.exists?(:metric_config_id => metric.metric_config_id) %>
-              <td>
-                <span style="font-weight:bold">
-                  <%= (mv/60).round(2) %>
-                </span>
-            <% else %>
-              <td>
-                <%= (mv/60).round(2) %>
-            <% end %>
-            </td>
-                <%# elsif @metricconfigs.find(metric.metric_config_id).metrictype == "boolean" %>
-                <!--<td>-->
-                  <%#= check_box_tag metric.id, mv, mv %>
-            <% else %>
               <% if @gradeconfigs.exists?(:metric_config_id => metric.metric_config_id) %>
                 <td>
-                <span style="font-weight:bold">
-                  <%= mv %>
-                </span>
+                  <span style="font-weight:bold">
+                    <%= (mv/60).round(2) %>
+                    <%= @metricconfigs.find(metric.metric_config_id).label%>
+                  </span>
+                </td>
               <% else %>
                 <td>
-                  <%= mv %>
+                  <% if @metricconfigs.find(metric.metric_config_id).updateable == true %>
+                  <%= link_to (mv/60).round(2), edit_metric_path(metric)%>
+                  <% else %>
+                  <%= (mv/60).round(2)%>
+                  <% end %>
+                  <%= @metricconfigs.find(metric.metric_config_id).label%>
+                </td>
               <% end %>
-            <% end %>
-            <% if @gradeconfigs.exists?(:metric_config_id => metric.metric_config_id) %>
-            <span style="font-weight:bold">
-              <%= @metricconfigs.find(metric.metric_config_id).label%>
-            </span>
-            <% else %>
-              <%= @metricconfigs.find(metric.metric_config_id).label%>
-            <% end %>
+                  <%# elsif @metricconfigs.find(metric.metric_config_id).metrictype == "boolean" %>
+                  <!--<td>-->
+                    <%#= check_box_tag metric.id, mv, mv %>
+              <% else %>
+                <% if @gradeconfigs.exists?(:metric_config_id => metric.metric_config_id) %>
+                  <td>
+                  <span style="font-weight:bold">
+                    <% if @metricconfigs.find(metric.metric_config_id).updateable == true %>
+                    <%= link_to mv, edit_metric_path(metric) %> 
+                    <%= @metricconfigs.find(metric.metric_config_id).label%>
+                    <% else %>
+                    <%= mv %>
+                    <% end %>
+                  </span>
+                <% else %>
+                  <td>
+                    <%= mv %>
+                    <%= @metricconfigs.find(metric.metric_config_id).label%>
+                <% end %>
+              <% end %>
             </td>
             <td>
-              <% if @metricconfigs.find(metric.metric_config_id).updateable == true %>
-                <%= link_to 'Show', metric %>
-                <%= link_to 'Edit', edit_metric_path(metric) %>
-                <%= link_to 'Destroy', metric, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <%# if @metricconfigs.find(metric.metric_config_id).updateable == true %>
+                <%#= link_to 'Show', metric %>
+                <%#= link_to 'Edit', edit_metric_path(metric) %>
+                <%#= link_to 'Destroy', metric, method: :delete, data: { confirm: 'Are you sure?' } %>
             </td>
-              <% end %>
+              <%# end %>
             <% end %>
         <% end %>  
           </tr>        
@@ -108,9 +115,11 @@ $(document).ready(function(){
     <%#= link_to 'New Metric', new_metric_path, class: "btn btn-large btn-primary" %>
     <%= link_to "Update FitBit Metrics", fbmetrics_path(:updateMetrics => 'Y', :id => @user.id, :metricdate => @dateToShow), class: "btn btn-large btn-primary" %> 
     <BR> <BR>
+    <%if @metricsToShow.any? %>
     Metrics Last Updated: 
     <%= @metricsToShow.maximum("updated_at").in_time_zone("Central Time (US & Canada)").strftime("%D %l:%M %p")%>
     <BR> <BR>
+    <%end%>
     * <B>bold</B> indicates a metric that is included in daily grading
   </div>
 </div>
