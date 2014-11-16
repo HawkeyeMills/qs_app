@@ -96,13 +96,6 @@ $(document).ready(function(){
                 <% end %>
               <% end %>
             </td>
-            <td>
-              <%# if @metricconfigs.find(metric.metric_config_id).updateable == true %>
-                <%#= link_to 'Show', metric %>
-                <%#= link_to 'Edit', edit_metric_path(metric) %>
-                <%#= link_to 'Destroy', metric, method: :delete, data: { confirm: 'Are you sure?' } %>
-            </td>
-              <%# end %>
             <% end %>
         <% end %>  
           </tr>        
