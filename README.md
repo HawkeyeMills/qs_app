@@ -26,3 +26,7 @@ Things to eventaully cover:
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+
+The OpenShift `ruby` cartridge documentation can be found at:
+
+http://openshift.github.io/documentation/oo_cartridge_guide.html#ruby
