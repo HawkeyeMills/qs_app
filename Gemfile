@@ -1,4 +1,5 @@
-  source 'https://rubygems.org'
+source 'http://mirror1.prod.rhcloud.com/mirror/ruby/'
+source 'https://rubygems.org'
 ruby '2.0.0'
 #ruby-gemset=railstutorial_rails_4_0
 
@@ -57,7 +58,6 @@ group :doc do
 end
 
 group :production do
- #Is this PostgreSQL?  I think I want to use mysql for prod also?
   gem 'pg', '0.15.1'
   gem 'rails_12factor', '0.0.2'
 end
