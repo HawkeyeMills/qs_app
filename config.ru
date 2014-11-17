@@ -1,9 +1,8 @@
-<<<<<<< HEAD
 # This file is used by Rack-based servers to start the application.
 
 require ::File.expand_path('../config/environment',  __FILE__)
 run Rails.application
-=======
+
 require 'rack/lobster'
 
 map '/health' do
@@ -299,4 +298,3 @@ WELCOME_CONTENTS
   end
   run welcome
 end
->>>>>>> fde3c261d74f9565df2d4c730f189b844a5be915
