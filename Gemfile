@@ -1,4 +1,3 @@
-source 'http://mirror1.prod.rhcloud.com/mirror/rubygems/'
 source 'https://rubygems.org'
 ruby '1.9.3'
 
