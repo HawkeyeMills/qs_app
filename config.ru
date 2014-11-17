@@ -26,7 +26,6 @@ map '/' do
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>Welcome to OpenShift</title>
 
-
 <style>
 
 /*!
@@ -256,7 +255,6 @@ $ git push</pre>
                     <li><a href="https://www.openshift.com/developers/deploying-and-building-applications">Learn more about deploying and building your application</a></li>
                     <li>See the README file in your local application Git repository for more information on the options for deploying applications.</li>
                   </ul>
-
             </section>
 
           </section>
@@ -289,8 +287,6 @@ $ git push</pre>
           <div class="logo"><a href="https://www.openshift.com/"></a></div>
         </footer>
 </section>
-
-
 </body>
 </html>
 WELCOME_CONTENTS
