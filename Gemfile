@@ -1,7 +1,6 @@
 source 'http://mirror1.prod.rhcloud.com/mirror/ruby/'
 source 'https://rubygems.org'
 ruby '1.9.3'
-#ruby-gemset=railstutorial_rails_4_0
 
 gem 'rails', '4.0.8'
 gem 'bootstrap-sass', '2.3.2.0'
@@ -16,7 +15,6 @@ gem 'whenever', :require => false
 
 
 group :development, :test do
-  # Use mysql2 as the database
   gem 'mysql2'
   # gem 'sqlite3', '1.3.8'
   gem 'rspec-rails', '2.13.1'
@@ -24,7 +22,6 @@ group :development, :test do
   gem 'spork-rails', '4.0.0'
   gem 'guard-spork', '1.5.0'
   # The following optional lines are part of the advanced setup.
-
   # gem 'childprocess', '0.3.6'
 end
 
@@ -40,10 +37,6 @@ group :test do
 
   # Uncomment these lines on Linux.
   gem 'libnotify', '0.8.0'
-
-  # Uncomment these lines on Windows.
-  # gem 'rb-notifu', '0.0.4'
-  # gem 'wdm', '0.1.0'
 end
 
 gem 'sass-rails', '4.0.3'
