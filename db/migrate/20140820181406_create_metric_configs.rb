@@ -9,6 +9,7 @@ class CreateMetricConfigs < ActiveRecord::Migration
       t.integer :orderby
       t.boolean :profiledisplay
       t.boolean :updateable
+      t.string :defaultvalue
 
       t.timestamps
     end

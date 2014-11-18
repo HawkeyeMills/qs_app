@@ -58,23 +58,24 @@ $(document).ready(function(){
             <% end %>
               </td>
             <% if @metricconfigs.find(metric.metric_config_id).metrictype == "minutes" %>
-              <% if @gradeconfigs.exists?(:metric_config_id => metric.metric_config_id) %>
-                <td>
-                  <span style="font-weight:bold">
-                    <%= (mv/60).round(2) %>
+                <% if @gradeconfigs.exists?(:metric_config_id => metric.metric_config_id) %>
+                  <td>
+                    <span style="font-weight:bold">
+                      <%= (mv/60).round(2) %>
+                      <%= @metricconfigs.find(metric.metric_config_id).label%>
+                    </span>
+                  </td>
+                <% else %>
+                  <td>
+                    <% if @metricconfigs.find(metric.metric_config_id).updateable == true %>
+                    <%= link_to (mv/60).round(2), edit_metric_path(metric)%>
                     <%= @metricconfigs.find(metric.metric_config_id).label%>
-                  </span>
-                </td>
-              <% else %>
-                <td>
-                  <% if @metricconfigs.find(metric.metric_config_id).updateable == true %>
-                  <%= link_to (mv/60).round(2), edit_metric_path(metric)%>
-                  <% else %>
-                  <%= (mv/60).round(2)%>
-                  <% end %>
-                  <%= @metricconfigs.find(metric.metric_config_id).label%>
-                </td>
-              <% end %>
+                    <% else %>
+                    <%= (mv/60).round(2)%>
+                    <%= @metricconfigs.find(metric.metric_config_id).label%>
+                    <% end %>
+                  </td>
+                <% end %>
                   <%# elsif @metricconfigs.find(metric.metric_config_id).metrictype == "boolean" %>
                   <!--<td>-->
                     <%#= check_box_tag metric.id, mv, mv %>
@@ -83,19 +84,26 @@ $(document).ready(function(){
                   <td>
                   <span style="font-weight:bold">
                     <% if @metricconfigs.find(metric.metric_config_id).updateable == true %>
-                    <%= link_to mv, edit_metric_path(metric) %> 
-                    <%= @metricconfigs.find(metric.metric_config_id).label%>
+                        <%= link_to mv, edit_metric_path(metric) %> 
+                        <%= @metricconfigs.find(metric.metric_config_id).label%>
                     <% else %>
-                    <%= mv %>
+                      <%= mv %>
+                      <%= @metricconfigs.find(metric.metric_config_id).label%>
                     <% end %>
                   </span>
                 <% else %>
                   <td>
+                  <% if @metricconfigs.find(metric.metric_config_id).updateable == true %>
+                      <%= link_to mv, edit_metric_path(metric) %> 
+                      <%= @metricconfigs.find(metric.metric_config_id).label%>
+                  <% else %>
                     <%= mv %>
                     <%= @metricconfigs.find(metric.metric_config_id).label%>
+                  <% end %>
                 <% end %>
               <% end %>
             </td>
+            </tr>
             <% end %>
         <% end %>  
           </tr>        

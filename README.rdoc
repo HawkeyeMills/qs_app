@@ -2,7 +2,6 @@
 
 ToDo:
 Add daily_grade show page
-Add all metrics and editable on show page
 Figure out why can access all pages after sign out
 Fix timer
 Figure out how to exclue metric_configs with "profiledisplay = 0" exclude from counts on users/show
@@ -51,3 +50,13 @@ heroku restart -a iquantify
 
  showFiles
  hideFiles
+
+
+
+ -Move Files to OpenShift Data Dir
+ scp iquantify_prod_data 54695cd45973caf2be000010@qs-quantifiedself.rhcloud.com:~/app-root/data
+ scp insert_metric_configs 54695cd45973caf2be000010@qs-quantifiedself.rhcloud.com:~/app-root/data
+
+
+psql qs < iquantify_prod_data
+psql qs < insert_metric_configs
