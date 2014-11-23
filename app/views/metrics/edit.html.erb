@@ -7,12 +7,15 @@
       <%#= render 'shared/error_messages' %>
 
 	  <%= @metricconfigs.find(@metric.metric_config_id).metricname%>
-
       <%= f.label :value %>
-      <%= f.text_field :value %>
-
+      <% if @metricconfigs.find(@metric.metric_config_id).metrictype == "boolean" %>
+        <%= f.check_box :value %>
+      <% else %>
+        <%= f.text_field :value %>
+      <% end %>
       <%= hidden_field_tag :metricdate, @dateToShow %>
-
+      <BR>
+      <BR>
       <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
     <% end %>
   </div>  

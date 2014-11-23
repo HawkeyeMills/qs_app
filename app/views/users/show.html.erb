@@ -84,13 +84,24 @@ $(document).ready(function(){
                   <td>
                   <span style="font-weight:bold">
                     <% if @metricconfigs.find(metric.metric_config_id).updateable == true %>
+                      <% if @metricconfigs.find(metric.metric_config_id).metrictype == "boolean" %>
+                        <% if mv == 0 %>
+                          <%= link_to 'work on it', edit_metric_path(metric) %> 
+                          <%= @metricconfigs.find(metric.metric_config_id).label%>
+                        <% else %>
+                          <%= link_to 'achieved', edit_metric_path(metric) %> 
+                          <%= @metricconfigs.find(metric.metric_config_id).label%>
+                        <% end %>
+                      <% else %> 
                         <%= link_to mv, edit_metric_path(metric) %> 
                         <%= @metricconfigs.find(metric.metric_config_id).label%>
+                      <% end %>
                     <% else %>
                       <%= mv %>
                       <%= @metricconfigs.find(metric.metric_config_id).label%>
                     <% end %>
                   </span>
+                  </td>
                 <% else %>
                   <td>
                   <% if @metricconfigs.find(metric.metric_config_id).updateable == true %>

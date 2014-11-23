@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_many :metrics, through: :metric_configs
   has_many :notes, dependent: :destroy
   has_many :grade_configs, through: :metric_configs
+  has_one :metric_grades, dependent: :destroy
   
   before_save { self.email = email.downcase }
   before_create :create_remember_token
@@ -25,7 +26,7 @@ class User < ActiveRecord::Base
   def User.refresh_metrics(startDate)
     
     #startDate = Date.today
-    endDate = (startDate.to_date - 2)
+    endDate = (startDate.to_date - 3)
 
     @fbdata = Fitbitclient::Fitbitclient.new
     @fbdata.upsert_metric_data(startDate, endDate, "/body/weight")
@@ -70,9 +71,8 @@ class User < ActiveRecord::Base
     #if metric config contains default value - generate new metric with default value
     MetricConfig.where("defaultvalue IS NOT NULL").each do |f|
         metricconfigid = f.id
-        logger.info("metricconfigid = #{metricconfigid}")
         Metric.find_or_create_by(metric_config_id: metricconfigid, metricdate: dateToGen) do |c|
-        c.value = 0
+        c.value = f.defaultvalue
       end
     end
   end

@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     else
       @dateToShow = Date.today
     end
-    logger.info("-XXXXX-----------------@dateToShow = #{@dateToShow}")
+    #logger.info("-XXXXX-----------------@dateToShow = #{@dateToShow}")
     @grade = DailyGrade.getGrade(@dateToShow)
     @user = User.find(params[:id])
     @metricconfigs = @user.metric_configs
