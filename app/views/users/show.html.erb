@@ -35,45 +35,35 @@ $(document).ready(function(){
     <%= csrf_meta_tag %>
     <%= hidden_field_tag :id, @user.id %>
     <%if @user.metrics.any? %>
-      <h3>Daily Metrics For: <%=@dateToShow%></h3> 
-      <p width:40%>
-      <%=date_field_tag 'metricdate', @dateToShow, :onchange => "this.form.submit();"%> 
-      </span></p>
- 
-      <ol class="metricConfigs">
+    <ol class="metricConfigs">
     <table class="table-condensed">
+    <tr>
+      <h3>Daily Metrics For: <%=@dateToShow%></h3> 
+    </tr>
+    <tr>
+    <div class="span4" align="center">
+      <%=date_field_tag 'metricdate', @dateToShow, :onchange => "this.form.submit();"%>
+    </div>
+    </tr>
       <tr>
-          <td>
-            <strong>
-              Metric
-            </strong>
-          </td>
-          <td>
-            <strong>
-              Value
-            </strong>
-          </td>
-          <td>
-            <strong>
-              Goal
-            </strong>
-          </td>
-          <td>
-            <strong>
-              Points
-            </strong>
-          </td>
-          <td>
-            <strong>
-              Possible
-            </strong>
-          </td>
-          <td>
-            <strong>
-              % Achieved
-            </strong>
-          </td>
-            </strong>
+        <th>
+            Metric
+        </th>
+        <th>
+            Value
+        </th>
+        <th>
+            Goal
+        </th>
+        <th>
+            Points
+        </th>
+        <th>
+          Possible
+        </th>
+        <th>
+            % Achieved
+        </th>
       </tr>
         <% @metricsToShow.each do |metric|%>
         <% mv = metric.value %>
@@ -115,7 +105,7 @@ $(document).ready(function(){
                       </td>
                       <td>
                       <span style="font-weight:bold">
-                        <%= mg_percentage %>
+                        <%= mg_percentage %>%
                       </td>
                     </span>
                   </td>
@@ -161,7 +151,7 @@ $(document).ready(function(){
                           </td>
                           <td>
                           <span style="font-weight:bold">
-                            <%= mg_percentage %>
+                            <%= mg_percentage %>%
                           </td>
                         <% else %>
                           <%= link_to 'achieved', edit_metric_path(metric) %> 
@@ -180,7 +170,7 @@ $(document).ready(function(){
                           </td>
                           <td>
                           <span style="font-weight:bold">
-                            <%= mg_percentage %>
+                            <%= mg_percentage %>%
                           </td>
                         <% end %>
                       <% else %> 
@@ -197,7 +187,7 @@ $(document).ready(function(){
                             <%= gc_weight %>
                           </td>
                           <td><span style="font-weight:bold">
-                            <%= mg_percentage %>
+                            <%= mg_percentage %>%
                           </td>
                       <% end %>
                     <% else %>
@@ -213,7 +203,7 @@ $(document).ready(function(){
                             <%= gc_weight %>
                           </td>
                           <td><span style="font-weight:bold">
-                            <%= mg_percentage %>
+                            <%= mg_percentage %>%
                           </td>
                     <% end %>
                   </span>

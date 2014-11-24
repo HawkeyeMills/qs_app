@@ -1,7 +1,9 @@
 == README
 
 ToDo:
-Add daily_grade show page
+Mass Grade Calculate Function
+30 day rolling averages
+Fix grade value in metric_grade
 Figure out why can access all pages after sign out
 Fix timer
 Clean up Notes
