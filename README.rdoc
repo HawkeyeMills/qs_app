@@ -1,6 +1,7 @@
 == README
 
 ToDo:
+Run one massive repull from FitBit
 Mass Grade Calculate Function
 30 day rolling averages
 Fix grade value in metric_grade

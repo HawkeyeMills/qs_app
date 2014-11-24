@@ -81,7 +81,7 @@ $(document).ready(function(){
             <% end %>
               </td>
             <% if @metricconfigs.find(metric.metric_config_id).metrictype == "minutes" %>
-                <% if @gradeconfigs.exists?(:metric_config_id => metric.metric_config_id) %>
+                <% if @gradeconfigs.exists?(:metric_config_id => metric.metric_config_id) and ((MetricGrade.find_by metric_id: mid).nil? == false)%>
                 <% gc_weight = (@gradeconfigs.find_by metric_config_id: metric.metric_config_id).weight %>
                 <% gc_goal = (@gradeconfigs.find_by metric_config_id: metric.metric_config_id).goal %>
                 <%# obj_mg = MetricGrade.where(metric_id: mid) %>
@@ -125,10 +125,10 @@ $(document).ready(function(){
                   <td></td>
                 <% end %>
               <% else %>
-                <% if @gradeconfigs.exists?(:metric_config_id => metric.metric_config_id) %>
+                <% if @gradeconfigs.exists?(:metric_config_id => metric.metric_config_id) and ((MetricGrade.find_by metric_id: mid).nil? == false)%>
                 <% gc_weight = (@gradeconfigs.find_by metric_config_id: metric.metric_config_id).weight %>
                 <% gc_goal = (@gradeconfigs.find_by metric_config_id: metric.metric_config_id).goal %>
-                <% mg_points= (MetricGrade.find_by metric_id: mid).points %>
+                <% mg_points = (MetricGrade.find_by metric_id: mid).points %>
                 <% mg_percentage = (MetricGrade.find_by metric_id: mid).percentage %>
                   <td>
                   <span style="font-weight:bold">
