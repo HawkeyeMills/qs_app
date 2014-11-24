@@ -20,12 +20,12 @@ class UsersController < ApplicationController
     else
       @dateToShow = Date.today
     end
-    #logger.info("-XXXXX-----------------@dateToShow = #{@dateToShow}")
     @grade = DailyGrade.getGrade(@dateToShow)
     @user = User.find(params[:id])
     @metricconfigs = @user.metric_configs
     @metricsToShow = @user.metrics.where(metricdate: @dateToShow)
     @gradeconfigs = GradeConfig.all
+    #@metricgrades = MetricGrades.
     if(params.has_key?(:updateMetrics))
       User.refresh_metrics(@dateToShow)
     end
@@ -34,6 +34,15 @@ class UsersController < ApplicationController
         @metricsToShow.each do |metric|
           mv = metric.value
           mid = metric.id
+          @obj_mg = MetricGrade.where(metric_id: mid)
+          #if obj_mg.count > 0
+          #  obj_mg.each do |mgid|
+          #    mg_points = MetricGrade.find(mgid).points
+          #    mg_percentage = MetricGrade.find(mgid).percentage
+
+          #logger.info("------------------------------------> #{mg_points}")
+          #logger.info("------------------------------------> #{mg_percentage}")
+
           #logger.info("metric.metric_config_id = #{metric.metric_config_id}")
           objMC = @metricconfigs.find(metric.metric_config_id).id
           #logger.info ("objMC ----------------------------> #{metric.metric_config_id}")
@@ -68,6 +77,7 @@ class UsersController < ApplicationController
             end
           end 
         end
+
         DailyGrade.calculate(@dateToShow, @metricsToShow)
         @grade = DailyGrade.getGrade(@dateToShow)
       end

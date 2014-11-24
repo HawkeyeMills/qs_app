@@ -35,16 +35,49 @@ $(document).ready(function(){
     <%= csrf_meta_tag %>
     <%= hidden_field_tag :id, @user.id %>
     <%if @user.metrics.any? %>
-      <h3>Daily Metrics For: <%=@dateToShow%>
-      <span width:20px>
+      <h3>Daily Metrics For: <%=@dateToShow%></h3> 
+      <p width:40%>
       <%=date_field_tag 'metricdate', @dateToShow, :onchange => "this.form.submit();"%> 
-      </span>
-      <!--(<%#= @metricsToShow.count %> of <%#=@metricconfigs.count %>)--></h3>
-     <%#= date_field(:metricdate, :value) %>    
+      </span></p>
+ 
       <ol class="metricConfigs">
-      <table>
+    <table class="table-condensed">
+      <tr>
+          <td>
+            <strong>
+              Metric
+            </strong>
+          </td>
+          <td>
+            <strong>
+              Value
+            </strong>
+          </td>
+          <td>
+            <strong>
+              Goal
+            </strong>
+          </td>
+          <td>
+            <strong>
+              Points
+            </strong>
+          </td>
+          <td>
+            <strong>
+              Possible
+            </strong>
+          </td>
+          <td>
+            <strong>
+              % Achieved
+            </strong>
+          </td>
+            </strong>
+      </tr>
         <% @metricsToShow.each do |metric|%>
         <% mv = metric.value %>
+        <% mid = metric.id %>
           <% if @metricconfigs.find(metric.metric_config_id).profiledisplay == true %>
           <tr>
             <% if @gradeconfigs.exists?(:metric_config_id => metric.metric_config_id) %>
@@ -59,10 +92,31 @@ $(document).ready(function(){
               </td>
             <% if @metricconfigs.find(metric.metric_config_id).metrictype == "minutes" %>
                 <% if @gradeconfigs.exists?(:metric_config_id => metric.metric_config_id) %>
+                <% gc_weight = (@gradeconfigs.find_by metric_config_id: metric.metric_config_id).weight %>
+                <% gc_goal = (@gradeconfigs.find_by metric_config_id: metric.metric_config_id).goal %>
+                <%# obj_mg = MetricGrade.where(metric_id: mid) %>
+                <% mg_points = (MetricGrade.find_by metric_id: mid).points %>
+                <% mg_percentage = (MetricGrade.find_by metric_id: mid).percentage %>
                   <td>
                     <span style="font-weight:bold">
                       <%= (mv/60).round(2) %>
                       <%= @metricconfigs.find(metric.metric_config_id).label%>
+                      <td>
+                      <span style="font-weight:bold">
+                        <%= gc_goal %>
+                      </td>
+                      <td>
+                      <span style="font-weight:bold">
+                        <%= mg_points %>
+                      </td>
+                      <td>
+                      <span style="font-weight:bold">
+                        <%= gc_weight %>
+                      </td>
+                      <td>
+                      <span style="font-weight:bold">
+                        <%= mg_percentage %>
+                      </td>
                     </span>
                   </td>
                 <% else %>
@@ -75,12 +129,17 @@ $(document).ready(function(){
                     <%= @metricconfigs.find(metric.metric_config_id).label%>
                     <% end %>
                   </td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 <% end %>
-                  <%# elsif @metricconfigs.find(metric.metric_config_id).metrictype == "boolean" %>
-                  <!--<td>-->
-                    <%#= check_box_tag metric.id, mv, mv %>
               <% else %>
                 <% if @gradeconfigs.exists?(:metric_config_id => metric.metric_config_id) %>
+                <% gc_weight = (@gradeconfigs.find_by metric_config_id: metric.metric_config_id).weight %>
+                <% gc_goal = (@gradeconfigs.find_by metric_config_id: metric.metric_config_id).goal %>
+                <% mg_points= (MetricGrade.find_by metric_id: mid).points %>
+                <% mg_percentage = (MetricGrade.find_by metric_id: mid).percentage %>
                   <td>
                   <span style="font-weight:bold">
                     <% if @metricconfigs.find(metric.metric_config_id).updateable == true %>
@@ -88,17 +147,74 @@ $(document).ready(function(){
                         <% if mv == 0 %>
                           <%= link_to 'work on it', edit_metric_path(metric) %> 
                           <%= @metricconfigs.find(metric.metric_config_id).label%>
+                          <td>
+                          <span style="font-weight:bold">
+                            <%= gc_goal %>
+                          </td>
+                          <td>
+                          <span style="font-weight:bold">
+                            <%= mg_points %>
+                          </td>
+                          <td>
+                          <span style="font-weight:bold">
+                            <%= gc_weight %>
+                          </td>
+                          <td>
+                          <span style="font-weight:bold">
+                            <%= mg_percentage %>
+                          </td>
                         <% else %>
                           <%= link_to 'achieved', edit_metric_path(metric) %> 
                           <%= @metricconfigs.find(metric.metric_config_id).label%>
+                          <td>
+                          <span style="font-weight:bold">
+                            <%= gc_goal %>
+                          </td>
+                          <td>
+                          <span style="font-weight:bold">
+                            <%= mg_points %>
+                          </td>
+                          <td>
+                          <span style="font-weight:bold">
+                            <%= gc_weight %>
+                          </td>
+                          <td>
+                          <span style="font-weight:bold">
+                            <%= mg_percentage %>
+                          </td>
                         <% end %>
                       <% else %> 
                         <%= link_to mv, edit_metric_path(metric) %> 
                         <%= @metricconfigs.find(metric.metric_config_id).label%>
+                          <td>
+                          <span style="font-weight:bold">
+                            <%= gc_goal %>
+                          </td>
+                          <td><span style="font-weight:bold">
+                            <%= mg_points %>
+                          </td>
+                          <td><span style="font-weight:bold">
+                            <%= gc_weight %>
+                          </td>
+                          <td><span style="font-weight:bold">
+                            <%= mg_percentage %>
+                          </td>
                       <% end %>
                     <% else %>
                       <%= mv %>
                       <%= @metricconfigs.find(metric.metric_config_id).label%>
+                          <td><span style="font-weight:bold">
+                            <%= gc_goal %>
+                          </td>
+                          <td><span style="font-weight:bold">
+                            <%= mg_points %>
+                          </td>
+                          <td><span style="font-weight:bold">
+                            <%= gc_weight %>
+                          </td>
+                          <td><span style="font-weight:bold">
+                            <%= mg_percentage %>
+                          </td>
                     <% end %>
                   </span>
                   </td>
@@ -107,9 +223,17 @@ $(document).ready(function(){
                   <% if @metricconfigs.find(metric.metric_config_id).updateable == true %>
                       <%= link_to mv, edit_metric_path(metric) %> 
                       <%= @metricconfigs.find(metric.metric_config_id).label%>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
                   <% else %>
                     <%= mv %>
                     <%= @metricconfigs.find(metric.metric_config_id).label%>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
                   <% end %>
                 <% end %>
               <% end %>

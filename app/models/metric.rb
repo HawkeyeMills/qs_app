@@ -1,4 +1,5 @@
 class Metric < ActiveRecord::Base
+  has_one  :metric_grades, dependent: :destroy
   belongs_to :metric_configs
   default_scope -> { order('metricdate DESC') }
   validates :value, presence: true, length: { maximum: 35 }

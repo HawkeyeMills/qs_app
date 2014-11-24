@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   has_many :metrics, through: :metric_configs
   has_many :notes, dependent: :destroy
   has_many :grade_configs, through: :metric_configs
-  has_one :metric_grades, dependent: :destroy
+  has_many :metric_grades, through: :metrics
   
   before_save { self.email = email.downcase }
   before_create :create_remember_token
