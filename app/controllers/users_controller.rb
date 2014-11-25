@@ -21,6 +21,8 @@ class UsersController < ApplicationController
       @dateToShow = Date.today
     end
     @grade = DailyGrade.getGrade(@dateToShow)
+    @points = DailyGrade.getPoints(@dateToShow)
+    @possible = DailyGrade.getPointsPossible(@dateToShow)
     @user = User.find(params[:id])
     @metricconfigs = @user.metric_configs
     @metricsToShow = @user.metrics.where(metricdate: @dateToShow)

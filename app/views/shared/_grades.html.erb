@@ -4,7 +4,14 @@
 <%= hidden_field_tag :id, @user.id %>
     <strong id="following" class="stat">
       <%#= @user.followed_users.count %>
+      <% if @grade != nil and @points != nil and @possible != nil %>
       <h1> <%= @grade %> </h1>
+      <h4> 
+      <%= @points %>  /
+      <%= number_with_precision(@possible, :precision => 2) %> <BR><BR>
+      <%= number_with_precision(((@points / @possible) * 100), :precision => 2) %> %
+      </h4>
+      <% end %>
     </strong>
   <%= link_to 'Calculate Grade', calcgrades_path(:id => @user.id, :calcgrades => 'Y', :metricdate => @dateToShow,), class: "btn btn-large btn-primary" %>
   <BR> <BR>

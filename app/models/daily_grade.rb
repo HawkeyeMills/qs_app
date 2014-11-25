@@ -52,6 +52,27 @@ class DailyGrade < ActiveRecord::Base
 			return gradevalue = nil
 		end
 	end
+	
+	def DailyGrade.getPoints(dateToGrade)
+		obj_dailygrade = DailyGrade.find_by_gradeDate(dateToGrade)
+		points = nil
+		if(obj_dailygrade != nil)
+			return points = obj_dailygrade.points
+		else
+			return points = nil
+		end
+	end
+
+	def DailyGrade.getPointsPossible(dateToGrade)
+		obj_dailygrade = DailyGrade.find_by_gradeDate(dateToGrade)
+		possible = nil
+		if(obj_dailygrade != nil)
+			return possible = obj_dailygrade.possible
+		else
+			return possible = nil
+		end
+	end
+
 	def DailyGrade.refreshAll
         @metricsToShow = Metrics.all
         @gradeconfigs = GradeConfig.all

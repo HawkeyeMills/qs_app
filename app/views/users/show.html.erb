@@ -36,15 +36,12 @@ $(document).ready(function(){
     <%= hidden_field_tag :id, @user.id %>
     <%if @user.metrics.any? %>
     <ol class="metricConfigs">
-    <table class="table-condensed">
-    <tr>
       <h3>Daily Metrics For: <%=@dateToShow%></h3> 
-    </tr>
-    <tr>
     <div class="span4" align="center">
       <%=date_field_tag 'metricdate', @dateToShow, :onchange => "this.form.submit();"%>
     </div>
-    </tr>
+    
+    <table class="table-condensed">
       <tr>
         <th>
             Metric
@@ -93,7 +90,7 @@ $(document).ready(function(){
                       <%= @metricconfigs.find(metric.metric_config_id).label%>
                       <td>
                       <span style="font-weight:bold">
-                        <%= gc_goal %>
+                        <%= (gc_goal.to_i/60).round(2) %>
                       </td>
                       <td>
                       <span style="font-weight:bold">
